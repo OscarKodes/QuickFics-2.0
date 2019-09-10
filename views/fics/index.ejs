@@ -2,7 +2,9 @@
     <h1>Index Page woo hoooo</h1>
 
     <% fics.forEach(function(fic){ %>
-      <h2><%=fic.title%></h2>
+      <a href="/fics/<%= fic._id %>">
+        <h2><%=fic.title%></h2>
+      </a>
       <p><%=fic.description%></p>
     <% }); %>
 

@@ -65,6 +65,19 @@ app.post("/fics", function(req, res){
   })
 });
 
+// SHOW ROUTE
+app.get("/fics/:id", function(req, res){
+
+  Fic.findById(req.params.id, function(err, foundFic){
+    if (err) {
+      console.log(err);
+      res.redirect("back");
+    } else {
+      res.render("fics/show", {fic: foundFic});
+    }
+  });
+});
+
 
 
 
