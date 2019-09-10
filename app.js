@@ -3,12 +3,14 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const mongoose = require("mongoose");
+const methodOverride = require("method-override");
 
 const app = express();
 
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(methodOverride("_method"));
 
 mongoose.connect("mongodb://localhost:27017/ficsDB",
 {
@@ -60,7 +62,7 @@ app.post("/fics", function(req, res){
       console.log(err);
       res.redirect("back");
     } else {
-      res.redirect("/fics");
+      res.redirect("/fics/" + newFic._id);
     }
   })
 });
@@ -78,6 +80,31 @@ app.get("/fics/:id", function(req, res){
   });
 });
 
+// EDIT ROUTE
+app.get("/fics/:id/edit", function(req, res){
+
+  Fic.findById(req.params.id, function(err, foundFic){
+    if (err) {
+      console.log(err);
+      res.redirect("back");
+    } else {
+      res.render("fics/edit", {fic: foundFic});
+    }
+  })
+});
+
+// UPDATE ROUTE
+app.put("/fics/:id", function(req, res){
+
+  Fic.findByIdAndUpdate(req.params.id, req.body.fic, function(err, foundFic){
+    if (err) {
+      console.log(err);
+      res.redirect("back");
+    } else {
+      res.redirect("/fics/" + req.params.id);
+    }
+  })
+})
 
 
 
