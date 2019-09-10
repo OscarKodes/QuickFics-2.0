@@ -106,6 +106,18 @@ app.put("/fics/:id", function(req, res){
   })
 })
 
+// DESTROY ROUTE
+app.delete("/fics/:id", function(req, res){
+
+  Fic.findByIdAndDelete(req.params.id, function(err, deletedFic){
+    if (err) {
+      console.log(err);
+      res.redirect("back");
+    } else {
+      res.redirect("/fics");
+    }
+  })
+});
 
 
 

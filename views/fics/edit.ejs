@@ -9,4 +9,10 @@
       <button type="submit" name="button">Submit</button>
     </form>
 
+    <form class="" action="/fics/<%= fic._id %>?_method=DELETE" method="post">
+      <button class="btn btn-outline-danger btn-sm" type="submit" name="button">
+        Delete this fic</button>
+    </form>
+
+
 <%- include ../partials/footer %>
