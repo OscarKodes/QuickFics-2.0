@@ -35,7 +35,15 @@ app.get("/front", function(req, res){
 });
 
 // Fic Routes ===================================
-
+app.get("/fics", function (req, res){
+  Fic.find({}, function(err, foundFics){
+    if (err) {
+      console.log(err);
+    } else {
+      res.render("fics/index", {fics: foundFics});
+    }
+  });
+});
 
 
 
