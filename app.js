@@ -1,4 +1,4 @@
-// Requirements
+// Requirements =================================
 const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
@@ -10,9 +10,22 @@ app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.urlencoded({extended: true}));
 
+mongoose.connect("mongodb://localhost:27017/ficsDB",
+{
+  useNewUrlParser: true,
+  useFindAndModify: false,
+  useUnifiedTopology: true
+});
 
-// Routes
+const ficSchema = new mongoose.Schema({
+  title: String,
+  description: String
+});
 
+const Fic = mongoose.model("Fic", ficSchema);
+
+
+// Routes =======================================
 app.get("/", function(req, res){
   res.redirect("/front");
 });
@@ -21,7 +34,7 @@ app.get("/front", function(req, res){
   res.render("front");
 });
 
-
+// Fic Routes ===================================
 
 
 
