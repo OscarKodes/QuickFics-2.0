@@ -14,7 +14,11 @@ app.use(bodyParser.urlencoded({extended: true}));
 // Routes
 
 app.get("/", function(req, res){
-  res.send("Hello");
+  res.redirect("/front");
+});
+
+app.get("/front", function(req, res){
+  res.render("front");
 });
 
 
