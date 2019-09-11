@@ -1,10 +1,10 @@
 const express = require("express");
 const mongoose = require("mongoose");
 
-const charSchema = new mongoose.Schema({
+const charSchema = {
   name: String,
   description: String,
-});
+};
 
 const ficSchema = new mongoose.Schema({
   title: String,

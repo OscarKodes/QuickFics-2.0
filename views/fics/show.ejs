@@ -5,6 +5,10 @@
 
     <p><%= fic.description %></p>
 
+    <a href="/fics/<%= fic._id %>/chars">See Characters</a>
+
+    <a href="/fics/<%= fic._id %>/chars/new">Add Characters</a>
+
     <a href="/fics/<%= fic._id %>/edit">Edit this fic</a>
 
 <%- include ../partials/footer %>

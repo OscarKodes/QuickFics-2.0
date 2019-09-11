@@ -5,7 +5,7 @@ const express = require("express");
 // const methodOverride = require("method-override");
 const Fic = require("../models/fic");
 
-const router = express.Router();
+const router = express.Router({mergeParams: true});
 
 // Fic Routes ===================================
 // INDEX ROUTE
@@ -33,6 +33,7 @@ router.post("/", function(req, res){
       console.log(err);
       res.redirect("back");
     } else {
+      newFic.chars.push(req.body.char);
       res.redirect("/fics/" + newFic._id);
     }
   })
