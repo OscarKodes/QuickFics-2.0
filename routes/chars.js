@@ -31,15 +31,16 @@ router.get("/new", function(req, res){
 // CREATE ROUTE
 router.post("/", function(req, res){
 
-  res.send("create route success");
-  // Fic.create(req.body.fic, function(err, newFic){
-  //   if (err) {
-  //     console.log(err);
-  //     res.redirect("back");
-  //   } else {
-  //     res.redirect("/fics/" + newFic._id);
-  //   }
-  // })
+  Fic.findById(req.params.id, function(err, foundFic){
+    if (err) {
+      console.log(err);
+      res.redirect("back");
+    } else {
+      foundFic.chars.push(req.body.char);
+      foundFic.save();
+      res.redirect("/fics/" + foundFic._id + "/chars");
+    }
+  })
 });
 
 // // SHOW ROUTE
