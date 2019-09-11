@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const mongoose = require("mongoose");
 const methodOverride = require("method-override");
+const Fic = require("./models/fic");
 
 const app = express();
 
@@ -19,19 +20,6 @@ mongoose.connect("mongodb://localhost:27017/ficsDB",
   useUnifiedTopology: true
 });
 
-const ficSchema = new mongoose.Schema({
-  title: String,
-  description: String
-});
-
-const Fic = mongoose.model("Fic", ficSchema);
-
-const charSchema = new mongoose.Schema({
-  name: String,
-  description: String,
-});
-
-const Char = mongoose.model("Char", charSchema);
 
 // Routes =======================================
 app.get("/", function(req, res){
@@ -41,6 +29,7 @@ app.get("/", function(req, res){
 app.get("/front", function(req, res){
   res.render("front");
 });
+
 
 // Fic Routes ===================================
 // INDEX ROUTE
@@ -128,7 +117,8 @@ app.delete("/fics/:id", function(req, res){
 
 // Char Routes ====================================
 // INDEX ROUTE
-
+// app.get("fics/:id/chars")
+//
 
 
 
