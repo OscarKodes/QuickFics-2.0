@@ -26,6 +26,12 @@ const ficSchema = new mongoose.Schema({
 
 const Fic = mongoose.model("Fic", ficSchema);
 
+const charSchema = new mongoose.Schema({
+  name: String,
+  description: String,
+});
+
+const Char = mongoose.model("Char", charSchema);
 
 // Routes =======================================
 app.get("/", function(req, res){
@@ -118,6 +124,10 @@ app.delete("/fics/:id", function(req, res){
     }
   })
 });
+
+
+// Char Routes ====================================
+// INDEX ROUTE
 
 
 
