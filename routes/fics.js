@@ -3,7 +3,7 @@ const express = require("express");
 // const ejs = require("ejs");
 // const mongoose = require("mongoose");
 // const methodOverride = require("method-override");
-const Fic = require("./models/fic");
+const Fic = require("../models/fic");
 
 const router = express.Router();
 
