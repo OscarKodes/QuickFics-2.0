@@ -5,10 +5,12 @@
 
     <p><%= fic.description %></p>
 
-    <a href="/fics/<%= fic._id %>/chars">See Characters</a>
+    <a class="btn btn-lg btn-secondary" href="/fics/<%= fic._id %>/chars">See Characters</a>
 
-    <a href="/fics/<%= fic._id %>/chars/new">Add Characters</a>
+    <a class="btn btn-lg btn-secondary" href="/fics/<%= fic._id %>/chars/new">Add Characters</a>
 
-    <a href="/fics/<%= fic._id %>/edit">Edit this fic</a>
+    <a class="btn btn-lg btn-secondary" href="/fics/<%= fic._id %>/edit">Edit this fic</a>
+
+    <a class="btn btn-lg btn-secondary" href="/fics">Back to fics</a>
 
 <%- include ../partials/footer %>
