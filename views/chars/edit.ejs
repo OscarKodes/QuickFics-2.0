@@ -1,0 +1,17 @@
+<%- include ../partials/header %>
+
+    <h1>Edit character</h1>
+
+    <form class="" action="/fics/<%= fic_id %>/chars/<%=char_idx%>?_method=PUT" method="post">
+      <input type="text" name="char[name]"
+       placeholder="Name" value="<%=char.name%>">
+      <input type="text" name="char[description]"
+       placeholder="Description" value="<%=char.description%>">
+      <button type="submit" name="button">Submit</button>
+    </form>
+
+    <a class="btn btn-lg btn-secondary" href="/fics/<%= fic_id %>">Back to fic</a>
+    <a class="btn btn-lg btn-secondary" href="/fics/<%= fic_id %>/chars">Back to char index</a>
+
+
+<%- include ../partials/footer %>

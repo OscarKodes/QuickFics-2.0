@@ -1,9 +1,10 @@
 <%- include ../partials/header %>
     <h1>Index Page for chars</h1>
 
-    <% fic.chars.forEach(function(char){ %>
+    <% fic.chars.forEach(function(char, i){ %>
       <h3><%= char.name %></h3>
       <p><%= char.description %></p>
+      <a class="btn btn-sm btn-outline-warning" href="/fics/<%=fic._id%>/chars/<%=i%>/edit">Edit Character</a>
     <% }); %>
 
 <a class="btn btn-lg btn-secondary" href="/fics/<%= fic._id %>">Back to fic</a>

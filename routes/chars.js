@@ -43,45 +43,44 @@ router.post("/", function(req, res){
   })
 });
 
-// // SHOW ROUTE
-// router.get("/:id", function(req, res){
-//
-//   Fic.findById(req.params.id, function(err, foundFic){
-//     if (err) {
-//       console.log(err);
-//       res.redirect("back");
-//     } else {
-//       res.render("fics/show", {fic: foundFic});
-//     }
-//   });
-// });
-//
-// // EDIT ROUTE
-// router.get("/:id/edit", function(req, res){
-//
-//   Fic.findById(req.params.id, function(err, foundFic){
-//     if (err) {
-//       console.log(err);
-//       res.redirect("back");
-//     } else {
-//       res.render("fics/edit", {fic: foundFic});
-//     }
-//   })
-// });
-//
-// // UPDATE ROUTE
-// router.put("/:id", function(req, res){
-//
-//   Fic.findByIdAndUpdate(req.params.id, req.body.fic, function(err, foundFic){
-//     if (err) {
-//       console.log(err);
-//       res.redirect("back");
-//     } else {
-//       res.redirect("/fics/" + req.params.id);
-//     }
-//   })
-// })
-//
+// SHOW ROUTE
+// !!! NO NEED SHOW ROUTE
+/// Index route already shows all the details of the character
+/// characters only have a short description and nothing more
+
+// EDIT ROUTE
+router.get("/:char_idx/edit", function(req, res){
+
+  Fic.findById(req.params.id, function(err, foundFic){
+    if (err) {
+      console.log(err);
+      res.redirect("back");
+    } else {
+      res.render("chars/edit",
+      {
+        fic_id: foundFic._id,
+        char: foundFic.chars[req.params.char_idx],
+        char_idx: req.params.char_idx
+      })
+    }
+  });
+});
+
+// UPDATE ROUTE
+router.put("/:char_idx", function(req, res){
+
+  Fic.findById(req.params.id, function(err, foundFic){
+    if (err) {
+      console.log(err);
+      res.redirect("back");
+    } else {
+      foundFic.chars[req.params.char_idx] = req.body.char;
+      foundFic.save();
+      res.redirect("/fics/" + req.params.id + "/chars");
+    }
+  })
+});
+
 // // DESTROY ROUTE
 // router.delete("/:id", function(req, res){
 //
