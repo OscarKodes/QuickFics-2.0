@@ -14,4 +14,8 @@
     <a class="btn btn-lg btn-secondary" href="/fics/<%= fic_id %>/chars">Back to char index</a>
 
 
+    <form class="" action="/fics/<%=fic_id%>/chars/<%=char_idx%>?_method=DELETE" method="post">
+      <button class="btn btn-sm btn-outline-danger" type="submit" name="button">Delete</button>
+    </form>
+
 <%- include ../partials/footer %>
