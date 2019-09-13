@@ -16,8 +16,6 @@ router.get("/", function (req, res){
       console.log(err);
       res.redirect("back");
     } else {
-      console.log(foundFic);
-
       res.render("chars/index", {fic: foundFic});
     }
   });
@@ -81,18 +79,20 @@ router.put("/:char_idx", function(req, res){
   })
 });
 
-// // DESTROY ROUTE
-// router.delete("/:id", function(req, res){
-//
-//   Fic.findByIdAndDelete(req.params.id, function(err, deletedFic){
-//     if (err) {
-//       console.log(err);
-//       res.redirect("back");
-//     } else {
-//       res.redirect("/fics");
-//     }
-//   })
-// });
+// DESTROY ROUTE
+router.delete("/:char_idx", function(req, res){
+
+  Fic.findById(req.params.id, function(err, foundFic){
+    if (err) {
+      console.log(err);
+      res.redirect("back");
+    } else {
+      foundFic.chars.splice(req.params.char_idx, 1);
+      foundFic.save();
+      res.redirect("/fics/" + req.params.id + "/chars");
+    }
+  });
+});
 
 
 module.exports = router;
