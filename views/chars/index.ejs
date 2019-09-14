@@ -1,13 +1,20 @@
 <%- include ../partials/header %>
-    <h1>Index Page for chars</h1>
+    <h1>Index Page for Characters</h1>
 
     <% fic.chars.forEach(function(char, i){ %>
-      <h3><%= char.name %></h3>
-      <p><%= char.description %></p>
-      <a class="btn btn-sm btn-outline-warning" href="/fics/<%=fic._id%>/chars/<%=i%>/edit">Edit Character</a>
+      <div class="border p-4 m-4 bg-light">
+        <h3>Name: <%= char.name %></h3>
+        <p>Description: <%= char.description %></p>
+        <a class="btn btn-sm btn-outline-warning" href="/fics/<%=fic._id%>/chars/<%=i%>/edit">Edit Character</a>
+      </div>
     <% }); %>
 
-<a class="btn btn-lg btn-secondary" href="/fics/<%= fic._id %>">Back to fic</a>
-<a class="btn btn-lg btn-secondary" href="/fics">Back to Front page</a>
+    <a class="btn btn-sm btn-success" href="/fics/<%= fic._id %>/chars/new">Add Characters</a>
+
+<div class="mt-4">
+  <a class="btn btn-lg btn-secondary" href="/fics">Back to Front page</a>
+  <a class="btn btn-lg btn-secondary" href="/fics/<%= fic._id %>">Back to fic</a>
+</div>
+
 
 <%- include ../partials/footer %>

@@ -1,16 +1,19 @@
 <%- include ../partials/header %>
-    <h1>Show Page woo hoooo</h1>
+    <h1>Fic Show Page</h1>
 
-    <h1><%= fic.title %></h1>
+    <h1 class="display-3 my-4"><%= fic.title %></h1>
 
-    <p><%= fic.description %></p>
+    <p>Description: <%= fic.description %></p>
 
-    <a class="btn btn-lg btn-secondary" href="/fics/<%= fic._id %>/chars">See Characters</a>
+    <a class="btn btn-md btn-secondary" href="/fics/<%= fic._id %>/chars">See Characters</a>
 
-    <a class="btn btn-lg btn-secondary" href="/fics/<%= fic._id %>/chars/new">Add Characters</a>
-
-    <a class="btn btn-lg btn-secondary" href="/fics/<%= fic._id %>/edit">Edit this fic</a>
+    <div class="my-2">
+      <a class="btn btn-sm btn-warning" href="/fics/<%= fic._id %>/chars/new">Add Characters</a>
+      <a class="btn btn-sm btn-warning" href="/fics/<%= fic._id %>/edit">Edit this fic</a>
+    </div>
 
     <a class="btn btn-lg btn-secondary" href="/fics">Back to fics</a>
+
+    <h2 class="my-4">Chapter Index List Below</h2>
 
 <%- include ../partials/footer %>

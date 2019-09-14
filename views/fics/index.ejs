@@ -1,13 +1,15 @@
 <%- include ../partials/header %>
-    <h1>Index Page woo hoooo</h1>
+    <h1>Home Page / Fics Index</h1>
 
-    <% fics.forEach(function(fic){ %>
+    <a class="btn btn-lg btn-dark my-3" href="/fics/new">Submit New Fic</a>
+
+    <% fics.reverse().forEach(function(fic){ %>
       <a href="/fics/<%= fic._id %>">
         <h2><%=fic.title%></h2>
       </a>
       <p><%=fic.description%></p>
     <% }); %>
 
-<a class="btn btn-lg btn-secondary" href="/fics/new">New Fic</a>
+
 
 <%- include ../partials/footer %>
