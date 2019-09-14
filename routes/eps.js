@@ -13,11 +13,21 @@ const router = express.Router({mergeParams: true});
 // EPS INDEX IS COVERED WITHIN THE FIC SHOW PAGE
 
 
-// // NEW ROUTE
-// router.get("/new", function(req, res){
-//   res.render("chars/new", {fic_id: req.params.id});
-// });
-//
+// NEW ROUTE
+router.get("/new", function(req, res){
+  Fic.findById(req.params.id, function(err, foundFic){
+    if (err) {
+      console.log(err);
+      res.redirect("back");
+    } else {
+      res.render("eps/new", {
+        fic_id: foundFic._id,
+        chars: foundFic.chars,
+      });
+    }
+  });
+});
+
 // // CREATE ROUTE
 // router.post("/", function(req, res){
 //
