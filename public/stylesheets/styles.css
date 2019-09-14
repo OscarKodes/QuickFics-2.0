@@ -2,12 +2,18 @@ body {
   background-color: lavender;
 }
 
+
+/* NAVBAR SELECTORS */
+
+.top-spacer {
+  height: 6rem;
+}
+
 .bottom-nav p {
   font-size: .85rem;
   margin-bottom: 0;
   line-height: .9;
 }
-
 
 .bottom-nav .nav-link {
   padding: .8rem 0 .8rem;
