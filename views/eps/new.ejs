@@ -1,25 +1,26 @@
 <%- include ../partials/header %>
 
     <div class="char-select d-flex flex-row">
-
+      <% chars.forEach(function(char){ %>
+        <div class="char-btn border p-1 m-1 bg-light">
+          <p><%= char.name %></p>
+        </div>
+      <% }) %>
     </div>
 
     <h1>New Episode Route</h1>
 
     <form class="" action="/fics/<%=fic_id%>/eps" method="post">
-      <input type="text" name="ep[title]" placeholder="Title">
-
-      <button id="add-btn" type="button" name="button">Add</button>
-
+      <input type="text" name="title" placeholder="Title">
 
       <button id="submit-btn" class="btn btn-lg btn-dark" type="submit" name="button">Submit</button>
     </form>
 
     <!-- Invisble div to be cloned by DOM -->
     <div class="d-none dialogue-form border bg-light text-center my-2">
-      <p>Char Name will be displayed here</p>
-      <input class="d-none" type="text" name="ep[char]">
-      <input type="text" name="ep[text]" placeholder="Enter Text Here">
+      <p class="dialogue-name"></p>
+      <input class="dialogue-name-input d-none" type="text" name="char">
+      <input type="text" name="text" placeholder="Enter Text Here">
     </div>
 
 
