@@ -8,7 +8,7 @@ const charSchema = {
 
 const epSchema = {
   title: String,
-  char: [charSchema],
+  char: [String],
   text: [String]
 }
 
