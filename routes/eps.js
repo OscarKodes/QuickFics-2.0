@@ -31,19 +31,24 @@ router.get("/new", function(req, res){
 // CREATE ROUTE
 router.post("/", function(req, res){
 
-  res.send("Create route success");
-  console.log(req.body.ep);
+  let newEp = {
+    title: req.body.title,
+    char: req.body.char,
+    text: req.body.text
+  }
 
-  // Fic.findById(req.params.id, function(err, foundFic){
-  //   if (err) {
-  //     console.log(err);
-  //     res.redirect("back");
-  //   } else {
-  //     foundFic.chars.push(req.body.char);
-  //     foundFic.save();
-  //     res.redirect("/fics/" + foundFic._id + "/chars");
-  //   }
-  // })
+  Fic.findById(req.params.id, function(err, foundFic){
+    if (err) {
+      console.log(err);
+      res.redirect("back");
+    } else {
+      // console.log(foundFic.eps);
+      // console.log(req.body.ep);
+      foundFic.eps.push(newEp);
+      foundFic.save();
+      res.redirect("/fics/" + foundFic._id);
+    }
+  })
 });
 
 // // SHOW ROUTE
