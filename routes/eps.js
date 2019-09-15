@@ -28,21 +28,24 @@ router.get("/new", function(req, res){
   });
 });
 
-// // CREATE ROUTE
-// router.post("/", function(req, res){
-//
-//   Fic.findById(req.params.id, function(err, foundFic){
-//     if (err) {
-//       console.log(err);
-//       res.redirect("back");
-//     } else {
-//       foundFic.chars.push(req.body.char);
-//       foundFic.save();
-//       res.redirect("/fics/" + foundFic._id + "/chars");
-//     }
-//   })
-// });
-//
+// CREATE ROUTE
+router.post("/", function(req, res){
+
+  res.send("Create route success");
+  console.log(req.body.ep);
+
+  // Fic.findById(req.params.id, function(err, foundFic){
+  //   if (err) {
+  //     console.log(err);
+  //     res.redirect("back");
+  //   } else {
+  //     foundFic.chars.push(req.body.char);
+  //     foundFic.save();
+  //     res.redirect("/fics/" + foundFic._id + "/chars");
+  //   }
+  // })
+});
+
 // // SHOW ROUTE
 // // !!! NO NEED SHOW ROUTE
 // /// Index route already shows all the details of the character
