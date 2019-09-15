@@ -18,5 +18,8 @@
 
     <h2 class="my-4">Chapter Index List Below</h2>
 
+    <% fic.eps.forEach(function(ep){ %>
+      <p><%= ep.title %></p>
+    <% }) %>
 
 <%- include ../partials/footer %>
