@@ -1,0 +1,26 @@
+<%- include ../partials/header %>
+    <h1>Ep Show Page</h1>
+
+    <h2><%= ep.title %></h2>
+
+    <% ep.char.forEach(function(char, i){ %>
+      <p>
+        <span><%=char%>: </span>
+        <span><%=ep.text[i]%></span>
+      </p>
+    <% }) %>
+
+    <% if (ep_num > 1) { %>
+      <% let prevEp = ep_num - 1; %>
+      <a class="btn btn-dark" href="/fics/<%= fic_id %>/eps/<%= prevEp %>">Previous Chapter</a>
+    <% } %>
+
+    <a class="btn btn-secondary" href="/fics/<%= fic_id %>/">Back to Fic Page</a>
+
+    <% if (ep_num < last_ep_num) { %>
+      <% let nextEp = ep_num + 1; %>
+      <a class="btn btn-dark" href="/fics/<%= fic_id %>/eps/<%= nextEp %>">Next Chapter</a>
+    <% } %>
+
+
+<%- include ../partials/footer %>
