@@ -51,11 +51,24 @@ router.post("/", function(req, res){
   })
 });
 
-// // SHOW ROUTE
-// // !!! NO NEED SHOW ROUTE
-// /// Index route already shows all the details of the character
-// /// characters only have a short description and nothing more
-//
+// SHOW ROUTE
+router.get("/:ep_num", function(req, res){
+
+  Fic.findById(req.params.id, function(err, foundFic){
+    if (err){
+      console.log(err);
+      res.redirect("back");
+    } else {
+      res.render("eps/show.ejs", {
+        fic_id: foundFic._id,
+        ep: foundFic.eps[req.params.ep_num - 1],
+        ep_num: Number(req.params.ep_num),
+        last_ep_num: foundFic.eps.length
+      });
+    }
+  })
+})
+
 // // EDIT ROUTE
 // router.get("/:char_idx/edit", function(req, res){
 //
