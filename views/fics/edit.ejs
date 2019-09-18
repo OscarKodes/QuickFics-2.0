@@ -11,10 +11,13 @@
 
     <a class="btn btn-lg btn-secondary" href="/fics/<%= fic._id %>">Back to fic</a>
 
-    <form class="" action="/fics/<%= fic._id %>?_method=DELETE" method="post">
-      <button class="btn btn-outline-danger btn-sm" type="submit" name="button">
-        Delete this fic</button>
-    </form>
+
+    <!-- Delete Button trigger modal -->
+    <% include ../partials/deleteModalTop %>
+      <form class="" action="/fics/<%= fic._id %>?_method=DELETE" method="post">
+    <% include ../partials/deleteModalBottom %>
+
+
 
 
 <%- include ../partials/footer %>
