@@ -12,12 +12,13 @@
     <h1>Ep edit!</h1>
 
     <form class="" action="/fics/<%=fic_id%>/eps/<%= ep_num %>?_method=PUT" method="post">
-      <input type="text" name="title" placeholder="Title">
+
+      <input type="text" name="title" placeholder="Title" value="<%=ep.title%>">
 
       <!-- Render dialogue already created -->
       <% ep.char.forEach(function(char, i){ %>
-        <div class="dialogue-form border bg-light text-center my-2">
-          <p class="dialogue-name"><%= char %></p>
+        <div class="border bg-light text-center my-2">
+          <p class=""><%= char %></p>
           <input class="dialogue-name-input d-none" type="text"
             name="char" value="<%= char %>">
           <input type="text" name="text" placeholder="Enter Text Here"
