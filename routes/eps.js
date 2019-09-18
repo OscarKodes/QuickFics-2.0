@@ -109,20 +109,20 @@ router.put("/:ep_num", function(req, res){
   })
 });
 
-// // DESTROY ROUTE
-// router.delete("/:char_idx", function(req, res){
-//
-//   Fic.findById(req.params.id, function(err, foundFic){
-//     if (err) {
-//       console.log(err);
-//       res.redirect("back");
-//     } else {
-//       foundFic.chars.splice(req.params.char_idx, 1);
-//       foundFic.save();
-//       res.redirect("/fics/" + req.params.id + "/chars");
-//     }
-//   });
-// });
+// DESTROY ROUTE
+router.delete("/:ep_num", function(req, res){
+
+  Fic.findById(req.params.id, function(err, foundFic){
+    if (err) {
+      console.log(err);
+      res.redirect("back");
+    } else {
+      foundFic.eps.splice(req.params.ep_num - 1, 1);
+      foundFic.save();
+      res.redirect("/fics/" + req.params.id);
+    }
+  });
+});
 
 
 module.exports = router;

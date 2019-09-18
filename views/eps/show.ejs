@@ -3,6 +3,11 @@
 
     <h2><%= ep.title %></h2>
 
+    <!-- Delete Button -->
+    <form class="" action="/fics/<%=fic_id%>/eps/<%=ep_num%>?_method=DELETE" method="post">
+      <button class="btn btn-sm btn-outline-danger" type="submit" name="button">Delete</button>
+    </form>
+
     <a class="btn btn-sm btn-warning" href="/fics/<%= fic_id %>/eps/<%= ep_num %>/edit">Edit</a>
 
     <% ep.char.forEach(function(char, i){ %>
