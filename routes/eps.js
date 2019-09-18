@@ -69,39 +69,46 @@ router.get("/:ep_num", function(req, res){
   })
 })
 
-// // EDIT ROUTE
-// router.get("/:char_idx/edit", function(req, res){
-//
-//   Fic.findById(req.params.id, function(err, foundFic){
-//     if (err) {
-//       console.log(err);
-//       res.redirect("back");
-//     } else {
-//       res.render("chars/edit",
-//       {
-//         fic_id: foundFic._id,
-//         char: foundFic.chars[req.params.char_idx],
-//         char_idx: req.params.char_idx
-//       })
-//     }
-//   });
-// });
-//
-// // UPDATE ROUTE
-// router.put("/:char_idx", function(req, res){
-//
-//   Fic.findById(req.params.id, function(err, foundFic){
-//     if (err) {
-//       console.log(err);
-//       res.redirect("back");
-//     } else {
-//       foundFic.chars[req.params.char_idx] = req.body.char;
-//       foundFic.save();
-//       res.redirect("/fics/" + req.params.id + "/chars");
-//     }
-//   })
-// });
-//
+// EDIT ROUTE
+router.get("/:ep_num/edit", function(req, res){
+
+  Fic.findById(req.params.id, function(err, foundFic){
+    if (err) {
+      console.log(err);
+      res.redirect("back");
+    } else {
+      res.render("eps/edit",
+      {
+        fic_id: foundFic._id,
+        chars: foundFic.chars,
+        ep: foundFic.eps[req.params.ep_num - 1],
+        ep_num: Number(req.params.ep_num),
+      })
+    }
+  });
+});
+
+// UPDATE ROUTE
+router.put("/:ep_num", function(req, res){
+
+  let editedEp = {
+    title: req.body.title,
+    char: req.body.char,
+    text: req.body.text
+  }
+
+  Fic.findById(req.params.id, function(err, foundFic){
+    if (err) {
+      console.log(err);
+      res.redirect("back");
+    } else {
+      foundFic.eps[req.params.ep_num - 1] = editedEp;
+      foundFic.save();
+      res.redirect("/fics/" + req.params.id + "/eps/" + req.params.ep_num);
+    }
+  })
+});
+
 // // DESTROY ROUTE
 // router.delete("/:char_idx", function(req, res){
 //

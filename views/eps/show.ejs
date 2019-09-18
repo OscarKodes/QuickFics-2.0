@@ -3,6 +3,8 @@
 
     <h2><%= ep.title %></h2>
 
+    <a class="btn btn-sm btn-warning" href="/fics/<%= fic_id %>/eps/<%= ep_num %>/edit">Edit</a>
+
     <% ep.char.forEach(function(char, i){ %>
       <p>
         <span><%=char%>: </span>
