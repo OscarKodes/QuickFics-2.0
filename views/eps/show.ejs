@@ -12,7 +12,10 @@
 
     <% ep.char.forEach(function(char, i){ %>
       <p>
-        <span><%=char%>: </span>
+        <span style="color:<%=ep.fontColor[i]%>;
+        background-color:<%=ep.highlight[i]%>;"">
+          <%=char%>:
+        </span>
         <span><%=ep.text[i]%></span>
       </p>
     <% }) %>
