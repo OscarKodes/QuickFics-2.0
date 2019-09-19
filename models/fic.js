@@ -11,7 +11,9 @@ const charSchema = {
 const epSchema = {
   title: String,
   char: [String],
-  text: [String]
+  text: [String],
+  fontColor: [String],
+  highlight: [String]
 }
 
 const ficSchema = new mongoose.Schema({
