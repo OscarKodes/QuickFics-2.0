@@ -3,7 +3,12 @@
 
     <% fic.chars.forEach(function(char, i){ %>
       <div class="border p-4 m-4 bg-light">
-        <h3>Name: <%= char.name %></h3>
+        <h3>Name:
+          <span style="color:<%=char.fontColor%>;
+          background-color:<%=char.highlight%>;">
+          <%= char.name %>
+          </span>
+        </h3>
         <p>Description: <%= char.description %></p>
         <a class="btn btn-sm btn-outline-warning" href="/fics/<%=fic._id%>/chars/<%=i%>/edit">Edit Character</a>
       </div>
