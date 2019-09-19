@@ -3,7 +3,10 @@
     <div class="char-select d-flex flex-row">
       <% chars.forEach(function(char){ %>
         <div class="char-btn border p-1 m-1 bg-light">
-          <p><%= char.name %></p>
+          <p style="color:<%=char.fontColor%>;
+          background-color:<%=char.highlight%>;">
+            <%= char.name %>
+          </p>
         </div>
       <% }) %>
     </div>
@@ -20,6 +23,8 @@
     <div class="d-none dialogue-form border bg-light text-center my-2">
       <p class="dialogue-name"></p>
       <input class="dialogue-name-input d-none" type="text" name="char">
+      <input class="font-color-input" type="color" name="fontColor">
+      <input class="highlight-input" type="color" name="highlight">
       <input type="text" name="text" placeholder="Enter Text Here">
     </div>
 

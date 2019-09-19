@@ -34,7 +34,9 @@ router.post("/", function(req, res){
   let newEp = {
     title: req.body.title,
     char: req.body.char,
-    text: req.body.text
+    text: req.body.text,
+    fontColor: req.body.fontColor,
+    highlight: req.body.highlight
   }
 
   Fic.findById(req.params.id, function(err, foundFic){
