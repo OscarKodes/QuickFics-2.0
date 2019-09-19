@@ -4,6 +4,8 @@ const mongoose = require("mongoose");
 const charSchema = {
   name: String,
   description: String,
+  fontColor: String,
+  highlight: String,
 };
 
 const epSchema = {
