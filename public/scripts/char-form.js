@@ -13,7 +13,7 @@ charBtn.click(function(e){
   let charName = e.target.innerText;
   let charColor = rgbToHex(e.target.style.color);
   let highlight = rgbToHex(e.target.style.backgroundColor);
-  
+
   dialogueName.text(charName);
   dialogueNameInput.val(charName);
   dialogueName.css("color", charColor);
@@ -30,6 +30,7 @@ charBtn.click(function(e){
 function componentToHex(colorStr) {
   let colorNum = Number(colorStr);
   let hex = colorNum.toString(16);
+  console.log(hex);
   return hex.length === 1 ? "0" + hex : hex;
 }
 
@@ -40,6 +41,6 @@ function rgbToHex(rgb) {
   let r = rgbArr[0];
   let g = rgbArr[1];
   let b = rgbArr[2];
-
+  console.log("RGB = ", r, g, b);
   return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
 }

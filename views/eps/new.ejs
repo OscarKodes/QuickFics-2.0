@@ -1,13 +1,12 @@
 <%- include ../partials/header %>
 
-    <div class="char-select d-flex flex-row">
+    <div class="char-select d-flex flex-row border rounded p-2 mx-3 bg-light">
       <% chars.forEach(function(char){ %>
-        <div class="char-btn border p-1 m-1 bg-light">
-          <p style="color:<%=char.fontColor%>;
+          <p class="char-btn border p-2 m-1"
+          style="color:<%=char.fontColor%>;
           background-color:<%=char.highlight%>;">
             <%= char.name %>
           </p>
-        </div>
       <% }) %>
     </div>
 
