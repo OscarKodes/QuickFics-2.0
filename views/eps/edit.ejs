@@ -3,9 +3,11 @@
 
     <div class="char-select d-flex flex-row">
       <% chars.forEach(function(char){ %>
-        <div class="char-btn border p-1 m-1 bg-light">
-          <p><%= char.name %></p>
-        </div>
+          <p class="char-btn border p-2 m-1"
+          style="color:<%=char.fontColor%>;
+          background-color:<%=char.highlight%>;">
+            <%= char.name %>
+          </p>
       <% }) %>
     </div>
 
@@ -18,9 +20,15 @@
       <!-- Render dialogue already created -->
       <% ep.char.forEach(function(char, i){ %>
         <div class="border bg-light text-center my-2">
-          <p class=""><%= char %></p>
+          <p style="color:<%=ep.fontColor[i]%>;
+            background-color:<%=ep.highlight[i]%>;">
+            <%= char %></p>
           <input class="dialogue-name-input d-none" type="text"
             name="char" value="<%= char %>">
+          <input class="" type="color"
+            value="<%=ep.fontColor[i]%>" name="fontColor">
+          <input class="" type="color"
+            value="<%=ep.highlight[i]%>" name="highlight">
           <input type="text" name="text" placeholder="Enter Text Here"
             value="<%= ep.text[i] %>">
         </div>
@@ -33,6 +41,8 @@
     <div class="d-none dialogue-form border bg-light text-center my-2">
       <p class="dialogue-name"></p>
       <input class="dialogue-name-input d-none" type="text" name="char">
+      <input class="font-color-input" type="color" name="fontColor">
+      <input class="highlight-input" type="color" name="highlight">
       <input type="text" name="text" placeholder="Enter Text Here">
     </div>
 

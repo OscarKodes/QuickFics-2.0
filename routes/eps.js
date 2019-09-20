@@ -96,7 +96,9 @@ router.put("/:ep_num", function(req, res){
   let editedEp = {
     title: req.body.title,
     char: req.body.char,
-    text: req.body.text
+    text: req.body.text,
+    fontColor: req.body.fontColor,
+    highlight: req.body.highlight
   }
 
   Fic.findById(req.params.id, function(err, foundFic){
