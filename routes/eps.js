@@ -33,6 +33,7 @@ router.post("/", function(req, res){
 
   let newEp = {
     title: req.body.title,
+    bgColor: req.body.bgColor,
     char: req.body.char,
     text: req.body.text,
     fontColor: req.body.fontColor,

@@ -10,6 +10,7 @@ const charSchema = {
 
 const epSchema = {
   title: String,
+  bgColor: String,
   char: [String],
   text: [String],
   fontColor: [String],

@@ -20,6 +20,8 @@
       </p>
     <% }) %>
 
+
+    <!-- Navigation buttons -->
     <% if (ep_num > 1) { %>
       <% let prevEp = ep_num - 1; %>
       <a class="btn btn-dark" href="/fics/<%= fic_id %>/eps/<%= prevEp %>">Previous Chapter</a>
@@ -32,5 +34,18 @@
       <a class="btn btn-dark" href="/fics/<%= fic_id %>/eps/<%= nextEp %>">Next Chapter</a>
     <% } %>
 
+    <!-- invisible bgColor div to pass data form back to front -->
+    <div class="d-none">
+      <input id="ep-bg-color" type="text" name="" value="<%= ep.bgColor %>">
+    </div>
+
+<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Script for dynamic bg color -->
+<script type="text/javascript">
+  const bgColor = $("#ep-bg-color").val();
+  $("body").css("background-color", bgColor);
+</script>
 
 <%- include ../partials/footer %>
