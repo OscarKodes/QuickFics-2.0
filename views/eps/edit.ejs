@@ -16,6 +16,7 @@
     <form class="" action="/fics/<%=fic_id%>/eps/<%= ep_num %>?_method=PUT" method="post">
 
       <input type="text" name="title" placeholder="Title" value="<%=ep.title%>">
+      <input id="bg-color" type="color" name="bgColor" value="<%=ep.bgColor%>">
 
       <!-- Render dialogue already created -->
       <% ep.char.forEach(function(char, i){ %>

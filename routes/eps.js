@@ -96,6 +96,7 @@ router.put("/:ep_num", function(req, res){
 
   let editedEp = {
     title: req.body.title,
+    bgColor: req.body.bgColor,
     char: req.body.char,
     text: req.body.text,
     fontColor: req.body.fontColor,
