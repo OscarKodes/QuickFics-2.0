@@ -2,13 +2,21 @@
 
     <h1>Edit character</h1>
 
+
+    <div class="preview-container">
+      <p>
+        Name Preview
+        <span id="name-preview"></span>
+      </p>
+    </div>
+
     <form class="" action="/fics/<%= fic_id %>/chars/<%=char_idx%>?_method=PUT" method="post">
-      <input type="text" name="char[name]"
+      <input id="name-input" type="text" name="char[name]"
        placeholder="Name" value="<%=char.name%>">
       <input type="text" name="char[description]"
        placeholder="Description" value="<%=char.description%>">
-      <input type="color" name="char[fontColor]" value="<%=char.fontColor%>">
-      <input type="color" name="char[highlight]" value="<%=char.hightlight%>">
+      <input id="font-color-input" type="color" name="char[fontColor]" value="<%=char.fontColor%>">
+      <input id="highlight-input" type="color" name="char[highlight]" value="<%=char.highlight%>">
       <button type="submit" name="button">Submit</button>
     </form>
 
@@ -20,6 +28,12 @@
     <% include ../partials/deleteModalTop %>
       <form class="" action="/fics/<%=fic_id%>/chars/<%=char_idx%>?_method=DELETE" method="post">
     <% include ../partials/deleteModalBottom %>
+
+<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Script for preview container -->
+<script src="/scripts/char-new-edit-color-preview.js" charset="utf-8"></script>
 
 
 <%- include ../partials/footer %>

@@ -2,15 +2,27 @@
 
     <h1>New character</h1>
 
+    <div class="preview-container">
+      <p>
+        Name Preview
+        <span id="name-preview"></span>
+      </p>
+    </div>
+
     <form class="" action="/fics/<%= fic_id %>/chars" method="post">
-      <input type="text" name="char[name]" placeholder="Name">
+      <input id="name-input" type="text" name="char[name]" placeholder="Name">
       <input type="text" name="char[description]" placeholder="Description">
-      <input type="color" name="char[fontColor]" value="">
-      <input type="color" name="char[highlight]" value="">
+      <input id="font-color-input" type="color" name="char[fontColor]" value="#000000">
+      <input id="highlight-input" type="color" name="char[highlight]" value="#FFFFFF">
       <button type="submit" name="button">Submit</button>
     </form>
 
     <a class="btn btn-lg btn-secondary" href="/fics/<%= fic_id %>">Back to fic</a>
 
+<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Script for preview container -->
+<script src="/scripts/char-new-edit-color-preview.js" charset="utf-8"></script>
 
 <%- include ../partials/footer %>
