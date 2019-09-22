@@ -9,7 +9,7 @@ let highlightInput = $(".highlight-input");
 let bgColorInput = $("#bg-color");
 
 
-// Event Listeners ===========================
+// Event Listener for Character Buttons ===========================
 charBtn.click(function(e){
   let charName = e.target.innerText;
   let charColor = rgbToHex(e.target.style.color);
@@ -27,12 +27,22 @@ charBtn.click(function(e){
   submitBtn.before(newForm);
 });
 
-bgColorInput.change(function(){
-  let newColor = bgColorInput.val();
-  $("body").css("background-color", newColor);
-});
+// Event Listener for Background Color
+bgColorInput.change(changeColor);
 
 // HELPER FUNCTIONS ============================
+
+// BG COLOR FUNCTION
+// Set up background color based on input
+function changeColor() {
+  let chosenColor = bgColorInput.val();
+  $("body").css("background-color", chosenColor);
+};
+
+changeColor(); // sets up page based on pre-settings
+
+
+// RBG TO HEX FUNCTIONS
 function componentToHex(colorStr) {
   let colorNum = Number(colorStr);
   let hex = colorNum.toString(16);

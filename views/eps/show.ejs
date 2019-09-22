@@ -36,7 +36,8 @@
 
     <!-- invisible bgColor div to pass data form back to front -->
     <div class="d-none">
-      <input id="ep-bg-color" type="text" name="" value="<%= ep.bgColor %>">
+      <% let currentColor = ep.bgColor ? ep.bgColor : "#fff"; %>
+      <input id="ep-bg-color" type="text" name="" value="<%= currentColor %>">
     </div>
 
 <!-- jQuery -->
