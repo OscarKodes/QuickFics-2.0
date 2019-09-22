@@ -6,6 +6,7 @@ let dialogueName = $(".dialogue-name");
 let dialogueNameInput = $(".dialogue-name-input");
 let fontColorInput = $(".font-color-input");
 let highlightInput = $(".highlight-input");
+let bgColorInput = $("#bg-color");
 
 
 // Event Listeners ===========================
@@ -24,6 +25,11 @@ charBtn.click(function(e){
   let newForm = dialogueForm.clone().removeClass("d-none");
 
   submitBtn.before(newForm);
+});
+
+bgColorInput.change(function(){
+  let newColor = bgColorInput.val();
+  $("body").css("background-color", newColor);
 });
 
 // HELPER FUNCTIONS ============================

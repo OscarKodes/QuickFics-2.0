@@ -14,7 +14,7 @@
 
     <form class="" action="/fics/<%=fic_id%>/eps" method="post">
       <input type="text" name="title" placeholder="Title">
-      <input type="color" name="bgColor" value="">
+      <input id="bg-color" type="color" name="bgColor" value="">
 
       <button id="submit-btn" class="btn btn-lg btn-dark" type="submit" name="button">Submit</button>
     </form>
@@ -36,6 +36,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 <!-- New Episode JavaScripts -->
-<script src="/scripts/char-form.js" charset="utf-8"></script>
+<script src="/scripts/ep-form.js" charset="utf-8"></script>
 
 <%- include ../partials/footer %>
