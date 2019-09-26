@@ -4,7 +4,6 @@ body {
 
 
 /* NAVBAR SELECTORS */
-
 .top-spacer {
   height: 6rem;
 }
@@ -17,4 +16,23 @@ body {
 
 .bottom-nav .nav-link {
   padding: .8rem 0 .8rem;
+}
+
+/* GENERAL CLASSES */
+.btn-xl {
+  padding: .8rem 2.2rem;
+  font-size: 2rem;
+}
+
+/* FIC INDEX PAGE */
+.fic-card-container {
+  background-color: black;
+  border-top: 1rem black solid;
+  border-bottom: 1rem black solid;
+}
+
+.fic-card {
+  text-align: center;
+  padding: 1rem 0;
+  margin: 1rem 0;
 }

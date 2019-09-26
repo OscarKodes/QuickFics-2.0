@@ -1,14 +1,23 @@
 <%- include ../partials/header %>
-    <h1>Home Page / Fics Index</h1>
 
-    <a class="btn btn-lg btn-dark my-3" href="/fics/new">Submit New Fic</a>
+    <div class="text-center">
+      <a class="btn btn-xl btn-primary my-3" href="/fics/new">Submit New Fic</a>
+    </div>
 
-    <% fics.reverse().forEach(function(fic){ %>
-      <a href="/fics/<%= fic._id %>">
-        <h2><%=fic.title%></h2>
-      </a>
-      <p><%=fic.description%></p>
-    <% }); %>
+    <div class="fic-card-container">
+      <% fics.reverse().forEach(function(fic){ %>
+        <a class="text-dark text-decoration-none" href="/fics/<%= fic._id %>">
+          <div class="bg-white fic-card">
+            <h2><%=fic.title%></h2>
+            <p><%=fic.description%></p>
+          </div>
+        </a>
+
+      <% }); %>
+    </div>
+
+
+
 
 
 
