@@ -1,23 +1,27 @@
 <%- include ../partials/header %>
 
-    <h1>New character</h1>
+    <h1 class="display-3 text-center">New Character</h1>
 
     <div class="preview-container">
-      <p>
-        Name Preview
-        <span id="name-preview"></span>
+      <p class="char-name-preview">
+        <em>Name Preview</em>
+        <span class="mt-3 char-name" id="name-preview"></span>
       </p>
     </div>
 
     <form class="" action="/fics/<%= fic_id %>/chars" method="post">
-      <input id="name-input" type="text" name="char[name]" placeholder="Name">
-      <input type="text" name="char[description]" placeholder="Description">
-      <input id="font-color-input" type="color" name="char[fontColor]" value="#000000">
-      <input id="highlight-input" type="color" name="char[highlight]" value="#FFFFFF">
-      <button type="submit" name="button">Submit</button>
-    </form>
+      <input id="name-input" type="text" name="char[name]" placeholder="Name" maxlength="16" required>
+      <input type="text" name="char[description]" placeholder="Description" maxlength="100">
 
-    <a class="btn btn-lg btn-secondary" href="/fics/<%= fic_id %>">Back to fic</a>
+      <div class="bg-white border-top border-bottom py-3 text-center">
+        <label for="font-color-input">Font Color</label>
+        <input id="font-color-input" type="color" name="char[fontColor]" value="#000000">
+        <label class="ml-2" for="highlight-input">Highlight Color</label>
+        <input id="highlight-input" type="color" name="char[highlight]" value="#FFFFFF">
+      </div>
+
+      <button class="btn btn-xl btn-primary py-3 w-100 rounded-0 mt-4" type="submit" name="button">Submit</button>
+    </form>
 
 <!-- jQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
