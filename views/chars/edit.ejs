@@ -1,12 +1,12 @@
 <%- include ../partials/header %>
 
-    <h1>Edit character</h1>
+    <h1 class="display-3 text-center">Edit character</h1>
 
 
     <div class="preview-container">
-      <p>
-        Name Preview
-        <span id="name-preview"></span>
+      <p class="char-name-preview">
+        <em>Name Preview</em>
+        <span class="mt-3 char-name" id="name-preview"></span>
       </p>
     </div>
 
@@ -15,19 +15,25 @@
        placeholder="Name" value="<%=char.name%>">
       <input type="text" name="char[description]"
        placeholder="Description" value="<%=char.description%>">
-      <input id="font-color-input" type="color" name="char[fontColor]" value="<%=char.fontColor%>">
-      <input id="highlight-input" type="color" name="char[highlight]" value="<%=char.highlight%>">
-      <button type="submit" name="button">Submit</button>
-    </form>
 
-    <a class="btn btn-lg btn-secondary" href="/fics/<%= fic_id %>">Back to fic</a>
-    <a class="btn btn-lg btn-secondary" href="/fics/<%= fic_id %>/chars">Back to char index</a>
+      <div class="bg-white border-top border-bottom py-3 text-center">
+        <label for="font-color-input">Font Color</label>
+        <input id="font-color-input" type="color" name="char[fontColor]" value="<%=char.fontColor%>">
+        <label class="ml-2" for="highlight-input">Highlight Color</label>
+        <input id="highlight-input" type="color" name="char[highlight]" value="<%=char.highlight%>">
+      </div>
+
+      <button class="btn btn-xl btn-primary py-3 w-100 rounded-0 mt-4" type="submit" name="button">Submit</button>
+    </form>
 
 
     <!-- Delete Button trigger modal -->
-    <% include ../partials/deleteModalTop %>
-      <form class="" action="/fics/<%=fic_id%>/chars/<%=char_idx%>?_method=DELETE" method="post">
-    <% include ../partials/deleteModalBottom %>
+    <div class="text-right mr-3 mt-5">
+      <% include ../partials/deleteModalTop %>
+        <form class="" action="/fics/<%=fic_id%>/chars/<%=char_idx%>?_method=DELETE" method="post">
+      <% include ../partials/deleteModalBottom %>
+    </div>
+
 
 <!-- jQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
