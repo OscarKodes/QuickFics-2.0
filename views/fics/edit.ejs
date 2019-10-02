@@ -1,21 +1,21 @@
 <%- include ../partials/header %>
-    <h1>Edit Page woo hoooo</h1>
+    <h1 class="display-3 text-center mt-3 mb-5">Edit Fic</h1>
 
     <form class="" action="/fics/<%=fic._id%>?_method=PUT" method="post">
       <input type="text" name="fic[title]"
-      value="<%=fic.title%>" placeholder="Title">
-      <input type="text" name="fic[description]"
-      value="<%=fic.description%>" placeholder="Description">
-      <button type="submit" name="button">Submit</button>
+      value="<%=fic.title%>" placeholder="Title" maxlength="30" required>
+      <textarea type="text" name="fic[description]"
+      placeholder="Description" maxlength="140" required><%=fic.description%></textarea>
+      <button class="btn btn-xl btn-primary py-3 w-100 rounded-0 mt-4" type="submit" name="button">Submit</button>
     </form>
 
-    <a class="btn btn-lg btn-secondary" href="/fics/<%= fic._id %>">Back to fic</a>
-
-
     <!-- Delete Button trigger modal -->
-    <% include ../partials/deleteModalTop %>
-      <form class="" action="/fics/<%= fic._id %>?_method=DELETE" method="post">
-    <% include ../partials/deleteModalBottom %>
+    <div class="float-right mr-3 mt-5">
+      <% include ../partials/deleteModalTop %>
+        <form class="" action="/fics/<%= fic._id %>?_method=DELETE" method="post">
+      <% include ../partials/deleteModalBottom %>
+    </div>
+
 
 
 
