@@ -1,12 +1,10 @@
 <%- include ../partials/header %>
-    <h1>New Page woo hoooo</h1>
+    <h1 class="display-3 text-center mt-3 mb-5">New Fic</h1>
 
     <form class="" action="/fics" method="post">
-      <input type="text" name="fic[title]" placeholder="Title">
-      <input type="text" name="fic[description]" placeholder="Description">
-      <button type="submit" name="button">Submit</button>
+      <input type="text" name="fic[title]" placeholder="Title" maxlength="30">
+      <textarea name="fic[description]" placeholder="Description" maxlength="140"></textarea>
+      <button class="btn btn-xl btn-primary py-3 w-100 rounded-0 mt-4" type="submit" name="button">Submit</button>
     </form>
-
-    <a class="btn btn-lg btn-secondary" href="/fics">Back to fics</a>
 
 <%- include ../partials/footer %>

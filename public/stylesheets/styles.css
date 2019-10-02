@@ -2,6 +2,30 @@ body {
   background-color: lavender;
 }
 
+p, h1 {
+  word-wrap: break-word;
+}
+
+input[type="text"], textarea {
+  display: block;
+  width: 100vw;
+  font-size: 2rem;
+  padding: 2rem;
+  border: none;
+  border-top: 1px solid lightgrey;
+}
+
+textarea {
+  resize: none;
+  overflow: hidden;
+  height: 18rem;
+  border-bottom: 1px solid lightgrey;
+}
+
+input[type="text"] {
+  height: 6rem;
+}
+
 
 /* NAVBAR SELECTORS */
 .top-spacer {
