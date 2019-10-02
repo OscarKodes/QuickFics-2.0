@@ -26,13 +26,11 @@ body {
 
 /* FIC INDEX PAGE */
 .fic-card-container {
-  background-color: black;
-  border-top: 1rem black solid;
-  border-bottom: 1rem black solid;
+  border-bottom: 1px solid lightgrey;
 }
 
 .fic-card {
   text-align: center;
-  padding: 1rem 0;
-  margin: 1rem 0;
+  padding: 2rem 0;
+  border-top: 1px solid lightgrey;
 }
