@@ -1,8 +1,8 @@
 <%- include ../partials/header %>
 
-    <div class="char-select d-flex flex-row border rounded p-2 mx-3 bg-light">
+    <div class="char-select d-flex flex-wrap mx-3 mb-4 bg-white border shadow-lg">
       <% chars.forEach(function(char){ %>
-          <p class="char-btn border p-2 m-1"
+          <p class="char-btn"
           style="color:<%=char.fontColor%>;
           background-color:<%=char.highlight%>;">
             <%= char.name %>
@@ -10,26 +10,40 @@
       <% }) %>
     </div>
 
-    <h1>New Episode Route</h1>
-
     <form class="" action="/fics/<%=fic_id%>/eps" method="post">
-      <input type="text" name="title" placeholder="Title">
-      <input id="bg-color" type="color" name="bgColor" value="#FFFFFF">
 
-      <button id="submit-btn" class="btn btn-lg btn-dark" type="submit" name="button">Submit</button>
+      <div class="text-center pb-1 bg-white border-bottom mb-4 shadow-lg">
+        <input class="border-top border-bottom" type="text" name="title" placeholder="Title">
+        <label for="bg-color">Background Color</label>
+        <input id="bg-color" type="color" name="bgColor" value="#FFFFFF">
+      </div>
+
+      <div id="dialogue-container" class="shadow-lg">
+
+      </div>
+
+      <button id="submit-btn" class="btn btn-xl btn-primary py-3 w-100 rounded-0 mt-4" type="submit" name="button">Submit</button>
     </form>
 
     <!-- Invisble div to be cloned by DOM -->
-    <div class="d-none dialogue-form border bg-light text-center my-2">
-      <p class="dialogue-name"></p>
+    <div class="d-none dialogue-form border bg-light text-center">
       <input class="dialogue-name-input d-none" type="text" name="char">
-      <input class="font-color-input" type="color" name="fontColor">
-      <input class="highlight-input" type="color" name="highlight">
-      <input type="text" name="text" placeholder="Enter Text Here">
-    </div>
+      <div class="row bg-white">
+        <div class="col-3 text-center pt-3">
+          <p class="dialogue-name char-name"></p>
+          <input class="font-color-input" type="color" name="fontColor">
+          <input class="highlight-input" type="color" name="highlight">
+        </div>
+        <div class="col-9">
+          <textarea
+            class="m-0 border-0 dialogue-text"
+            name="text"
+            placeholder="Enter Text Here"
+            maxlength="140"></textarea>
+        </div>
+      </div>
 
-    <!-- Back to Fic Button -->
-    <a class="btn btn-secondary" href="/fics/<%= fic_id %>/">Back to Fic Page</a>
+    </div>
 
 
 <!-- jQuery -->

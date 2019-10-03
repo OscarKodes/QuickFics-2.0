@@ -2,9 +2,9 @@ body {
   background-color: lavender;
 }
 
-p, h1 {
+/* p, h1 {
   word-wrap: break-word;
-}
+} */
 
 input[type="text"], textarea {
   display: block;
@@ -97,4 +97,54 @@ label {
   margin: 1rem auto;
   text-align: center;
   color: #aaa;
+}
+
+/* EPISODE NEW PAGE */
+.char-select {
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.char-btn {
+  width: 20%;
+  height: 3rem;
+  padding: .5rem .8rem;
+  border: 1px solid lightgrey;
+  font-size: 1.2rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-align: center;
+  margin: 0;
+}
+
+#dialogue-container {
+  margin: 1rem;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+input[type="color"].font-color-input,
+input[type="color"].highlight-input {
+  border: none;
+  width: 2rem;
+  height: 2rem;
+  margin: .5rem .2rem;
+}
+
+.dialogue-name.char-name {
+  width: 80%;
+  margin: auto 10%;
+  text-align: center;
+}
+
+textarea.dialogue-text {
+  display: block;
+  width: 100%;
+  font-size: 1.25rem;
+  padding: 1.2rem 1rem;
+  border: none;
+  resize: none;
+  overflow: hidden;
+  height: 8rem;
 }

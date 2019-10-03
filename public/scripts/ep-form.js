@@ -7,6 +7,7 @@ let dialogueNameInput = $(".dialogue-name-input");
 let fontColorInput = $(".font-color-input");
 let highlightInput = $(".highlight-input");
 let bgColorInput = $("#bg-color");
+let dialogueContainer = $("#dialogue-container");
 
 
 // Event Listener for Character Buttons ===========================
@@ -24,7 +25,7 @@ charBtn.click(function(e){
 
   let newForm = dialogueForm.clone().removeClass("d-none");
 
-  submitBtn.before(newForm);
+  dialogueContainer.append(newForm);
 });
 
 // Event Listener for Background Color
