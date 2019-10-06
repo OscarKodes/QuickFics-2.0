@@ -18,8 +18,27 @@ router.get("/front", function(req, res){
   res.render("front");
 });
 
+//Register Render form
+router.get("/register", function(req, res){
+  res.render("register");
+});
 
+//Register process user
+router.post("/register", function(req, res){
+  res.send("Register post route success");
+});
 
+//Login render form
+router.get("/login", function(req, res){
+  res.render("login");
+})
+
+//Login process user
+router.post("/login", function(req, res){
+  res.send("Login post route success");
+});
+
+//Logout
 
 
 module.exports = router;
