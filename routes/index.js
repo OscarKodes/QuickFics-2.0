@@ -1,12 +1,15 @@
 const express = require("express");
-// const bodyParser = require("body-parser");
-// const ejs = require("ejs");
-// const mongoose = require("mongoose");
-// const methodOverride = require("method-override");
+const passport = require("passport");
+const passportLocalMongoose = require("passport-local-mongoose");
 const Fic = require("../models/fic");
+const User = require("../models/user");
 
 const router = express.Router();
 
+passport.use(User.createStrategy());
+
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 
 // Routes =======================================
@@ -18,6 +21,14 @@ router.get("/front", function(req, res){
   res.render("front");
 });
 
+router.get("/secrets", function(req, res){
+  if (req.isAuthenticated()) {
+    res.render("secrets");
+  } else {
+    res.redirect("/login");
+  }
+})
+
 //Register Render form
 router.get("/register", function(req, res){
   res.render("register");
@@ -25,7 +36,20 @@ router.get("/register", function(req, res){
 
 //Register process user
 router.post("/register", function(req, res){
-  res.send("Register post route success");
+  User.register(
+    {username: req.body.username},
+    req.body.password,
+    function (err, user) {
+      if (err) {
+        console.log(err);
+        res.redirect("back");
+      } else {
+        passport.authenticate("local")(req, res, function(){
+          res.redirect("/secrets");
+        });
+      }
+    }
+  )
 });
 
 //Login render form
@@ -34,11 +58,18 @@ router.get("/login", function(req, res){
 })
 
 //Login process user
-router.post("/login", function(req, res){
-  res.send("Login post route success");
+router.post("/login", passport.authenticate("local",
+  {
+    successRedirect: "/secrets",
+    failureRedirect: "/login"
+  }), function(req, res){
 });
 
 //Logout
+router.get("/logout", function(req, res){
+  req.logout();
+  res.redirect("/fics");
+})
 
 
 module.exports = router;

@@ -11,6 +11,7 @@ const passportLocalMongoose = require("passport-local-mongoose");
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const findOrCreate = require("mongoose-findorcreate");
 const Fic = require("./models/fic");
+const User = require("./models/user");
 
 const app = express();
 
@@ -19,6 +20,7 @@ const app = express();
 const ficRoutes = require("./routes/fics");
 const charRoutes = require("./routes/chars");
 const epRoutes = require("./routes/eps");
+const authRoutes = require("./routes/auth");
 const indexRoutes = require("./routes/index");
 
 
@@ -27,19 +29,29 @@ app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(methodOverride("_method"));
 
+app.use(session({
+  secret: process.env.SECRET,
+  resave: false,
+  saveUninitialized: false
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
 mongoose.connect("mongodb://localhost:27017/ficsDB",
 {
   useNewUrlParser: true,
   useFindAndModify: false,
   useUnifiedTopology: true
 });
-
+mongoose.set("useCreateIndex", true);
 
 
 app.use(indexRoutes);
 app.use("/fics", ficRoutes);
 app.use("/fics/:id/chars", charRoutes);
 app.use("/fics/:id/eps", epRoutes);
+app.use("/auth", authRoutes);
 
 
 
