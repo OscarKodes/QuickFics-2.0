@@ -60,7 +60,7 @@ router.get("/:ep_num", function(req, res){
       res.redirect("back");
     } else {
       res.render("eps/show.ejs", {
-        fic_id: foundFic._id,
+        fic: foundFic,
         ep: foundFic.eps[req.params.ep_num - 1],
         ep_num: Number(req.params.ep_num),
         last_ep_num: foundFic.eps.length

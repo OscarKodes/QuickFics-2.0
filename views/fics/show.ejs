@@ -9,14 +9,21 @@
     </p>
 
     <div class="">
-      <a class="btn btn-lg btn-success py-3 w-100 rounded-0" href="/fics/<%= fic._id %>/eps/new">
-        <i class="fas fa-plus mr-1"></i> Add New Episode</a>
+      <% if (currentUser && currentUser._id.equals(fic.author.id)) { %>
+        <a class="btn btn-lg btn-success py-3 w-100 rounded-0" href="/fics/<%= fic._id %>/eps/new">
+          <i class="fas fa-plus mr-1"></i> Add New Episode</a>
+      <% } %>
+
       <a class="btn btn-lg btn-secondary py-3 w-100 rounded-0" href="/fics/<%= fic._id %>/chars">
         <i class="fas fa-th-large mr-1"></i> Characters
       </a>
-      <a class="btn btn-lg btn-secondary py-3 w-100 rounded-0" href="/fics/<%= fic._id %>/edit">
-        <i class="fas fa-edit mr-1"></i> Edit Fic Details
-      </a>
+
+      <% if (currentUser && currentUser._id.equals(fic.author.id)) { %>
+        <a class="btn btn-lg btn-secondary py-3 w-100 rounded-0" href="/fics/<%= fic._id %>/edit">
+          <i class="fas fa-edit mr-1"></i> Edit Fic Details
+        </a>
+      <% } %>
+
     </div>
 
 

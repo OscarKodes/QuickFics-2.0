@@ -3,12 +3,17 @@
 
     <h2><%= ep.title %></h2>
 
-    <!-- Delete Button trigger modal -->
-    <% include ../partials/deleteModalTop %>
-      <form class="" action="/fics/<%=fic_id%>/eps/<%=ep_num%>?_method=DELETE" method="post">
-    <% include ../partials/deleteModalBottom %>
+    <% if (currentUser && currentUser._id.equals(fic.author.id)) { %>
+      <!-- Delete Button trigger modal -->
+      <% include ../partials/deleteModalTop %>
+        <form class="" action="/fics/<%=fic._id%>/eps/<%=ep_num%>?_method=DELETE" method="post">
+      <% include ../partials/deleteModalBottom %>
 
-    <a class="btn btn-sm btn-warning" href="/fics/<%= fic_id %>/eps/<%= ep_num %>/edit">Edit</a>
+      <a class="btn btn-sm btn-warning" href="/fics/<%= fic._id %>/eps/<%= ep_num %>/edit">Edit</a>
+
+    <% } else { %>
+      <p>Not the owner</p>
+    <% } %>
 
     <% ep.char.forEach(function(char, i){ %>
       <p>
@@ -20,18 +25,17 @@
       </p>
     <% }) %>
 
-
     <!-- Navigation buttons -->
     <% if (ep_num > 1) { %>
       <% let prevEp = ep_num - 1; %>
-      <a class="btn btn-dark" href="/fics/<%= fic_id %>/eps/<%= prevEp %>">Previous Chapter</a>
+      <a class="btn btn-dark" href="/fics/<%= fic._id %>/eps/<%= prevEp %>">Previous Chapter</a>
     <% } %>
 
-    <a class="btn btn-secondary" href="/fics/<%= fic_id %>/">Back to Fic Page</a>
+    <a class="btn btn-secondary" href="/fics/<%= fic._id %>/">Back to Fic Page</a>
 
     <% if (ep_num < last_ep_num) { %>
       <% let nextEp = ep_num + 1; %>
-      <a class="btn btn-dark" href="/fics/<%= fic_id %>/eps/<%= nextEp %>">Next Chapter</a>
+      <a class="btn btn-dark" href="/fics/<%= fic._id %>/eps/<%= nextEp %>">Next Chapter</a>
     <% } %>
 
     <!-- invisible bgColor div to pass data form back to front -->
