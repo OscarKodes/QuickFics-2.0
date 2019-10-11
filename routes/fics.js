@@ -4,6 +4,7 @@ const express = require("express");
 // const mongoose = require("mongoose");
 // const methodOverride = require("method-override");
 const Fic = require("../models/fic");
+const User = require("../models/user");
 
 const router = express.Router({mergeParams: true});
 
@@ -28,13 +29,24 @@ router.get("/new", function(req, res){
 // CREATE ROUTE
 router.post("/", function(req, res){
 
-  Fic.create(req.body.fic, function(err, newFic){
+  let newFic = new Fic (req.body.fic);
+  newFic.author.id = req.user._id;
+
+  Fic.create(newFic, function(err, createdFic){
     if (err) {
       console.log(err);
       res.redirect("back");
     } else {
-      newFic.chars.push(req.body.char);
-      res.redirect("/fics/" + newFic._id);
+      User.findById(req.user._id, function(err, foundUser){
+        if (err) {
+          console.log(err);
+          res.redirect("back");
+        } else {
+          foundUser.fics.push(createdFic._id);
+          foundUser.save();
+          res.redirect("/fics/" + createdFic._id);
+        }
+      })
     }
   })
 });

@@ -21,7 +21,13 @@ const ficSchema = new mongoose.Schema({
   title: String,
   description: String,
   chars: [charSchema],
-  eps: [epSchema]
+  eps: [epSchema],
+  author: {
+    id: {
+      type: mongoose.Schema.Types.Object,
+      ref: "User"
+    }
+  }
 });
 
 module.exports = mongoose.model("Fic", ficSchema);

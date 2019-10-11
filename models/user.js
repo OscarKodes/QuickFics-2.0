@@ -10,6 +10,12 @@ const userSchema = new mongoose.Schema({
   name: String,
   googleId: String,
   facebookId: String,
+  fics: [{
+    id: {
+      type: mongoose.Schema.Types.Object,
+      ref: "User"
+    }
+  }]
 });
 
 userSchema.plugin(passportLocalMongoose);
