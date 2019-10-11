@@ -13,6 +13,7 @@ const FacebookStrategy = require('passport-facebook').Strategy;
 const findOrCreate = require("mongoose-findorcreate");
 const Fic = require("./models/fic");
 const User = require("./models/user");
+const middleware = require("./middleware");
 
 const app = express();
 

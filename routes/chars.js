@@ -1,9 +1,6 @@
 const express = require("express");
-// const bodyParser = require("body-parser");
-// const ejs = require("ejs");
-// const mongoose = require("mongoose");
-// const methodOverride = require("method-override");
 const Fic = require("../models/fic");
+const middleware = require("../middleware");
 
 const router = express.Router({mergeParams: true});
 
@@ -22,12 +19,12 @@ router.get("/", function (req, res){
 });
 
 // NEW ROUTE
-router.get("/new", function(req, res){
+router.get("/new", middleware.checkFicOwnership, function(req, res){
   res.render("chars/new", {fic_id: req.params.id});
 });
 
 // CREATE ROUTE
-router.post("/", function(req, res){
+router.post("/", middleware.checkFicOwnership, function(req, res){
 
   Fic.findById(req.params.id, function(err, foundFic){
     if (err) {
@@ -47,7 +44,7 @@ router.post("/", function(req, res){
 /// characters only have a short description and nothing more
 
 // EDIT ROUTE
-router.get("/:char_idx/edit", function(req, res){
+router.get("/:char_idx/edit", middleware.checkFicOwnership, function(req, res){
 
   Fic.findById(req.params.id, function(err, foundFic){
     if (err) {
@@ -65,7 +62,7 @@ router.get("/:char_idx/edit", function(req, res){
 });
 
 // UPDATE ROUTE
-router.put("/:char_idx", function(req, res){
+router.put("/:char_idx", middleware.checkFicOwnership, function(req, res){
 
   Fic.findById(req.params.id, function(err, foundFic){
     if (err) {
@@ -80,7 +77,7 @@ router.put("/:char_idx", function(req, res){
 });
 
 // DESTROY ROUTE
-router.delete("/:char_idx", function(req, res){
+router.delete("/:char_idx", middleware.checkFicOwnership, function(req, res){
 
   Fic.findById(req.params.id, function(err, foundFic){
     if (err) {

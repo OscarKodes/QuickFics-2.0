@@ -3,6 +3,7 @@ const passport = require("passport");
 const passportLocalMongoose = require("passport-local-mongoose");
 const Fic = require("../models/fic");
 const User = require("../models/user");
+const middleware = require("../middleware");
 
 const router = express.Router();
 
@@ -21,13 +22,9 @@ router.get("/front", function(req, res){
   res.render("front");
 });
 
-router.get("/secrets", function(req, res){
-  if (req.isAuthenticated()) {
-    res.render("secrets");
-  } else {
-    res.redirect("/login");
-  }
-})
+router.get("/secrets", middleware.isLoggedIn, function(req, res){
+  res.render("secrets");
+});
 
 //Register Render form
 router.get("/register", function(req, res){

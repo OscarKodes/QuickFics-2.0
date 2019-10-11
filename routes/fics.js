@@ -5,6 +5,7 @@ const express = require("express");
 // const methodOverride = require("method-override");
 const Fic = require("../models/fic");
 const User = require("../models/user");
+const middleware = require("../middleware");
 
 const router = express.Router({mergeParams: true});
 
@@ -22,7 +23,7 @@ router.get("/", function (req, res){
 });
 
 // NEW ROUTE
-router.get("/new", function(req, res){
+router.get("/new", middleware.isLoggedIn, function(req, res){
   res.render("fics/new");
 });
 
@@ -65,7 +66,7 @@ router.get("/:id", function(req, res){
 });
 
 // EDIT ROUTE
-router.get("/:id/edit", function(req, res){
+router.get("/:id/edit", middleware.checkFicOwnership, function(req, res){
 
   Fic.findById(req.params.id, function(err, foundFic){
     if (err) {
@@ -78,7 +79,7 @@ router.get("/:id/edit", function(req, res){
 });
 
 // UPDATE ROUTE
-router.put("/:id", function(req, res){
+router.put("/:id", middleware.checkFicOwnership, function(req, res){
 
   Fic.findByIdAndUpdate(req.params.id, req.body.fic, function(err, foundFic){
     if (err) {
@@ -91,7 +92,7 @@ router.put("/:id", function(req, res){
 })
 
 // DESTROY ROUTE
-router.delete("/:id", function(req, res){
+router.delete("/:id", middleware.checkFicOwnership, function(req, res){
 
   Fic.findByIdAndDelete(req.params.id, function(err, deletedFic){
     if (err) {
