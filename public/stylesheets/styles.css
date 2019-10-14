@@ -48,6 +48,10 @@ label {
   height: 11rem;
 }
 
+.bottom-spacer {
+  height: 7rem;
+}
+
 .bottom-nav p {
   font-size: .85rem;
   margin-bottom: 0;
@@ -105,7 +109,6 @@ label {
 
 /* EPISODE NEW PAGE */
 .char-select {
-  border-radius: 1rem;
   overflow: hidden;
 }
 

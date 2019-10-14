@@ -8,10 +8,13 @@ let fontColorTemplateInput = $("#font-color-template-input");
 let highlightTemplateInput = $("#highlight-template-input");
 let bgColorInput = $("#bg-color");
 let dialogueContainer = $("#dialogue-container");
+let instructions = $("#instructions");
 
 
 // Event Listener for Character Buttons ===========================
 charBtn.click(function(e){
+  instructions.addClass("d-none");
+
   let charName = e.target.innerText;
   let charColor = rgbToHex(e.target.style.color);
   let highlight = rgbToHex(e.target.style.backgroundColor);
