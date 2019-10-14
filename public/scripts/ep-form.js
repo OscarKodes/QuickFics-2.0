@@ -2,10 +2,10 @@
 let charBtn = $(".char-btn");
 let submitBtn = $("#submit-btn");
 let dialogueForm = $(".dialogue-form");
-let dialogueName = $(".dialogue-name");
-let dialogueNameInput = $(".dialogue-name-input");
-let fontColorInput = $(".font-color-input");
-let highlightInput = $(".highlight-input");
+let dialogueNameTemplate = $("#dialogue-name-template");
+let dialogueNameTemplateInput = $("#dialogue-name-template-input");
+let fontColorTemplateInput = $("#font-color-template-input");
+let highlightTemplateInput = $("#highlight-template-input");
 let bgColorInput = $("#bg-color");
 let dialogueContainer = $("#dialogue-container");
 
@@ -16,12 +16,12 @@ charBtn.click(function(e){
   let charColor = rgbToHex(e.target.style.color);
   let highlight = rgbToHex(e.target.style.backgroundColor);
 
-  dialogueName.text(charName);
-  dialogueNameInput.val(charName);
-  dialogueName.css("color", charColor);
-  dialogueName.css("background-color", highlight);
-  fontColorInput.val(charColor);
-  highlightInput.val(highlight);
+  dialogueNameTemplate.text(charName);
+  dialogueNameTemplateInput.val(charName);
+  dialogueNameTemplate.css("color", charColor);
+  dialogueNameTemplate.css("background-color", highlight);
+  fontColorTemplateInput.val(charColor);
+  highlightTemplateInput.val(highlight);
 
   let newForm = dialogueForm.clone().removeClass("d-none");
 

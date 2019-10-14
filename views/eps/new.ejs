@@ -1,5 +1,6 @@
 <%- include ../partials/header %>
 
+    <!-- Character Selection -->
     <div class="char-select d-flex flex-wrap mx-3 mb-4 bg-white border shadow-lg">
       <% chars.forEach(function(char){ %>
           <p class="char-btn"
@@ -10,30 +11,40 @@
       <% }) %>
     </div>
 
+    <!-- The Entire Input Form -->
     <form class="" action="/fics/<%=fic_id%>/eps" method="post">
 
+      <!-- Title & BG Color Inputs -->
       <div class="text-center pb-1 bg-white border-bottom mb-4 shadow-lg">
         <input class="border-top border-bottom" type="text" name="title" placeholder="Title">
         <label for="bg-color">Background Color</label>
         <input id="bg-color" type="color" name="bgColor" value="#FFFFFF">
       </div>
 
-      <div id="dialogue-container" class="shadow-lg">
+      <!-- Container for all Dialogue Inputs -->
+      <div id="dialogue-container" class="shadow-lg"></div>
 
-      </div>
-
+      <!-- Submit Button -->
       <button id="submit-btn" class="btn btn-xl btn-primary py-3 w-100 rounded-0 mt-4" type="submit" name="button">Submit</button>
     </form>
 
-    <!-- Invisble div to be cloned by DOM -->
+    <!-- Invisble div to be cloned by the DOM -->
     <div class="d-none dialogue-form border bg-light text-center">
-      <input class="dialogue-name-input d-none" type="text" name="char">
+
+      <!-- Invisible Char Name -->
+      <input id="dialogue-name-template-input" class="dialogue-name-input d-none" type="text" name="char">
+
+      <!-- Row for Name, Colors, and Text -->
       <div class="row bg-white">
+
+        <!-- Column for Name and Colors -->
         <div class="col-3 text-center pt-3">
-          <p class="dialogue-name char-name"></p>
-          <input class="font-color-input" type="color" name="fontColor">
-          <input class="highlight-input" type="color" name="highlight">
+          <p id="dialogue-name-template" class="dialogue-name char-name"></p>
+          <input id="font-color-template-input" class="font-color-input" type="color" name="fontColor">
+          <input id="highlight-template-input" class="highlight-input" type="color" name="highlight">
         </div>
+
+        <!-- Column for Dialogue Text -->
         <div class="col-9">
           <textarea
             class="m-0 border-0 dialogue-text"
@@ -41,6 +52,7 @@
             placeholder="Enter Text Here"
             maxlength="140"></textarea>
         </div>
+
       </div>
 
     </div>
