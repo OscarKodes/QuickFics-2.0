@@ -18,37 +18,60 @@
 <!-- BOTTOM NAVBAR -->
 
 <!-- NOT LOGGED IN USER NAVBAR -->
-<div class="top-nav fixed-top bg-dark d-flex flex-row text-light p-2">
+<div class="fixed-top">
+
+  <!-- Main NavBar -->
+  <div class="top-nav bg-dark d-flex flex-row text-light p-2">
+    <% if (unique_header && unique_header === "epForm") { %>
+      <!-- Unique header for Episode Forms -->
+      <div class="mr-auto">
+        <a class="text-white text-decoration-none" href="/fics/<%=fic_id%>">
+          <h3>Back to Fic</h3>
+        </a>
+      </div>
+      <div class="nav-brand">
+        <a class="text-white text-decoration-none" href="/fics">
+          <h1>QuickFics</h1>
+        </a>
+      </div>
+    <% } else { %>
+      <!-- Default Header for most pages -->
+      <div class="nav-brand mr-auto">
+        <a class="text-white text-decoration-none" href="/fics">
+          <h1>QuickFics</h1>
+        </a>
+      </div>
+      <div class="">
+        <i class="fas fa-search fa-2x mt-2"></i>
+      </div>
+      <div class="">
+        <a class="nav-link text-light" href="">About</a>
+      </div>
+    <% } %>
+  </div>
+
+  <!-- Character Selection for Episode New and Edit Forms -->
   <% if (unique_header && unique_header === "epForm") { %>
-    <div class="mr-auto">
-      <a class="text-white text-decoration-none" href="/fics/<%=fic_id%>">
-        <h3>Back to Fic</h3>
-      </a>
-    </div>
-    <div class="nav-brand">
-      <a class="text-white text-decoration-none" href="/fics">
-        <h1>QuickFics</h1>
-      </a>
-    </div>
-  <% } else { %>
-    <div class="nav-brand mr-auto">
-      <a class="text-white text-decoration-none" href="/fics">
-        <h1>QuickFics</h1>
-      </a>
-    </div>
-    <div class="">
-      <i class="fas fa-search fa-2x mt-2"></i>
-    </div>
-    <div class="">
-      <a class="nav-link text-light" href="">About</a>
+    <div class="char-select d-flex flex-wrap mx-3 mb-4 mt-4 bg-white border shadow-lg">
+      <% chars.forEach(function(char){ %>
+          <p class="char-btn"
+          style="color:<%=char.fontColor%>;
+          background-color:<%=char.highlight%>;">
+            <%= char.name %>
+          </p>
+      <% }) %>
     </div>
   <% } %>
-</div>
 
-<!-- SPACER -->
-<div class="top-spacer">
+</div> <!-- Closing div tag for fixed top -->
 
-</div>
+
+<!-- SPACERS FOR FIXED TOPS -->
+<% if (unique_header && unique_header === "epForm") { %>
+  <div class="top-spacer-ep-form"></div>
+<% } else { %>
+  <div class="top-spacer"></div>
+<% } %>
 
 <!-- FLASH MESSAGES -->
 <div class="container">
