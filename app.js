@@ -14,6 +14,7 @@ const findOrCreate = require("mongoose-findorcreate");
 const Fic = require("./models/fic");
 const User = require("./models/user");
 const middleware = require("./middleware");
+const flash = require("connect-flash");
 
 const app = express();
 
@@ -30,6 +31,7 @@ app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(methodOverride("_method"));
+app.use(flash());
 
 app.use(session({
   secret: process.env.SECRET,
@@ -41,6 +43,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(function(req, res, next) {
+  res.locals.error = req.flash("error");
+  res.locals.success = req.flash("success");
   res.locals.currentUser = req.user;
   next();
 });
