@@ -22,10 +22,11 @@
 
   <!-- Main NavBar -->
   <div class="top-nav bg-dark d-flex flex-row text-light p-2">
-    <% if (unique_header && unique_header === "epForm") { %>
+    <% if (unique_header && ["epForm", "backToFic"].includes(unique_header)) { %>
       <!-- Unique header for Episode Forms -->
       <div class="mr-auto">
-        <a class="text-white text-decoration-none" href="/fics/<%=fic_id%>">
+        <% let currentFicId = fic_id ? fic_id : fic._id %>
+        <a class="text-white text-decoration-none" href="/fics/<%=currentFicId%>">
           <h3>Back to Fic</h3>
         </a>
       </div>

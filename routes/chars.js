@@ -14,14 +14,20 @@ router.get("/", function (req, res){
       req.flash("error", err.message);
       res.redirect("back");
     } else {
-      res.render("chars/index", {fic: foundFic});
+      res.render("chars/index", {
+        fic: foundFic,
+        unique_header: "backToFic"
+      });
     }
   });
 });
 
 // NEW ROUTE
 router.get("/new", middleware.checkFicOwnership, function(req, res){
-  res.render("chars/new", {fic_id: req.params.id});
+  res.render("chars/new", {
+    fic_id: req.params.id,
+    unique_header: "backToFic"
+  });
 });
 
 // CREATE ROUTE
@@ -59,7 +65,8 @@ router.get("/:char_idx/edit", middleware.checkFicOwnership, function(req, res){
       {
         fic_id: foundFic._id,
         char: foundFic.chars[req.params.char_idx],
-        char_idx: req.params.char_idx
+        char_idx: req.params.char_idx,
+        unique_header: "backToFic"
       })
     }
   });

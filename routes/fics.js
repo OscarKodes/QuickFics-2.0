@@ -79,7 +79,10 @@ router.get("/:id/edit", middleware.checkFicOwnership, function(req, res){
       req.flash("error", err.message);
       res.redirect("back");
     } else {
-      res.render("fics/edit", {fic: foundFic});
+      res.render("fics/edit", {
+        fic: foundFic,
+        unique_header: "backToFic"
+      });
     }
   })
 });

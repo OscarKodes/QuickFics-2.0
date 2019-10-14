@@ -47,6 +47,7 @@ app.use(function(req, res, next) {
   res.locals.success = req.flash("success");
   res.locals.currentUser = req.user;
   res.locals.unique_header = false;
+  res.locals.fic_id = false;
   next();
 });
 
