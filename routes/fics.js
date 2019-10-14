@@ -15,6 +15,7 @@ router.get("/", function (req, res){
   Fic.find({}, function(err, foundFics){
     if (err) {
       console.log(err);
+      req.flash("error", err.message);
       res.redirect("back");
     } else {
       res.render("fics/index", {fics: foundFics});
@@ -36,15 +37,18 @@ router.post("/", function(req, res){
   Fic.create(newFic, function(err, createdFic){
     if (err) {
       console.log(err);
+      req.flash("error", err.message);
       res.redirect("back");
     } else {
       User.findById(req.user._id, function(err, foundUser){
         if (err) {
           console.log(err);
+          req.flash("error", err.message);
           res.redirect("back");
         } else {
           foundUser.fics.push(createdFic._id);
           foundUser.save();
+          req.flash("success", "Successfully created new fic!");
           res.redirect("/fics/" + createdFic._id);
         }
       })
@@ -58,6 +62,7 @@ router.get("/:id", function(req, res){
   Fic.findById(req.params.id, function(err, foundFic){
     if (err) {
       console.log(err);
+      req.flash("error", err.message);
       res.redirect("back");
     } else {
       res.render("fics/show", {fic: foundFic});
@@ -71,6 +76,7 @@ router.get("/:id/edit", middleware.checkFicOwnership, function(req, res){
   Fic.findById(req.params.id, function(err, foundFic){
     if (err) {
       console.log(err);
+      req.flash("error", err.message);
       res.redirect("back");
     } else {
       res.render("fics/edit", {fic: foundFic});
@@ -84,8 +90,10 @@ router.put("/:id", middleware.checkFicOwnership, function(req, res){
   Fic.findByIdAndUpdate(req.params.id, req.body.fic, function(err, foundFic){
     if (err) {
       console.log(err);
+      req.flash("error", err.message);
       res.redirect("back");
     } else {
+      req.flash("success", "Successfully updated fic!");
       res.redirect("/fics/" + req.params.id);
     }
   })
@@ -97,8 +105,10 @@ router.delete("/:id", middleware.checkFicOwnership, function(req, res){
   Fic.findByIdAndDelete(req.params.id, function(err, deletedFic){
     if (err) {
       console.log(err);
+      req.flash("error", err.message);
       res.redirect("back");
     } else {
+      req.flash("success", "Fic deleted.");
       res.redirect("/fics");
     }
   })

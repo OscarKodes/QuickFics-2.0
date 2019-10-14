@@ -8,6 +8,7 @@ middlewareObj.isLoggedIn = function(req, res, next) {
   if (req.isAuthenticated()) {
     return next();
   } else {
+    req.flash("error", "You must be logged in to do that.");
     res.redirect("/login");
   }
 }
@@ -27,11 +28,13 @@ middlewareObj.checkFicOwnership = function(req, res, next) {
         if (foundFic.author.id.equals(req.user._id)){
           next();
         } else {
+          req.flash("error", "You do not have permission to do that.");
           res.redirect("back");
         }
       }
     });
   } else {
+    req.flash("error", "You must be logged in to do that.");
     res.redirect("/login");
   }
 }

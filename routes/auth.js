@@ -62,7 +62,9 @@ router.get("/google",
 router.get("/google/secrets", passport.authenticate("google",
   {
     successRedirect: "/secrets",
-    failureRedirect: "/login"
+    successFlash: "Welcome!",
+    failureRedirect: "/login",
+    failureFlash: true
   }), function(req, res) {
 
   });
@@ -74,7 +76,9 @@ router.get("/facebook",
 router.get("/facebook/secrets", passport.authenticate("facebook",
   {
     successRedirect: "/secrets",
-    failureRedirect: "/login"
+    successFlash: "Welcome!",
+    failureRedirect: "/login",
+    failureFlash: true
   }), function(req, res) {
 
   });

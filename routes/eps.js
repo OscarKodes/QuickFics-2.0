@@ -15,6 +15,7 @@ router.get("/new", middleware.checkFicOwnership, function(req, res){
   Fic.findById(req.params.id, function(err, foundFic){
     if (err) {
       console.log(err);
+      req.flash("error", err.message);
       res.redirect("back");
     } else {
       res.render("eps/new", {
@@ -40,12 +41,14 @@ router.post("/", middleware.checkFicOwnership, function(req, res){
   Fic.findById(req.params.id, function(err, foundFic){
     if (err) {
       console.log(err);
+      req.flash("error", err.message);
       res.redirect("back");
     } else {
       // console.log(foundFic.eps);
       // console.log(req.body.ep);
       foundFic.eps.push(newEp);
       foundFic.save();
+      req.flash("success", "New episode created!");
       res.redirect("/fics/" + foundFic._id);
     }
   })
@@ -57,6 +60,7 @@ router.get("/:ep_num", function(req, res){
   Fic.findById(req.params.id, function(err, foundFic){
     if (err){
       console.log(err);
+      req.flash("error", err.message);
       res.redirect("back");
     } else {
       res.render("eps/show.ejs", {
@@ -75,6 +79,7 @@ router.get("/:ep_num/edit", middleware.checkFicOwnership, function(req, res){
   Fic.findById(req.params.id, function(err, foundFic){
     if (err) {
       console.log(err);
+      req.flash("error", err.message);
       res.redirect("back");
     } else {
       res.render("eps/edit",
@@ -103,10 +108,12 @@ router.put("/:ep_num", middleware.checkFicOwnership, function(req, res){
   Fic.findById(req.params.id, function(err, foundFic){
     if (err) {
       console.log(err);
+      req.flash("error", err.message);
       res.redirect("back");
     } else {
       foundFic.eps[req.params.ep_num - 1] = editedEp;
       foundFic.save();
+      req.flash("success", "Episode updated!");
       res.redirect("/fics/" + req.params.id + "/eps/" + req.params.ep_num);
     }
   })
@@ -118,10 +125,12 @@ router.delete("/:ep_num", middleware.checkFicOwnership, function(req, res){
   Fic.findById(req.params.id, function(err, foundFic){
     if (err) {
       console.log(err);
+      req.flash("error", err.message);
       res.redirect("back");
     } else {
       foundFic.eps.splice(req.params.ep_num - 1, 1);
       foundFic.save();
+      req.flash("success", "Episode deleted.");
       res.redirect("/fics/" + req.params.id);
     }
   });

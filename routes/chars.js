@@ -11,6 +11,7 @@ router.get("/", function (req, res){
   Fic.findById(req.params.id, function(err, foundFic){
     if (err) {
       console.log(err);
+      req.flash("error", err.message);
       res.redirect("back");
     } else {
       res.render("chars/index", {fic: foundFic});
@@ -29,10 +30,12 @@ router.post("/", middleware.checkFicOwnership, function(req, res){
   Fic.findById(req.params.id, function(err, foundFic){
     if (err) {
       console.log(err);
+      req.flash("error", err.message);
       res.redirect("back");
     } else {
       foundFic.chars.push(req.body.char);
       foundFic.save();
+      req.flash("success", "Character successfully added!");
       res.redirect("/fics/" + foundFic._id + "/chars");
     }
   })
@@ -49,6 +52,7 @@ router.get("/:char_idx/edit", middleware.checkFicOwnership, function(req, res){
   Fic.findById(req.params.id, function(err, foundFic){
     if (err) {
       console.log(err);
+      req.flash("error", err.message);
       res.redirect("back");
     } else {
       res.render("chars/edit",
@@ -67,10 +71,12 @@ router.put("/:char_idx", middleware.checkFicOwnership, function(req, res){
   Fic.findById(req.params.id, function(err, foundFic){
     if (err) {
       console.log(err);
+      req.flash("error", err.message);
       res.redirect("back");
     } else {
       foundFic.chars[req.params.char_idx] = req.body.char;
       foundFic.save();
+      req.flash("success", "Character successfully updated!");
       res.redirect("/fics/" + req.params.id + "/chars");
     }
   })
@@ -82,10 +88,12 @@ router.delete("/:char_idx", middleware.checkFicOwnership, function(req, res){
   Fic.findById(req.params.id, function(err, foundFic){
     if (err) {
       console.log(err);
+      req.flash("error", err.message);
       res.redirect("back");
     } else {
       foundFic.chars.splice(req.params.char_idx, 1);
       foundFic.save();
+      req.flash("success", "Character deleted.");
       res.redirect("/fics/" + req.params.id + "/chars");
     }
   });
