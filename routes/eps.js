@@ -21,6 +21,7 @@ router.get("/new", middleware.checkFicOwnership, function(req, res){
       res.render("eps/new", {
         fic_id: foundFic._id,
         chars: foundFic.chars,
+        unique_header: "epForm"
       });
     }
   });
@@ -88,6 +89,7 @@ router.get("/:ep_num/edit", middleware.checkFicOwnership, function(req, res){
         chars: foundFic.chars,
         ep: foundFic.eps[req.params.ep_num - 1],
         ep_num: Number(req.params.ep_num),
+        unique_header: "epForm"
       })
     }
   });
