@@ -26,6 +26,7 @@ charBtn.click(function(e){
   let newForm = dialogueForm.clone().removeClass("d-none");
 
   dialogueContainer.append(newForm);
+  window.scrollTo(0,document.body.scrollHeight);
 });
 
 // Event Listener for Background Color
