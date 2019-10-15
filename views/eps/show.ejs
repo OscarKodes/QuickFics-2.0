@@ -3,7 +3,7 @@
 
     <h2><%= ep.title %></h2>
 
-    <% if (currentUser && currentUser._id.equals(fic.author.id)) { %>
+    <% if (currentUser && currentUser._id.equals(fic.author._id)) { %>
       <!-- Delete Button trigger modal -->
       <% include ../partials/deleteModalTop %>
         <form class="" action="/fics/<%=fic._id%>/eps/<%=ep_num%>?_method=DELETE" method="post">

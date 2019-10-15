@@ -5,7 +5,7 @@
       <h2>Characters</h2>
     </div>
 
-    <% if (currentUser && currentUser._id.equals(fic.author.id)) { %>
+    <% if (currentUser && currentUser._id.equals(fic.author._id)) { %>
       <a class="btn btn-lg btn-success py-3 w-100 rounded-0 mb-4" href="/fics/<%= fic._id %>/chars/new">
         <i class="fas fa-plus mr-1"></i>Add Characters</a>
     <% } %>
@@ -18,7 +18,7 @@
           background-color:<%=char.highlight%>;">
             <%= char.name %>
           </h3>
-          <% if (currentUser && currentUser._id.equals(fic.author.id)) { %>
+          <% if (currentUser && currentUser._id.equals(fic.author._id)) { %>
             <a class="text-secondary" href="/fics/<%=fic._id%>/chars/<%=i%>/edit">
               <i class="fas fa-edit"></i></a>
           <% } %>
