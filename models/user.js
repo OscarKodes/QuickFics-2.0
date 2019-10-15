@@ -11,10 +11,8 @@ const userSchema = new mongoose.Schema({
   googleId: String,
   facebookId: String,
   fics: [{
-    id: {
-      type: mongoose.Schema.Types.Object,
-      ref: "User"
-    }
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Fic"
   }]
 });
 

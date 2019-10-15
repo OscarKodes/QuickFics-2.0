@@ -12,7 +12,10 @@ const router = express.Router({mergeParams: true});
 // Fic Routes ===================================
 // INDEX ROUTE
 router.get("/", function (req, res){
-  Fic.find({}, function(err, foundFics){
+  Fic.
+    find({}).
+    populate("author").
+    exec(function(err, foundFics){
     if (err) {
       console.log(err);
       req.flash("error", err.message);
@@ -31,8 +34,9 @@ router.get("/new", middleware.isLoggedIn, function(req, res){
 // CREATE ROUTE
 router.post("/", function(req, res){
 
+  // We set the User reference into the new fic here
   let newFic = new Fic (req.body.fic);
-  newFic.author.id = req.user._id;
+  newFic.author = req.user._id;
 
   Fic.create(newFic, function(err, createdFic){
     if (err) {
@@ -46,7 +50,8 @@ router.post("/", function(req, res){
           req.flash("error", err.message);
           res.redirect("back");
         } else {
-          foundUser.fics.push(createdFic._id);
+          // We set the Fic reference into the User here
+          foundUser.fics.push(createdFic);
           foundUser.save();
           req.flash("success", "Successfully created new fic!");
           res.redirect("/fics/" + createdFic._id);
@@ -59,7 +64,10 @@ router.post("/", function(req, res){
 // SHOW ROUTE
 router.get("/:id", function(req, res){
 
-  Fic.findById(req.params.id, function(err, foundFic){
+  Fic.
+    findById(req.params.id).
+    populate("author").
+    exec(function(err, foundFic){
     if (err) {
       console.log(err);
       req.flash("error", err.message);

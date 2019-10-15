@@ -23,10 +23,8 @@ const ficSchema = new mongoose.Schema({
   chars: [charSchema],
   eps: [epSchema],
   author: {
-    id: {
-      type: mongoose.Schema.Types.Object,
-      ref: "User"
-    }
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User"
   }
 });
 

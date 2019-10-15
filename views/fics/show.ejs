@@ -5,11 +5,14 @@
       <%= fic.title %>
     </h1>
     <p>
+      <%=fic.author.name ? fic.author.name : fic.author.username %>
+    </p>
+    <p>
       <%= fic.description %>
     </p>
 
     <div class="">
-      <% if (currentUser && currentUser._id.equals(fic.author.id)) { %>
+      <% if (currentUser && currentUser._id.equals(fic.author._id)) { %>
         <a class="btn btn-lg btn-success py-3 w-100 rounded-0" href="/fics/<%= fic._id %>/eps/new">
           <i class="fas fa-plus mr-1"></i> Add New Episode</a>
       <% } %>
@@ -18,7 +21,7 @@
         <i class="fas fa-th-large mr-1"></i> Characters
       </a>
 
-      <% if (currentUser && currentUser._id.equals(fic.author.id)) { %>
+      <% if (currentUser && currentUser._id.equals(fic.author._id)) { %>
         <a class="btn btn-lg btn-secondary py-3 w-100 rounded-0" href="/fics/<%= fic._id %>/edit">
           <i class="fas fa-edit mr-1"></i> Edit Fic Details
         </a>

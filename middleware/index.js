@@ -25,7 +25,7 @@ middlewareObj.checkFicOwnership = function(req, res, next) {
       } else {
 
         // does user own campground?
-        if (foundFic.author.id.equals(req.user._id)){
+        if (foundFic.author._id.equals(req.user._id)){
           next();
         } else {
           req.flash("error", "You do not have permission to do that.");
