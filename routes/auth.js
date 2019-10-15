@@ -61,7 +61,7 @@ router.get("/google",
 
 router.get("/google/secrets", passport.authenticate("google",
   {
-    successRedirect: "/secrets",
+    successRedirect: "/fics",
     successFlash: "Welcome!",
     failureRedirect: "/login",
     failureFlash: true
@@ -75,7 +75,7 @@ router.get("/facebook",
 
 router.get("/facebook/secrets", passport.authenticate("facebook",
   {
-    successRedirect: "/secrets",
+    successRedirect: "/fics",
     successFlash: "Welcome!",
     failureRedirect: "/login",
     failureFlash: true

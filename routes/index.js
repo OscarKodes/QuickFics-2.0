@@ -22,10 +22,6 @@ router.get("/front", function(req, res){
   res.render("front");
 });
 
-router.get("/secrets", middleware.isLoggedIn, function(req, res){
-  res.render("secrets");
-});
-
 //Register Render form
 router.get("/register", function(req, res){
   res.render("register");
@@ -44,7 +40,7 @@ router.post("/register", function(req, res){
       } else {
         passport.authenticate("local")(req, res, function(){
           req.flash("success", "Welcome!");
-          res.redirect("/secrets");
+          res.redirect("/fics");
         });
       }
     }
@@ -59,7 +55,7 @@ router.get("/login", function(req, res){
 //Login process user
 router.post("/login", passport.authenticate("local",
   {
-    successRedirect: "/secrets",
+    successRedirect: "/fics",
     successFlash: "Welcome!",
     failureRedirect: "/login",
     failureFlash: true
@@ -72,6 +68,10 @@ router.get("/logout", function(req, res){
   req.flash("success", "You have been successfully logged out!");
   res.redirect("/fics");
 })
+
+router.get("/user/:user_id", function(req, res){
+  res.send("User profile page success");
+});
 
 
 module.exports = router;
