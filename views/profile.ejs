@@ -1,0 +1,11 @@
+<%- include ./partials/header %>
+    <h1>User Profile Page</h1>
+    <p><%= user.name ? user.name : user.username %></p>
+
+    <% user.fics.forEach(function(fic){ %>
+      <p><%= fic.title %></p>
+    <% }); %>
+
+    <a href="/logout">logout</a>
+
+<%- include ./partials/footer %>

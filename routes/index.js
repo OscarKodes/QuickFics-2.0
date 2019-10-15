@@ -70,7 +70,18 @@ router.get("/logout", function(req, res){
 })
 
 router.get("/user/:user_id", function(req, res){
-  res.send("User profile page success");
+  User.
+    findById(req.params.user_id).
+    populate("fics").
+    exec(function(err, foundUser){
+    if (err) {
+      console.log(err);
+      req.flash("error", err.message);
+      res.redirect("back");
+    } else {
+      res.render("profile", {user: foundUser});
+    }
+  });
 });
 
 
