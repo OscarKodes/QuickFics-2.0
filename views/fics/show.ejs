@@ -11,7 +11,7 @@
       <%= fic.description %>
     </p>
 
-    <div class="">
+    <div class="shadow-lg">
       <% if (currentUser && currentUser._id.equals(fic.author._id)) { %>
         <a class="btn btn-lg btn-primary py-3 w-100 rounded-0" href="/fics/<%= fic._id %>/eps/new">
           <i class="fas fa-plus mr-1"></i> Add New Episode</a>
@@ -38,18 +38,14 @@
 
   </div>
 
-  <div class="text-center bg-white border rounded m-3">
-    <h2 class="my-4">Episodes</h2>
+  <div class="text-center bg-light border rounded m-3 shadow-lg overflow-hidden">
+    <h2 class="my-4">Episode List</h2>
 
     <% fic.eps.forEach(function(ep, i){ %>
-      <p>Episode <%= i + 1 %>:
-        <a href="/fics/<%= fic._id %>/eps/<%= i + 1 %>">
-          <%= ep.title %>
+        <a class="nav-link bg-light" href="/fics/<%= fic._id %>/eps/<%= i + 1 %>">
+          <h4 class="text-dark">Episode <%= i + 1 %>: <%= ep.title %></h4>
         </a>
-      </p>
     <% }) %>
-
-
   </div>
 
 
