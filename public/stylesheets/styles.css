@@ -151,6 +151,11 @@ input[type="color"].highlight-input {
   margin-top: 1.2rem;
 }
 
+.cancel-btn:hover {
+  transform: scale(1.2);
+  filter: brightness(.5);
+}
+
 textarea.dialogue-text {
   display: block;
   width: 100%;

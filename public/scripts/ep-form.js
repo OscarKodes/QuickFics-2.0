@@ -10,7 +10,6 @@ let bgColorInput = $("#bg-color");
 let dialogueContainer = $("#dialogue-container");
 let instructions = $("#instructions");
 
-
 // Event Listener for Character Buttons ===========================
 charBtn.click(function(e){
   instructions.addClass("d-none");
@@ -26,16 +25,27 @@ charBtn.click(function(e){
   fontColorTemplateInput.val(charColor);
   highlightTemplateInput.val(highlight);
 
-  let newForm = dialogueForm.clone().removeClass("d-none");
+  let newForm = dialogueForm.clone().removeClass("d-none").addClass("newDialogue");
 
   dialogueContainer.append(newForm);
   window.scrollTo(0,document.body.scrollHeight);
+
+  // Event Listener for Cancel Dialogue Button
+  // Placed inside another Listener because it needs to be done each time
+  // --- Instructions:
+  /// Target all .cancel-btn with DOM
+  /// Target all .newDialogue with DOM
+  // loop thru all .cancel-btn adding listeners to each
+  // based on which index remove specific newDialogue with .remove()
 });
 
-// Event Listener for Background Color
+
+
+// Event Listener for Background Color ==========================
 bgColorInput.change(changeColor);
 
-// HELPER FUNCTIONS ============================
+
+// HELPER FUNCTIONS ===============================================
 
 // BG COLOR FUNCTION
 // Set up background color based on input
@@ -46,12 +56,10 @@ function changeColor() {
 
 changeColor(); // sets up page based on pre-settings
 
-
 // RBG TO HEX FUNCTIONS
 function componentToHex(colorStr) {
   let colorNum = Number(colorStr);
   let hex = colorNum.toString(16);
-  console.log(hex);
   return hex.length === 1 ? "0" + hex : hex;
 }
 
@@ -62,6 +70,5 @@ function rgbToHex(rgb) {
   let r = rgbArr[0];
   let g = rgbArr[1];
   let b = rgbArr[2];
-  console.log("RGB = ", r, g, b);
   return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
 }
