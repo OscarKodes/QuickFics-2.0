@@ -107,7 +107,7 @@ label {
   color: #aaa;
 }
 
-/* EPISODE NEW PAGE */
+/* EPISODE NEW, EDIT, SHOW PAGE */
 .char-select {
   overflow: hidden;
 }
@@ -145,6 +145,12 @@ input[type="color"].highlight-input {
   text-align: center;
 }
 
+.show-page.dialogue-name.char-name {
+  width: 8.5rem;
+  margin-left: 1.7rem;
+  margin-top: 1.2rem;
+}
+
 textarea.dialogue-text {
   display: block;
   width: 100%;
@@ -154,4 +160,9 @@ textarea.dialogue-text {
   resize: none;
   overflow: hidden;
   height: 8rem;
+}
+
+p.dialogue-text {
+  font-size: 1.25rem;
+  padding: 1.2rem 1rem;
 }

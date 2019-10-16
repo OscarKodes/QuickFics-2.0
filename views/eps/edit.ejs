@@ -2,8 +2,6 @@
 
     <!-- Character Selection Is Found in Header File-->
 
-
-
     <!-- The Entire Input Form -->
     <form class="" action="/fics/<%=fic_id%>/eps/<%= ep_num %>?_method=PUT" method="post">
 
@@ -20,8 +18,6 @@
         <!-- Render dialogue already created -->
         <% ep.char.forEach(function(char, i){ %>
 
-
-          <!-- Invisble div to be cloned by the DOM -->
           <div class="border bg-light text-center">
             <!-- Invisible Char Name -->
             <input class="dialogue-name-input d-none" type="text"
