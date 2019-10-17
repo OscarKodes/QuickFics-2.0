@@ -8,11 +8,10 @@ let fontColorTemplateInput = $("#font-color-template-input");
 let highlightTemplateInput = $("#highlight-template-input");
 let bgColorInput = $("#bg-color");
 let dialogueContainer = $("#dialogue-container");
-let instructions = $("#instructions");
+let createTextMarker = $("#create-text-marker");
 
 // Event Listener for Character Buttons ===========================
 charBtn.click(function(e){
-  instructions.addClass("d-none");
 
   let charName = e.target.innerText;
   let charColor = rgbToHex(e.target.style.color);
@@ -36,7 +35,17 @@ charBtn.click(function(e){
       newForm.remove();
     });
 
-  dialogueContainer.append(newForm);
+  // Insert the newForm before the text marker
+  createTextMarker.before(newForm);
+
+  // focus on the text area in newForm
+  newForm
+    .children(".dialogue-form-row")
+    .children(".dialogue-textarea")
+    .children("textarea")
+    .focus();
+
+  // Scroll to the bottom
   window.scrollTo(0,document.body.scrollHeight);
 });
 
