@@ -9,7 +9,9 @@ let highlightTemplateInput = $("#highlight-template-input");
 let bgColorInput = $("#bg-color");
 let dialogueContainer = $("#dialogue-container");
 let createTextMarker = $("#create-text-marker");
-let moveTextMarkerBtn = $(".moveTextMarkerBtn");
+let premadeDialogue = $(".premade-dialogue");
+let premadeTextMarkerBtns = $(".move-text-marker-btn");
+let bottomMarkerBtn = $("#bottom-marker-btn");
 
 // Event Listener for Character Buttons ===========================
 charBtn.click(function(e){
@@ -36,8 +38,23 @@ charBtn.click(function(e){
       newForm.remove();
     });
 
+  // Add text Marker Btn listener to newForm ===============
+  let currentMarkerBtn = newForm
+    .children(".marker-btn-container")
+    .children(".move-text-marker-btn");
+
+  currentMarkerBtn.click(function(){
+      newForm.before(createTextMarker);
+      $(".move-text-marker-btn").show();
+      bottomMarkerBtn.show();
+      currentMarkerBtn.hide();
+    });
+
   // Insert the newForm before the text marker
   createTextMarker.before(newForm);
+
+  // Scroll to the bottom
+  window.scrollTo(0,document.body.scrollHeight);
 
   // focus on the text area in newForm
   newForm
@@ -45,18 +62,37 @@ charBtn.click(function(e){
     .children(".dialogue-textarea")
     .children("textarea")
     .focus();
-
-  // Scroll to the bottom
-  window.scrollTo(0,document.body.scrollHeight);
 });
 
 // Add Listener to Cancel Button for Edit Page's Premade Dialogues=====
-// Using DOM to iterate thru all of the one at a time, uniquely
-$(".premade-dialogue")
+premadeDialogue
   .click(function(){
     let entireDialogue = $("#" + this.id).parent().parent().parent();
     entireDialogue.remove();
   });
+
+// Add Listener to Premade marker buttons for Edit Page's Premade Dialogues=====
+premadeTextMarkerBtns
+  .click(function(){
+    let currentMarkerBtn = $("#" + this.id);
+    let entireDialogue = currentMarkerBtn.parent().parent();
+    entireDialogue.before(createTextMarker);
+    $(".move-text-marker-btn").show();
+    bottomMarkerBtn.show();
+    currentMarkerBtn.hide();
+  });
+
+// Add Listener to Bottom marker button=========================================
+bottomMarkerBtn
+  .click(function(){
+    let bottomBtnContainer = bottomMarkerBtn.parent();
+    bottomBtnContainer.before(createTextMarker);
+    $(".move-text-marker-btn").show();
+    bottomMarkerBtn.hide();
+  });
+
+// Hide bottomMarkerBtn right from the beginning ==========================
+bottomMarkerBtn.hide();
 
 
 // Event Listener for Background Color ==========================

@@ -138,7 +138,8 @@ label {
   z-index: 100;
 }
 
-.move-text-marker-btn {
+.move-text-marker-btn,
+#bottom-marker-btn {
   background-color: white;
   border-radius: 50%;
   font-size: 2rem;
@@ -147,9 +148,16 @@ label {
   right: 1rem;
 }
 
-.move-text-marker-btn:hover {
+#bottom-marker-btn {
+  bottom: 1rem;
+  left: 50%;
+  right: 0;
+  transform: translateX(-2rem);
+}
+
+.move-text-marker-btn:hover,
+#bottom-marker-btn:hover {
   filter: brightness(1.5);
-  transform: scale(1.2);
 }
 
 input[type="color"].font-color-input,
