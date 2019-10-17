@@ -1,5 +1,9 @@
 <!-- Invisble div to be cloned by the DOM -->
-<div class="d-none dialogue-form border bg-light text-center">
+<div class="d-none dialogue-form border bg-white text-center">
+  <!-- Move-Text-Marker-to-Here Button -->
+  <div class="marker-btn-container">
+    <i class="fas fa-plus-circle text-secondary move-text-marker-btn"></i>
+  </div>
   <!-- Invisible Char Name -->
   <input id="dialogue-name-template-input" class="dialogue-name-input d-none" type="text" name="char">
   <!-- Row for Name, Colors, and Text -->
@@ -13,7 +17,8 @@
     <!-- Column for Dialogue Text -->
     <div class="dialogue-textarea col-9">
       <!-- Cancel Button -->
-      <i class="cancel-btn far fa-window-close fa-2x text-secondary float-right mr-2 mt-1"></i>
+      <i class="cancel-btn far fa-window-close fa-2x text-secondary float-right mr-2 mt-1"
+        SameSite=None></i>
       <!-- Dialogue Textarea -->
       <textarea
         class="m-0 border-0 dialogue-text"

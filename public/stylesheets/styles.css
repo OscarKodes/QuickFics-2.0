@@ -131,6 +131,27 @@ label {
   overflow: hidden;
 }
 
+.marker-btn-container {
+  position: absolute;
+  width: 50%;
+  margin: 0 25%;
+  z-index: 100;
+}
+
+.move-text-marker-btn {
+  background-color: white;
+  border-radius: 50%;
+  font-size: 2rem;
+  position: relative;
+  bottom: 1rem;
+  right: 1rem;
+}
+
+.move-text-marker-btn:hover {
+  filter: brightness(1.5);
+  transform: scale(1.2);
+}
+
 input[type="color"].font-color-input,
 input[type="color"].highlight-input {
   border: none;

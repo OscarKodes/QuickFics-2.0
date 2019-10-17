@@ -7,7 +7,7 @@
 
       <!-- Title & BG Color Inputs -->
       <div class="text-center pb-1 bg-white border-bottom mb-4 shadow-lg">
-        <input class="border-top border-bottom" type="text" name="title" placeholder="Title" value="<%=ep.title%>">
+        <input class="border-top border-bottom w-100" type="text" name="title" placeholder="Title" value="<%=ep.title%>">
         <label for="bg-color">Background Color</label>
         <input id="bg-color" type="color" name="bgColor" value="<%=ep.bgColor%>">
       </div>
@@ -19,6 +19,10 @@
         <% ep.char.forEach(function(char, i){ %>
 
           <div class="border bg-light text-center">
+            <!-- Move-Text-Marker-to-Here Button -->
+            <div class="marker-btn-container">
+              <i class="fas fa-plus-circle text-secondary move-text-marker-btn"></i>
+            </div>
             <!-- Invisible Char Name -->
             <input class="dialogue-name-input d-none" type="text"
               name="char" value="<%= char %>">
@@ -38,7 +42,9 @@
               <!-- Column for Dialogue Text -->
               <div class="dialogue-textarea col-9">
                 <!-- Cancel Button -->
-                <i id="premade-dialogue<%=i%>" class="premade-dialogue cancel-btn far fa-window-close fa-2x text-secondary float-right mr-2 mt-1"></i>
+                <i id="premade-dialogue<%=i%>"
+                 class="premade-dialogue cancel-btn far fa-window-close fa-2x text-secondary float-right mr-2 mt-1"
+                 SameSite=None></i>
                 <textarea
                   class="m-0 border-0 dialogue-text"
                   name="text"
@@ -49,8 +55,10 @@
           </div>
         <% }) %>
 
-        <p id="create-text-marker" class="text-center mb-4 text-secondary bg-secondary text-light">
-          Click on a character's name to create dialogue here.</p>
+        <div id="create-text-marker" class="text-center text-secondary bg-secondary text-light">
+          <p class="m-0">Click on a character's name to create dialogue here.</p>
+          <p class="m-0">Or click on a "+" button to move this marker.</p>
+        </div>
       </div>
 
       <!-- Submit Button -->

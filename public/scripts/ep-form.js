@@ -9,6 +9,7 @@ let highlightTemplateInput = $("#highlight-template-input");
 let bgColorInput = $("#bg-color");
 let dialogueContainer = $("#dialogue-container");
 let createTextMarker = $("#create-text-marker");
+let moveTextMarkerBtn = $(".moveTextMarkerBtn");
 
 // Event Listener for Character Buttons ===========================
 charBtn.click(function(e){

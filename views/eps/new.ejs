@@ -8,15 +8,17 @@
 
       <!-- Title & BG Color Inputs -->
       <div class="text-center pb-1 bg-white border-bottom mb-4 shadow-lg">
-        <input class="border-top border-bottom" type="text" name="title" placeholder="Title">
+        <input class="border-top border-bottom w-100" type="text" name="title" placeholder="Title">
         <label for="bg-color">Background Color</label>
         <input id="bg-color" type="color" name="bgColor" value="#FFFFFF">
       </div>
 
       <!-- Container for all Dialogue Inputs -->
       <div id="dialogue-container" class="shadow-lg">
-        <p id="create-text-marker" class="text-center mb-4 text-secondary bg-secondary text-light">
-          Click on a character's name to create dialogue here.</p>
+        <div id="create-text-marker" class="text-center text-secondary bg-secondary text-light">
+          <p class="m-0">Click on a character's name to create dialogue here.</p>
+          <p class="m-0">Or click on a "+" button to move this marker.</p>
+        </div>
       </div>
 
       <!-- Submit Button -->
