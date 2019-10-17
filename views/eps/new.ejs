@@ -23,37 +23,8 @@
       <button id="submit-btn" class="btn btn-xl btn-primary py-3 w-100 rounded-0 mt-4" type="submit" name="button">Submit</button>
     </form>
 
-    <!-- Invisble div to be cloned by the DOM -->
-    <div class="d-none dialogue-form border bg-light text-center">
-
-      <!-- Invisible Char Name -->
-      <input id="dialogue-name-template-input" class="dialogue-name-input d-none" type="text" name="char">
-
-      <!-- Row for Name, Colors, and Text -->
-      <div class="dialogue-form-row row bg-white">
-
-        <!-- Column for Name and Colors -->
-        <div class="col-3 text-center pt-4">
-          <p id="dialogue-name-template" class="dialogue-name char-name"></p>
-          <input id="font-color-template-input" class="font-color-input" type="color" name="fontColor">
-          <input id="highlight-template-input" class="highlight-input" type="color" name="highlight">
-        </div>
-
-        <!-- Column for Dialogue Text -->
-        <div class="dialogue-textarea col-9">
-          <!-- Cancel Button -->
-          <i class="cancel-btn far fa-window-close fa-2x text-secondary float-right mr-2 mt-1"></i>
-          <!-- Dialogue Textarea -->
-          <textarea
-            class="m-0 border-0 dialogue-text"
-            name="text"
-            placeholder="Enter Text Here"
-            maxlength="140"></textarea>
-        </div>
-
-      </div>
-
-    </div>
+    <!-- Invisble Dialogue Template form to be cloned by the DOM -->
+    <%- include ../partials/dialogueFormTemplate %>
 
 
 <!-- jQuery -->
