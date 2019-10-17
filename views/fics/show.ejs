@@ -42,8 +42,8 @@
     <h2 class="my-4">Episode List</h2>
 
     <% fic.eps.forEach(function(ep, i){ %>
-        <a class="nav-link bg-light" href="/fics/<%= fic._id %>/eps/<%= i + 1 %>">
-          <h4 class="text-dark">Episode <%= i + 1 %>: <%= ep.title %></h4>
+        <a class="episode-link nav-link bg-light" href="/fics/<%= fic._id %>/eps/<%= i + 1 %>">
+          <p class="text-dark">Episode <%= i + 1 %>: <%= ep.title %></p>
         </a>
     <% }) %>
   </div>

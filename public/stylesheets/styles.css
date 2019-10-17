@@ -79,6 +79,12 @@ label {
   border-top: 1px solid lightgrey;
 }
 
+/* FIC SHOW PAGE */
+.episode-link {
+  font-weight: light;
+  font-size: 1.3rem;
+}
+
 /* CHAR INDEX PAGE */
 .char-card-container {
   border-bottom: 1px solid lightgrey;
