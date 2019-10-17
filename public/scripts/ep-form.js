@@ -25,18 +25,24 @@ charBtn.click(function(e){
   fontColorTemplateInput.val(charColor);
   highlightTemplateInput.val(highlight);
 
-  let newForm = dialogueForm.clone().removeClass("d-none").addClass("newDialogue");
+  let newForm = dialogueForm.clone().removeClass("d-none");
+
+  // Add cancel listener to newForm
+  newForm
+    .children(".dialogue-form-row")
+    .children(".dialogue-textarea")
+    .children(".cancel-btn")
+    .click(function(){
+
+      newForm.remove();
+    });
 
   dialogueContainer.append(newForm);
   window.scrollTo(0,document.body.scrollHeight);
 
-  // Event Listener for Cancel Dialogue Button
-  // Placed inside another Listener because it needs to be done each time
-  // --- Instructions:
-  /// Target all .cancel-btn with DOM
-  /// Target all .newDialogue with DOM
-  // loop thru all .cancel-btn adding listeners to each
-  // based on which index remove specific newDialogue with .remove()
+  //
+  // .parent()
+  // .remove()
 });
 
 
