@@ -23,7 +23,7 @@
             <input class="dialogue-name-input d-none" type="text"
               name="char" value="<%= char %>">
             <!-- Row for Name, Colors, and Text -->
-            <div class="row bg-white">
+            <div class="dialogue-form-row row bg-white">
               <!-- Column for Name and Colors -->
               <div class="col-3 text-center pt-3">
                 <p class="dialogue-name char-name"
@@ -36,7 +36,9 @@
                   value="<%=ep.highlight[i]%>" name="highlight">
               </div>
               <!-- Column for Dialogue Text -->
-              <div class="col-9">
+              <div class="dialogue-textarea col-9">
+                <!-- Cancel Button -->
+                <i id="premade-dialogue<%=i%>" class="premade-dialogue cancel-btn far fa-window-close fa-2x text-secondary float-right mr-2 mt-1"></i>
                 <textarea
                   class="m-0 border-0 dialogue-text"
                   name="text"
@@ -59,7 +61,7 @@
       <!-- Invisible Char Name -->
       <input id="dialogue-name-template-input" class="dialogue-name-input d-none" type="text" name="char">
       <!-- Row for Name, Colors, and Text -->
-      <div class="row bg-white">
+      <div class="dialogue-form-row row bg-white">
         <!-- Column for Name and Colors -->
         <div class="col-3 text-center pt-3">
           <p id="dialogue-name-template" class="dialogue-name char-name"></p>
@@ -67,7 +69,10 @@
           <input id="highlight-template-input" class="highlight-input" type="color" name="highlight">
         </div>
         <!-- Column for Dialogue Text -->
-        <div class="col-9">
+        <div class="dialogue-textarea col-9">
+          <!-- Cancel Button -->
+          <i class="cancel-btn far fa-window-close fa-2x text-secondary float-right mr-2 mt-1"></i>
+          <!-- Dialogue Textarea -->
           <textarea
             class="m-0 border-0 dialogue-text"
             name="text"

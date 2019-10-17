@@ -27,24 +27,26 @@ charBtn.click(function(e){
 
   let newForm = dialogueForm.clone().removeClass("d-none");
 
-  // Add cancel listener to newForm
+  // Add cancel listener to newForm ===============
   newForm
     .children(".dialogue-form-row")
     .children(".dialogue-textarea")
     .children(".cancel-btn")
     .click(function(){
-
       newForm.remove();
     });
 
   dialogueContainer.append(newForm);
   window.scrollTo(0,document.body.scrollHeight);
-
-  //
-  // .parent()
-  // .remove()
 });
 
+// Add Listener to Cancel Button for Edit Page's Premade Dialogues=====
+// Using DOM to iterate thru all of the one at a time, uniquely
+$(".premade-dialogue")
+  .click(function(){
+    let entireDialogue = $("#" + this.id).parent().parent().parent();
+    entireDialogue.remove();
+  });
 
 
 // Event Listener for Background Color ==========================
