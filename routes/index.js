@@ -67,7 +67,23 @@ router.get("/logout", function(req, res){
   req.logout();
   req.flash("success", "You have been successfully logged out!");
   res.redirect("/fics");
-})
+});
+
+router.get("/create", middleware.isLoggedIn, function(req, res){
+
+  User.
+    findById(req.user._id).
+    populate("fics").
+    exec(function(err, foundUser){
+      if (err) {
+        console.log(err);
+        req.flash("error", err.message);
+        res.redirect("back");
+      } else {
+        res.render("create", {user: foundUser});
+      }
+  })
+});
 
 router.get("/user/:user_id", function(req, res){
   User.

@@ -1,0 +1,62 @@
+<%- include ./partials/header %>
+
+<h1 class="text-center my-5">Select an option to start creating!</h1>
+
+<div class="">
+  <a class="btn btn-light w-100 rounded-0" href="/fics/new">
+    <h4 class="display-4">New Fic</h4>
+  </a>
+</div>
+
+<% if (user.fics.length > 0) { %>
+  <!-- Button for new char modal -->
+  <button type="button" class="btn btn-light w-100 rounded-0" data-toggle="modal" data-target="#newChar">
+    <h4 class="display-4">Add Character</h4>
+  </button>
+
+  <!-- new char modal -->
+  <div class="modal fade" id="newChar" tabindex="-1" role="dialog" aria-labelledby="newCharLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="newCharLabel">Select Fic to Add New Character</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <% user.fics.forEach(function(fic) { %>
+            <a class="btn btn-light w-100 rounded-0" href="/fics/<%=fic._id%>/chars/new"><%= fic.title %></a>
+          <% }); %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Button for new char modal -->
+  <button type="button" class="btn btn-light w-100 rounded-0" data-toggle="modal" data-target="#newEp">
+    <h4 class="display-4">Add Episode</h4>
+  </button>
+
+  <!-- new char modal -->
+  <div class="modal fade" id="newEp" tabindex="-1" role="dialog" aria-labelledby="newEpLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="newEpLabel">Select Fic to Add New Episode</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <% user.fics.forEach(function(fic) { %>
+            <a class="btn btn-light w-100 rounded-0" href="/fics/<%=fic._id%>/eps/new"><%= fic.title %></a>
+          <% }); %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% } %>
+
+
+<%- include ./partials/footer %>
