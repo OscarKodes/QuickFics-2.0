@@ -114,6 +114,15 @@ label {
 }
 
 /* EPISODE NEW, EDIT, SHOW PAGE */
+.make-char-prompt {
+  background-color: white;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  text-align: center;
+  padding-top: 10rem;
+}
+
 .char-select {
   overflow: hidden;
 }

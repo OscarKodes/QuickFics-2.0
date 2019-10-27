@@ -53,15 +53,29 @@
 
   <!-- Character Selection for Episode New and Edit Forms -->
   <% if (unique_header && unique_header === "epForm") { %>
-    <div class="char-select d-flex flex-wrap mb-4 py-2 px-3 bg-white border shadow-lg">
-      <% chars.forEach(function(char){ %>
-          <p class="char-btn"
-          style="color:<%=char.fontColor%>;
-          background-color:<%=char.highlight%>;">
-            <%= char.name %>
-          </p>
-      <% }) %>
-    </div>
+    <% if (chars.length === 0) { %>
+      <div class="make-char-prompt">
+        <p>
+          No characters have been created for this Fic.
+        </p>
+        <p>
+          To create an episode, please create a character first.
+        </p>
+        <a class="btn btn-lg btn-success mt-4" href="/fics/<%= fic_id %>/chars/new">
+          Create Characters
+        </a>
+      </div>
+    <% } else { %>
+      <div class="char-select d-flex flex-wrap mb-4 py-2 px-3 bg-white border shadow-lg">
+        <% chars.forEach(function(char){ %>
+            <p class="char-btn"
+            style="color:<%=char.fontColor%>;
+            background-color:<%=char.highlight%>;">
+              <%= char.name %>
+            </p>
+        <% }) %>
+      </div>
+    <% } %>
   <% } %>
 
 </div> <!-- Closing div tag for fixed top -->
