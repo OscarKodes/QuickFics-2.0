@@ -1,11 +1,19 @@
 <%- include ./partials/header %>
-    <h1>User Profile Page</h1>
-    <p><%= user.name ? user.name : user.username %></p>
+    <h1 class="display-3 text-center my-5">
+      <%= user.name ? user.name : user.username %>'s Fics
+    </h1>
 
     <% user.fics.forEach(function(fic){ %>
-      <p><%= fic.title %></p>
+      <div class="text-center">
+        <a class="btn btn-light btn-lg py-3 px-5 mx-2 mb-4 shadow"
+          href="/fics/<%= fic._id %>">
+            <%= fic.title %>
+        </a>
+      </div>
     <% }); %>
 
-    <a href="/logout">logout</a>
+    <div class="text-center">
+      <a class="btn btn-outline-secondary btn-sm mt-5 py-0" href="/logout">Sign Out</a>
+    </div>
 
 <%- include ./partials/footer %>
