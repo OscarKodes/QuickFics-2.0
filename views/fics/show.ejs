@@ -5,9 +5,14 @@
       <%= fic.title %>
     </h1>
     <p>
-      <%=fic.author.name ? fic.author.name : fic.author.username %>
+      Author:
+      <em>
+        <a class="text-decoration-none" href="/user/<%= fic.author._id %>">
+          <%=fic.author.name ? fic.author.name : fic.author.username %>
+        </a>
+      </em>
     </p>
-    <p>
+    <p class="mt-3">
       <%= fic.description %>
     </p>
 
