@@ -16,7 +16,6 @@ router.get("/", function (req, res){
     } else {
       res.render("chars/index", {
         fic: foundFic,
-        unique_header: "backToFic"
       });
     }
   });
