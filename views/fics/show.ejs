@@ -1,5 +1,12 @@
 <%- include ../partials/header %>
 
+<!-- Author control panel -->
+<% if (currentUser && currentUser._id.equals(fic.author._id)) { %>
+  <% let currPage = "ficPage" %>
+  <% include ../partials/author-control-panel %>
+<% } %>
+
+  <!-- Fic Heading -->
   <div class="fic-header text-center">
     <h1 class="display-3 my-4">
       <%= fic.title %>
@@ -16,28 +23,7 @@
       <%= fic.description %>
     </p>
 
-    <div class="shadow-lg">
-      <% if (currentUser && currentUser._id.equals(fic.author._id)) { %>
-        <a class="btn btn-lg btn-primary py-3 w-100 rounded-0" href="/fics/<%= fic._id %>/eps/new">
-          <i class="fas fa-plus mr-1"></i> Add New Episode</a>
-      <% } %>
 
-      <% if (currentUser && currentUser._id.equals(fic.author._id)) { %>
-        <a class="btn btn-lg btn-secondary py-3 w-100 rounded-0" href="/fics/<%= fic._id %>/chars/new">
-          <i class="fas fa-plus mr-1"></i> Add Character</a>
-      <% } %>
-
-      <a class="btn btn-lg btn-secondary py-3 w-100 rounded-0" href="/fics/<%= fic._id %>/chars">
-        <i class="fas fa-th-large mr-1"></i> View Characters
-      </a>
-
-      <% if (currentUser && currentUser._id.equals(fic.author._id)) { %>
-        <a class="btn btn-lg btn-secondary py-3 w-100 rounded-0" href="/fics/<%= fic._id %>/edit">
-          <i class="fas fa-edit mr-1"></i> Edit Fic Details
-        </a>
-      <% } %>
-
-    </div>
 
 
 

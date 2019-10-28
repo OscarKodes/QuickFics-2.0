@@ -1,16 +1,18 @@
 <%- include ../partials/header %>
 
+    <!-- Author control panel -->
+    <% if (currentUser && currentUser._id.equals(fic.author._id)) { %>
+      <% let currPage = "charPage" %>
+      <% include ../partials/author-control-panel %>
+    <% } %>
+
+    <!-- Fic Heading -->
     <div class="text-center my-5">
       <h1 class="display-4"><%= fic.title %></h1>
       <h2>Characters</h2>
     </div>
 
-    <% if (currentUser && currentUser._id.equals(fic.author._id)) { %>
-      <a class="btn btn-lg btn-success py-3 w-100 rounded-0 mb-4" href="/fics/<%= fic._id %>/chars/new">
-        <i class="fas fa-plus mr-1"></i>Add Character</a>
-    <% } %>
-
-
+    <!-- All characters -->
     <div class="char-card-container">
       <% fic.chars.forEach(function(char, i){ %>
         <div class="char-card p-4 bg-light text-center">

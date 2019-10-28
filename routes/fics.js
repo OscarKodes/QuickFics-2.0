@@ -53,8 +53,8 @@ router.post("/", function(req, res){
           // We set the Fic reference into the User here
           foundUser.fics.push(createdFic);
           foundUser.save();
-          req.flash("success", "Successfully created new fic!");
-          res.redirect("/fics/" + createdFic._id);
+          req.flash("success", "Successfully created a new fic! Now, you can add characters!");
+          res.redirect("/fics/" + createdFic._id + "/chars/new");
         }
       })
     }

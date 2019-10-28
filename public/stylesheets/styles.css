@@ -80,6 +80,11 @@ label {
 }
 
 /* FIC SHOW PAGE */
+.author-control-panel p {
+  font-size: .8rem;
+}
+
+
 .episode-link {
   font-weight: light;
   font-size: 1.3rem;
