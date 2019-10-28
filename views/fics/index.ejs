@@ -1,14 +1,12 @@
 <%- include ../partials/header %>
 
-    <% if (!currentUser) { %>
-      <div class="text-center">
+    <div class="text-center my-4">
+      <% if (!currentUser) { %>
         <a class="btn btn-xl btn-success my-3" href="/register">Register to Submit Fics!</a>
-      </div>
-    <% } else { %>
-      <div class="text-center">
+      <% } else { %>
         <a class="btn btn-xl btn-primary my-3" href="/fics/new">Submit New Fic</a>
-      </div>
-    <% } %>
+      <% } %>
+    </div>
 
     <div class="fic-card-container">
       <% fics.reverse().forEach(function(fic){ %>

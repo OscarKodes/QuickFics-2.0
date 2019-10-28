@@ -1,6 +1,6 @@
 <%- include ../partials/header %>
 
-  <div class="text-center bg-white shadow mx-4 py-3 rounded">
+  <div class="text-center bg-white shadow mt-4 mx-4 py-3 rounded">
     <h2 class="display-4"><%= ep.title %></h2>
   </div>
 
@@ -36,7 +36,7 @@
 
   <% if (currentUser && currentUser._id.equals(fic.author._id)) { %>
 
-    <div class="text-center w-100">
+    <div class="text-right my-4 mr-5">
       <!-- Delete Button trigger modal -->
       <% include ../partials/deleteModalTop %>
         <form class="" action="/fics/<%=fic._id%>/eps/<%=ep_num%>?_method=DELETE" method="post">

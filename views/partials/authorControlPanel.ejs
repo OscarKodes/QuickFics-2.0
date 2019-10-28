@@ -1,0 +1,36 @@
+
+<!-- Author's Control Panel -->
+<div class="author-control-panel shadow-lg">
+
+  <div class="row">
+
+    <a class="col btn btn-lg btn-secondary pt-3 pb-1 w-100 rounded-0 <%= currPage === 'ficPage' ? 'active' : null %>"
+      href="/fics/<%= fic._id %>">
+      <i class="fas fa-book-open fa-lg" SameSite=None></i>
+      <p>Fic Profile</p>
+    </a>
+
+    <a class="col btn btn-lg btn-secondary pt-3 pb-1 w-100 rounded-0 <%= currPage === 'charPage' ? 'active' : null %>"
+      href="/fics/<%= fic._id %>/chars">
+      <i class="fas fa-th-large fa-lg" SameSite=None></i>
+      <p>View Characters</p>
+    </a>
+
+    <a class="col btn btn-lg btn-secondary pt-3 pb-1 w-100 rounded-0" href="/fics/<%= fic._id %>/eps/new">
+      <i class="fas fa-plus fa-lg" SameSite=None></i>
+      <p>Add Episode</p>
+    </a>
+
+    <a class="col btn btn-lg btn-secondary pt-3 pb-1 w-100 rounded-0" href="/fics/<%= fic._id %>/chars/new">
+      <i class="fas fa-user-plus fa-lg" SameSite=None></i>
+      <p>Add Character</p>
+     </a>
+
+    <a class="col btn btn-lg btn-secondary pt-3 pb-1 w-100 rounded-0" href="/fics/<%= fic._id %>/edit">
+      <i class="fas fa-edit fa-lg" SameSite=None></i>
+      <p>Edit Fic Details</p>
+     </a>
+
+  </div>
+
+</div>

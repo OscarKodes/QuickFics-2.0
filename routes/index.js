@@ -39,7 +39,7 @@ router.post("/register", function(req, res){
         res.redirect("back");
       } else {
         passport.authenticate("local")(req, res, function(){
-          req.flash("success", "Welcome!");
+          req.flash("success", "Welcome! Now you can create and bookmark fics!");
           res.redirect("/fics");
         });
       }
