@@ -25,22 +25,20 @@
 
     <!-- Show Fic USER CONTROL PANEL -->
     <div class="user-control-panel shadow-sm">
-      <!-- Show Bookmark button if logged in -->
-      <% if (currentUser) { %>
-        <a class="user-control-btn"
-         href="#">
-          <i class="fas fa-bookmark mr-2"></i>Bookmark
-        </a>
-      <% } %>
-      <!-- Show character page button always -->
-      <a class="user-control-btn"
-        href="/fics/<%= fic._id %>/chars">
-        <i class="fas fa-users mr-2"></i>See Characters
-      </a>
-      <!-- Always show this Copy URL Button -->
       <a class="user-control-btn"
        href="#">
-        <i class="fas fa-copy mr-2"></i>Copy URL
+        <i class="fas fa-bookmark mr-2"
+          SameSite=None Secure></i>Save Fic
+      </a>
+      <a class="user-control-btn"
+        href="/fics/<%= fic._id %>/chars">
+        <i class="fas fa-users mr-2"
+          SameSite=None Secure></i>See Characters
+      </a>
+      <a class="user-control-btn"
+       href="#">
+        <i class="fas fa-copy mr-2"
+          SameSite=None Secure></i>Copy URL
       </a>
 
     <!-- Closing tag for user control panel -->
