@@ -96,31 +96,33 @@ label {
   border-radius: .1rem;
 }
 
-a.user-control-btn {
+a.user-control-btn,
+button.user-control-btn {
   color: #666;
   text-decoration: none;
   padding: 0 1rem;
+  background: none;
+  border: none;
 }
 
-a.user-control-btn:hover {
+a.user-control-btn:hover,
+button.user-control-btn:hover {
   color: #999;
   text-decoration: none;
 }
 
-
-/* .user-control-panel a:first-child {
-  border-top-left-radius: .2rem;
-  border-top-right-radius: .2rem;
+button.user-control-btn:focus {
+  outline: 0;
 }
-
-.user-control-panel a:last-child {
-  border-bottom-left-radius: .2rem;
-  border-bottom-right-radius: .2rem;
-} */
 
 .episode-link {
   font-weight: light;
   font-size: 1.3rem;
+}
+
+.off-screen {
+  position: absolute;
+  right: 200vw;
 }
 
 /* CHAR INDEX PAGE */
