@@ -23,15 +23,31 @@
       <%= fic.description %>
     </p>
 
-    <!-- Show character page button if not author -->
-    <% if (!(currentUser && currentUser._id.equals(fic.author._id))) { %>
-      <div class="">
-        <a class="btn btn-outline-secondary py-0" href="/fics/<%= fic._id %>/chars">
-          View Characters
+    <!-- Show Fic USER CONTROL PANEL -->
+    <div class="user-control-panel shadow-sm">
+      <!-- Show Bookmark button if logged in -->
+      <% if (currentUser) { %>
+        <a class="user-control-btn"
+         href="#">
+          <i class="fas fa-bookmark mr-2"></i>Bookmark
         </a>
-      </div>
+      <% } %>
+      <!-- Show character page button if not author -->
+      <% if (!(currentUser && currentUser._id.equals(fic.author._id))) { %>
+        <a class="user-control-btn"
+          href="/fics/<%= fic._id %>/chars">
+          <i class="fas fa-users mr-2"></i>See Characters
+        </a>
+      <% } %>
+      <!-- Always show this Copy URL Button -->
+      <a class="user-control-btn"
+       href="#">
+        <i class="fas fa-copy mr-2"></i>Copy URL
+      </a>
 
-    <% } %>
+    <!-- Closing tag for user control panel -->
+    </div>
+  <!-- Closing tag for fic heading -->
   </div>
 
   <!-- Start Reading Button -->
