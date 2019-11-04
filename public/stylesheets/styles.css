@@ -89,6 +89,35 @@ label {
   font-size: .8rem;
 }
 
+.user-control-panel {
+  display: inline-block;
+  border: 1px #666 solid;
+  padding: .4rem;
+  border-radius: .1rem;
+}
+
+a.user-control-btn {
+  color: #666;
+  text-decoration: none;
+  padding: 0 1rem;
+}
+
+a.user-control-btn:hover {
+  color: #999;
+  text-decoration: none;
+}
+
+
+/* .user-control-panel a:first-child {
+  border-top-left-radius: .2rem;
+  border-top-right-radius: .2rem;
+}
+
+.user-control-panel a:last-child {
+  border-bottom-left-radius: .2rem;
+  border-bottom-right-radius: .2rem;
+} */
+
 .episode-link {
   font-weight: light;
   font-size: 1.3rem;

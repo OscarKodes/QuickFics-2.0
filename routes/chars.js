@@ -8,14 +8,17 @@ const router = express.Router({mergeParams: true});
 // INDEX ROUTE
 router.get("/", function (req, res){
 
-  Fic.findById(req.params.id, function(err, foundFic){
+  Fic.
+  findById(req.params.id).
+  populate("author").
+  exec(function(err, foundFic){
     if (err) {
       console.log(err);
       req.flash("error", err.message);
       res.redirect("back");
     } else {
       res.render("chars/index", {
-        fic: foundFic,
+        fic: foundFic
       });
     }
   });
