@@ -15,19 +15,15 @@ passport.deserializeUser(User.deserializeUser());
 
 // Routes =======================================
 router.get("/", function(req, res){
-  res.redirect("/front");
+  res.redirect("/fics");
 });
 
-router.get("/front", function(req, res){
-  res.render("front");
-});
-
-//Register Render form
+// Register Render form
 router.get("/register", function(req, res){
   res.render("register");
 });
 
-//Register process user
+// Register process user
 router.post("/register", function(req, res){
   User.register(
     {username: req.body.username},
@@ -47,12 +43,12 @@ router.post("/register", function(req, res){
   )
 });
 
-//Login render form
+// Login render form
 router.get("/login", function(req, res){
   res.render("login");
 })
 
-//Login process user
+// Login process user
 router.post("/login", passport.authenticate("local",
   {
     successRedirect: "/fics",
@@ -62,15 +58,15 @@ router.post("/login", passport.authenticate("local",
   }), function(req, res){
 });
 
-//Logout
+// Logout Process
 router.get("/logout", function(req, res){
   req.logout();
   req.flash("success", "You have been successfully logged out!");
   res.redirect("/fics");
 });
 
+// Create NavBar button to page for easy creation access
 router.get("/create", middleware.isLoggedIn, function(req, res){
-
   User.
     findById(req.user._id).
     populate("fics").
@@ -85,6 +81,7 @@ router.get("/create", middleware.isLoggedIn, function(req, res){
   })
 });
 
+// User's Profile My Fics
 router.get("/user/:user_id", function(req, res){
   User.
     findById(req.params.user_id).
