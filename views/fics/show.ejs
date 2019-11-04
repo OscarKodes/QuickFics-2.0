@@ -25,10 +25,13 @@
 
     <!-- Show Fic USER CONTROL PANEL -->
     <div class="user-control-panel shadow-sm">
-      <button class="user-control-btn">
-        <i class="fas fa-bookmark mr-2"
-          SameSite=None Secure></i>Save Fic
-      </button>
+      <form class="" action="/savedFics" method="post">
+        <input class="d-none" type="text" name="fic_id" value="<%= fic._id %>">
+        <button class="user-control-btn" type="submit">
+          <i class="fas fa-bookmark mr-2"
+            SameSite=None Secure></i>Save Fic
+        </button>
+      </form>
       <a class="user-control-btn"
         href="/fics/<%= fic._id %>/chars">
         <i class="fas fa-users mr-2"

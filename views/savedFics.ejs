@@ -1,0 +1,16 @@
+<%- include ./partials/header %>
+    <h1 class="display-4 text-center my-5">
+      <%= currentUser.name ? currentUser.name :currentUser.username %>'s Saved Fics
+    </h1>
+
+    <% if (currentUser.savedFics.length === 0) { %>
+      <p>No fics have been saved yet.</p>
+      <p>You can save fics to read later by clicking the "Save Fic" button on a fic's profile page.</p>
+    <% } else { %>
+      <% currentUser.savedFics.forEach(function(fic){ %>
+        <p><%= fic %></p>
+      <% }); %>
+    <% } %>
+
+
+<%- include ./partials/footer %>

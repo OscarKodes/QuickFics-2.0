@@ -5,14 +5,30 @@ const router = express.Router({mergeParams: true});
 
 // SavedFics INDEX ROUTE ==============
 router.get("/", middleware.isLoggedIn, function(req, res){
-  res.send("SavedFics IndexRoute success");
+  res.render("savedFics");
 });
 
 // SavedFics NEW ROUTE ==============
 // No need to render a form for new savedFic, 'Save Fic' button is enough
 
 // SavedFics CREATE ROUTE ==============
-// Save the id of curr Fic into User
+router.post("/", middleware.isLoggedIn, function(req, res){
+
+  console.log(req.body);
+  console.log(req.user);
+  User.findById(req.user._id, function(err, foundUser){
+    if (err) {
+      console.log(err);
+      req.flash("error", err.message);
+      res.redirect("back");
+    } else {
+      foundUser.savedFics.push(req.body.fic_id);
+      foundUser.save();
+      req.flash("success", "Fic successfully saved!");
+      res.redirect("back");
+    }
+  });
+});
 
 // SavedFics SHOW ROUTE ==============
 // No need. Index Route is enough.
