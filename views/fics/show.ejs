@@ -25,21 +25,17 @@
 
     <!-- Show Fic USER CONTROL PANEL -->
     <div class="user-control-panel shadow-sm">
-      <a class="user-control-btn"
-       href="#">
+      <button class="user-control-btn">
         <i class="fas fa-bookmark mr-2"
           SameSite=None Secure></i>Save Fic
-      </a>
+      </button>
       <a class="user-control-btn"
         href="/fics/<%= fic._id %>/chars">
         <i class="fas fa-users mr-2"
           SameSite=None Secure></i>See Characters
       </a>
-      <a class="user-control-btn"
-       href="#">
-        <i class="fas fa-copy mr-2"
-          SameSite=None Secure></i>Copy URL
-      </a>
+      <!-- Copy to Clipboard button -->
+      <%- include ../partials/copyToClipBoard %>
 
     <!-- Closing tag for user control panel -->
     </div>

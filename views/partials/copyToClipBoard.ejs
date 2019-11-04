@@ -1,0 +1,22 @@
+<button class="user-control-btn" id="copy-url-btn">
+  <i class="fas fa-copy mr-2"
+    SameSite=None Secure></i>Copy URL
+</button>
+
+<textarea class="off-screen" id="url-holder"></textarea>
+
+<script type="text/javascript">
+  const copyUrlBtn = document.querySelector("#copy-url-btn");
+  const urlHolder = document.querySelector("#url-holder");
+
+  urlHolder.textContent = document.URL;
+
+  copyUrlBtn.addEventListener("click", function(){
+    urlHolder.select();
+    urlHolder.setSelectionRange(0, 99999);
+    document.execCommand("copy");
+    copyUrlBtn.innerHTML =
+      '<i class="fas fa-copy mr-2" SameSite=None Secure></i>Copied!';
+    copyUrlBtn.style.color = "green";
+  });
+</script>
