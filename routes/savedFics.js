@@ -5,7 +5,18 @@ const router = express.Router({mergeParams: true});
 
 // SavedFics INDEX ROUTE ==============
 router.get("/", middleware.isLoggedIn, function(req, res){
-  res.render("savedFics");
+  User.
+  findById(req.user._id).
+  populate("savedFics").
+  exec(function(err, foundUser){
+    if (err) {
+      console.log(err);
+      req.flash("error", err.message);
+      res.redirect("back");
+    } else {
+      res.render("savedFics", {savedFics: foundUser.savedFics});
+    }
+  })
 });
 
 // SavedFics NEW ROUTE ==============
