@@ -13,6 +13,10 @@ const userSchema = new mongoose.Schema({
   fics: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: "Fic"
+  }],
+  savedFics: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Fic"
   }]
 });
 

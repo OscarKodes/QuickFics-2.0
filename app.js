@@ -24,6 +24,7 @@ const ficRoutes = require("./routes/fics");
 const charRoutes = require("./routes/chars");
 const epRoutes = require("./routes/eps");
 const authRoutes = require("./routes/auth");
+const savedFicRoutes = require("./routes/savedFics");
 const indexRoutes = require("./routes/index");
 
 
@@ -62,6 +63,7 @@ mongoose.set("useCreateIndex", true);
 
 app.use(indexRoutes);
 app.use("/fics", ficRoutes);
+app.use("/savedFics", savedFicRoutes);
 app.use("/fics/:id/chars", charRoutes);
 app.use("/fics/:id/eps", epRoutes);
 app.use("/auth", authRoutes);
