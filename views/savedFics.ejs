@@ -5,8 +5,10 @@
 
 
 <% if (savedFics.length === 0) { %>
-  <p>No fics have been saved yet.</p>
-  <p>You can save fics to read later by clicking the "Save Fic" button on a fic's profile page.</p>
+  <div class="container text-center">
+    <p>No fics have been saved yet.</p>
+    <p>You can save fics by clicking the "Save Fic" button on a fic's profile page.</p>
+  </div>
 <% } else { %>
   <% savedFics.reverse().forEach(function(fic){ %>
 

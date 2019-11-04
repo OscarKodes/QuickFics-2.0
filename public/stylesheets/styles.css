@@ -93,6 +93,10 @@ label {
 }
 
 /* FIC SHOW PAGE */
+.fic-data {
+  font-size: .8rem;
+}
+
 .author-control-panel p {
   font-size: .8rem;
 }

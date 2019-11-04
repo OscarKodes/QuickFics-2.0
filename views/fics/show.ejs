@@ -11,20 +11,23 @@
     <h1 class="display-3 my-4">
       <%= fic.title %>
     </h1>
-    <p>
-      Author:
-      <em>
-        <a class="text-decoration-none" href="/user/<%= fic.author._id %>">
-          <%=fic.author.name ? fic.author.name : fic.author.username %>
-        </a>
-      </em>
-    </p>
-    <p>
-      Created:
-      <em>
-        <%=fic.dateCreated.toString().slice(0, 15) %>
-      </em>
-    </p>
+    <div class="fic-data">
+      <p>
+        Author:
+        <em>
+          <a class="text-decoration-none" href="/user/<%= fic.author._id %>">
+            <%=fic.author.name ? fic.author.name : fic.author.username %>
+          </a>
+        </em>
+      </p>
+      <p>
+        Created:
+        <em>
+          <%=fic.dateCreated.toString().slice(0, 15) %>
+        </em>
+      </p>
+    </div>
+
     <p class="my-4">
       <%= fic.description %>
     </p>
@@ -77,11 +80,29 @@
   <div class="text-center bg-light border rounded m-3 shadow-sm overflow-hidden">
     <h2 class="my-4">Episode List</h2>
 
-    <% fic.eps.forEach(function(ep, i){ %>
-        <a class="episode-link nav-link bg-light" href="/fics/<%= fic._id %>/eps/<%= i + 1 %>">
-          <p class="text-dark">Episode <%= i + 1 %>: <%= ep.title %> <span><%=ep.dateCreated.toString().slice(0, 15)%></span></p>
-        </a>
-    <% }) %>
+      <table class="table">
+        <thead>
+          <th>#Number</th>
+          <th>Title</th>
+          <th>Created</th>
+        </thead>
+        <tbody>
+        <% fic.eps.forEach(function(ep, i){ %>
+              <tr>
+                <td><%= i + 1 %></td>
+                <td>
+                  <a class="text-primary text-decoration-none" href="/fics/<%= fic._id %>/eps/<%= i + 1 %>">
+                    <em><strong><%= ep.title %></strong></em>
+                  </a>
+                </td>
+                <td><%=ep.dateCreated.toLocaleDateString()%></td>
+              </tr>
+            <!-- <a class="episode-link nav-link bg-light" href="/fics/<%= fic._id %>/eps/<%= i + 1 %>">
+              <p class="text-dark">Episode <%= i + 1 %>: <%= ep.title %> <span><%=ep.dateCreated.toString().slice(0, 15)%></span></p>
+            </a> -->
+        <% }) %>
+      </tbody>
+    </table>
   </div>
 
 
