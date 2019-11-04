@@ -15,6 +15,10 @@ const epSchema = {
   text: [String],
   fontColor: [String],
   highlight: [String],
+  likes: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User"
+  }],
   dateCreated: {
     type: Date,
     default: Date.now
@@ -26,6 +30,7 @@ const ficSchema = new mongoose.Schema({
   description: String,
   chars: [charSchema],
   eps: [epSchema],
+  totalLikes: {type: Number, default: 0},
   author: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User"

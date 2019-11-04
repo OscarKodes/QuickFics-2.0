@@ -95,7 +95,7 @@ router.get("/:ep_num/edit", middleware.checkFicOwnership, function(req, res){
   });
 });
 
-// UPDATE ROUTE
+// EPS UPDATE ROUTE
 router.put("/:ep_num", middleware.checkFicOwnership, function(req, res){
 
   let editedEp = {
@@ -117,6 +117,31 @@ router.put("/:ep_num", middleware.checkFicOwnership, function(req, res){
       foundFic.save();
       req.flash("success", "Episode updated!");
       res.redirect("/fics/" + req.params.id + "/eps/" + req.params.ep_num);
+    }
+  })
+});
+
+// STARS / LIKES UPDATE ROUTE
+router.put("/:ep_num/like", middleware.isLoggedIn, function(req, res){
+
+  Fic.findById(req.params.id, function(err, foundFic){
+    if (err) {
+      console.log(err);
+      req.flash("error", err.message);
+      res.redirect("back");
+    } else if (foundFic.eps[req.params.ep_num - 1].likes.includes(req.user._id)) {
+      const likeIdx = foundFic.eps[req.params.ep_num - 1].likes.indexOf(req.user._id);
+      foundFic.eps[req.params.ep_num - 1].likes.splice(likeIdx, 1);
+      // foundFic.totalLikes = foundFic.eps.map(ep => ep.likes.length).reduce((sum, num) => sum += num);
+      foundFic.totalLikes--;
+      foundFic.save();
+      res.redirect("back");
+    } else {
+      foundFic.eps[req.params.ep_num - 1].likes.push(req.user._id);
+      // foundFic.totalLikes = foundFic.eps.map(ep => ep.likes.length).reduce((sum, num) => sum += num);
+      foundFic.totalLikes++;
+      foundFic.save();
+      res.redirect("back");
     }
   })
 });

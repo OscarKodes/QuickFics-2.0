@@ -8,32 +8,12 @@
 
   <!-- Fic Heading -->
   <div class="fic-header text-center bg-white shadow-sm pt-2 pb-4">
-    <h1 class="display-3 my-4">
+    <h1 class="display-3 mt-4 mb-3">
       <%= fic.title %>
     </h1>
-    <div class="fic-data">
-      <p>
-        Author:
-        <em>
-          <a class="text-decoration-none" href="/user/<%= fic.author._id %>">
-            <%=fic.author.name ? fic.author.name : fic.author.username %>
-          </a>
-        </em>
-      </p>
-      <p>
-        Created:
-        <em>
-          <%=fic.dateCreated.toString().slice(0, 15) %>
-        </em>
-      </p>
-    </div>
-
-    <p class="my-4">
-      <%= fic.description %>
-    </p>
 
     <!-- Show Fic USER CONTROL PANEL -->
-    <div class="user-control-panel shadow-sm">
+    <div class="user-control-panel shadow-sm mb-3">
 
         <% if (currentUser && currentUser.savedFics.includes(fic._id)) { %>
           <form class="d-inline" action="/savedfics/<%= fic._id %>?_method=DELETE" method="post">
@@ -51,7 +31,6 @@
             </button>
           </form>
         <% } %>
-
       <a class="user-control-btn"
         href="/fics/<%= fic._id %>/chars">
         <i class="fas fa-users mr-2"
@@ -59,11 +38,31 @@
       </a>
       <!-- Copy to Clipboard button -->
       <%- include ../partials/copyToClipBoard %>
+    </div> <!-- Closing tag for user control panel -->
 
-    <!-- Closing tag for user control panel -->
+    <div class="fic-data">
+      <p>
+        Author:
+        <a class="text-decoration-none h6" href="/user/<%= fic.author._id %>">
+          <%=fic.author.name ? fic.author.name : fic.author.username %>
+        </a>
+      </p>
+      <p>
+        Created:
+        <em>
+          <%=fic.dateCreated.toString().slice(4, 15) %>
+        </em>
+      </p>
+      <p>
+        Total Stars: <%=fic.totalLikes%>
+      </p>
     </div>
-  <!-- Closing tag for fic heading -->
-  </div>
+
+    <p class="my-4">
+      <%= fic.description %>
+    </p>
+
+  </div> <!-- Closing tag for fic heading -->
 
   <!-- Start Reading Button -->
   <div class="text-center mt-4">
@@ -82,8 +81,9 @@
 
       <table class="table">
         <thead>
-          <th>#Number</th>
+          <th>Ep. No.</th>
           <th>Title</th>
+          <th>Stars</th>
           <th>Created</th>
         </thead>
         <tbody>
@@ -95,11 +95,9 @@
                     <em><strong><%= ep.title %></strong></em>
                   </a>
                 </td>
+                <td><%=ep.likes.length%></td>
                 <td><%=ep.dateCreated.toLocaleDateString()%></td>
               </tr>
-            <!-- <a class="episode-link nav-link bg-light" href="/fics/<%= fic._id %>/eps/<%= i + 1 %>">
-              <p class="text-dark">Episode <%= i + 1 %>: <%= ep.title %> <span><%=ep.dateCreated.toString().slice(0, 15)%></span></p>
-            </a> -->
         <% }) %>
       </tbody>
     </table>
