@@ -3,22 +3,55 @@
       <%= currentUser.name ? currentUser.name :currentUser.username %>'s Saved Fics
     </h1>
 
-    <% if (savedFics.length === 0) { %>
-      <p>No fics have been saved yet.</p>
-      <p>You can save fics to read later by clicking the "Save Fic" button on a fic's profile page.</p>
-    <% } else { %>
-      <% savedFics.reverse().forEach(function(fic){ %>
-        <div class="saved-fic-card">
-          <a href="/fics/<%= fic._id %>"><%= fic.title %></a>
-          <!-- Delete Button trigger modal -->
-          <div class="">
-            <% include ./partials/deleteModalTop %>
-              <form class="" action="/savedFics/<%= fic._id %>?_method=DELETE" method="post">
-            <% include ./partials/deleteModalBottom %>
+
+<% if (savedFics.length === 0) { %>
+  <p>No fics have been saved yet.</p>
+  <p>You can save fics to read later by clicking the "Save Fic" button on a fic's profile page.</p>
+<% } else { %>
+  <% savedFics.reverse().forEach(function(fic){ %>
+
+    <div class="text-center">
+
+      <a class="btn btn-light btn-lg py-3 px-5 mx-2 mb-4 shadow" href="/fics/<%= fic._id %>">
+        <h2><%=fic.title%></h2>
+        <p>By <%=fic.author.name ? fic.author.name : fic.author.username%></p>
+      </a>
+
+      <!-- Delete Button trigger modal -->
+      <div class="unsave-btn">
+        <!-- Delete Button-->
+        <button class="btn btn-outline-secondary btn-sm py-0" type="button" data-toggle="modal" data-target="#remove<%=fic._id%>">
+          Remove
+        </button>
+
+        <!-- Delete Modal -->
+        <div class="modal fade" id="remove<%=fic._id%>" tabindex="-1" role="dialog" aria-labelledby="remove<%=fic._id%>Label" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="remove<%=fic._id%>Label">Remove saved fic?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+
+              <div class="modal-body d-flex flex-row justify-content-around">
+                <form class="" action="/savedFics/<%= fic._id %>?_method=DELETE" method="post">
+
+                    <button class="btn btn-danger" type="submit" name="button">
+                      Yes, remove it</button>
+                </form>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">No, cancel</button>
+              </div>
+            </div>
           </div>
-        </div>
-      <% }); %>
-    <% } %>
+        </div> <!-- Closing tag for delete modal -->
+      </div> <!-- Closing tag for Delete Btn Trigger-->
+    </div>  <!-- Closing tag for centering div -->
+  <% }); %> <!-- End of forEach loop thru the savedFics -->
+<% } %>
+
+
 
 
 <%- include ./partials/footer %>

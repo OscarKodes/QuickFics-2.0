@@ -7,7 +7,10 @@ const router = express.Router({mergeParams: true});
 router.get("/", middleware.isLoggedIn, function(req, res){
   User.
   findById(req.user._id).
-  populate("savedFics").
+  populate({
+    path: "savedFics",
+    populate: {path: "author"}
+  }).
   exec(function(err, foundUser){
     if (err) {
       console.log(err);
@@ -60,10 +63,10 @@ router.delete("/:fic_id", middleware.isLoggedIn, function(req, res){
       const savedIdx = foundUser.savedFics.indexOf(req.params.fic_id);
       foundUser.savedFics.splice(savedIdx, 1);
       foundUser.save();
-      req.flash("success", "Fic unsaved!");
+      req.flash("success", "Removed saved fic!");
       res.redirect("back");
     }
-  })
+  });
 });
 
 
