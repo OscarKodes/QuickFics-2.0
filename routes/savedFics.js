@@ -60,7 +60,7 @@ router.delete("/:fic_id", middleware.isLoggedIn, function(req, res){
       const savedIdx = foundUser.savedFics.indexOf(req.params.fic_id);
       foundUser.savedFics.splice(savedIdx, 1);
       foundUser.save();
-      req.flash("success", "Saved Fic successfully removed.");
+      req.flash("success", "Fic unsaved!");
       res.redirect("back");
     }
   })

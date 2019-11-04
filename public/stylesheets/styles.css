@@ -105,6 +105,10 @@ button.user-control-btn {
   border: none;
 }
 
+button.user-control-btn.saved-fic-btn {
+  color: green;
+}
+
 a.user-control-btn:hover,
 button.user-control-btn:hover {
   color: #999;

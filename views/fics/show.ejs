@@ -25,13 +25,24 @@
 
     <!-- Show Fic USER CONTROL PANEL -->
     <div class="user-control-panel shadow-sm">
-      <form class="d-inline" action="/savedFics" method="post">
-        <input class="d-none" type="text" name="fic_id" value="<%= fic._id %>">
-        <button class="user-control-btn" type="submit">
-          <i class="fas fa-bookmark mr-2"
-            SameSite=None Secure></i>Save Fic
-        </button>
-      </form>
+
+        <% if (currentUser.savedFics.includes(fic._id)) { %>
+          <form class="d-inline" action="/savedfics/<%= fic._id %>?_method=DELETE" method="post">
+            <button class="user-control-btn saved-fic-btn" type="submit">
+              <i class="fas fa-bookmark mr-2"
+                SameSite=None Secure></i>Fic Saved!
+            </button>
+          </form>
+        <% } else { %>
+          <form class="d-inline" action="/savedFics" method="post">
+            <input class="d-none" type="text" name="fic_id" value="<%= fic._id %>">
+            <button class="user-control-btn" type="submit">
+              <i class="fas fa-bookmark mr-2"
+                SameSite=None Secure></i>Save Fic
+            </button>
+          </form>
+        <% } %>
+
       <a class="user-control-btn"
         href="/fics/<%= fic._id %>/chars">
         <i class="fas fa-users mr-2"
