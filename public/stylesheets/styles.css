@@ -6,7 +6,9 @@ body {
   word-wrap: break-word;
 } */
 
-input[type="text"], textarea {
+input[type="text"],
+input[type="password"], 
+textarea {
   display: block;
   width: 100vw;
   font-size: 2rem;

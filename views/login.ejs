@@ -1,13 +1,24 @@
 <%- include ./partials/header %>
-    <h1>Login Page</h1>
+    <h1 class="text-center my-5 display-3">Log In</h1>
 
-    <form class="" action="/login" method="post">
-      <input type="text" name="username" placeholder="Username">
-      <input type="text" name="password" placeholder="Password">
-      <button type="submit" name="button">Submit</button>
+    <div class="container mb-4">
+      <a class="btn btn-danger btn-xl w-100 shadow-lg pt-3"
+        href="/auth/google">
+        <i class="fab fa-google fa-2x float-left"></i>Sign up with Google</a>
+    </div>
+
+    <div class="container mb-5">
+      <a class="btn btn-primary btn-xl w-100 shadow-lg pt-3"
+        href="/auth/facebook">
+        <i class="fab fa-facebook-square fa-2x float-left"></i>Sign up with Facebook</a>
+    </div>
+
+    <form class="text-center" action="/login" method="post">
+      <input class="shadow" type="text" name="username" placeholder="Username" minlength=3>
+      <input class="border-bottom shadow" type="password" name="password" placeholder="Password" minlength=8>
+      <button class="btn btn-xl btn-dark mt-4 py-1 shadow" type="submit" name="button">Login</button>
     </form>
 
-        <a class="btn btn-success" href="/auth/google">Login with Google</a>
-        <a class="btn btn-primary" href="/auth/facebook">Login with Facebook</a>
+
 
 <%- include ./partials/footer %>
