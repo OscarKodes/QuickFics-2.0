@@ -19,6 +19,12 @@
         </a>
       </em>
     </p>
+    <p>
+      Created:
+      <em>
+        <%=fic.dateCreated.toString().slice(0, 15) %>
+      </em>
+    </p>
     <p class="my-4">
       <%= fic.description %>
     </p>
@@ -26,7 +32,7 @@
     <!-- Show Fic USER CONTROL PANEL -->
     <div class="user-control-panel shadow-sm">
 
-        <% if (currentUser.savedFics.includes(fic._id)) { %>
+        <% if (currentUser && currentUser.savedFics.includes(fic._id)) { %>
           <form class="d-inline" action="/savedfics/<%= fic._id %>?_method=DELETE" method="post">
             <button class="user-control-btn saved-fic-btn" type="submit">
               <i class="fas fa-bookmark mr-2"
@@ -73,7 +79,7 @@
 
     <% fic.eps.forEach(function(ep, i){ %>
         <a class="episode-link nav-link bg-light" href="/fics/<%= fic._id %>/eps/<%= i + 1 %>">
-          <p class="text-dark">Episode <%= i + 1 %>: <%= ep.title %></p>
+          <p class="text-dark">Episode <%= i + 1 %>: <%= ep.title %> <span><%=ep.dateCreated.toString().slice(0, 15)%></span></p>
         </a>
     <% }) %>
   </div>

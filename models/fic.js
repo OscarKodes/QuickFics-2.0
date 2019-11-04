@@ -14,7 +14,11 @@ const epSchema = {
   char: [String],
   text: [String],
   fontColor: [String],
-  highlight: [String]
+  highlight: [String],
+  dateCreated: {
+    type: Date,
+    default: Date.now
+  }
 }
 
 const ficSchema = new mongoose.Schema({
@@ -25,6 +29,10 @@ const ficSchema = new mongoose.Schema({
   author: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User"
+  },
+  dateCreated: {
+    type: Date,
+    default: Date.now
   }
 });
 

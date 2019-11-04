@@ -29,6 +29,7 @@ passport.use(new GoogleStrategy({
   },
   function(accessToken, refreshToken, profile, cb) {
     User.findOrCreate({
+      username: profile.id,
       name: profile.displayName,
       googleId: profile.id,
       },
@@ -45,6 +46,7 @@ passport.use(new FacebookStrategy({
   },
   function(accessToken, refreshToken, profile, cb) {
     User.findOrCreate({
+      username: profile.id,
       name: profile.displayName,
       facebookId: profile.id
       },

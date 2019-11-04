@@ -18,6 +18,8 @@ const userSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "Fic"
   }]
+}, {
+  timestamps: true
 });
 
 userSchema.plugin(passportLocalMongoose);

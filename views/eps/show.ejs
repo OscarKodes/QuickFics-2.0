@@ -4,6 +4,13 @@
     <h2 class="display-4"><%= ep.title %></h2>
   </div>
 
+  <p class="text-center mt-3">
+    Created:
+    <em>
+      <%=ep.dateCreated.toString().slice(0, 15) %>
+    </em>
+  </p>
+
     <% if (currentUser && currentUser._id.equals(fic.author._id)) { %>
 
       <a class="btn btn-lg btn-secondary py-3 mt-3 w-100 rounded-0 shadow" href="/fics/<%= fic._id %>/eps/<%= ep_num %>/edit">
