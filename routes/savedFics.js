@@ -25,8 +25,6 @@ router.get("/", middleware.isLoggedIn, function(req, res){
 // SavedFics CREATE ROUTE ==============
 router.post("/", middleware.isLoggedIn, function(req, res){
 
-  console.log(req.body);
-  console.log(req.user);
   User.findById(req.user._id, function(err, foundUser){
     if (err) {
       console.log(err);
@@ -51,7 +49,22 @@ router.post("/", middleware.isLoggedIn, function(req, res){
 // No need. A delete route is all we need.
 
 // SavedFics DESTROY ROUTE ==============
-// Find user, remove the saved fic
+router.delete("/:fic_id", middleware.isLoggedIn, function(req, res){
+
+  User.findById(req.user._id, function(err, foundUser){
+    if (err) {
+      console.log(err);
+      req.flash("error", err.message);
+      res.redirect("back");
+    } else {
+      const savedIdx = foundUser.savedFics.indexOf(req.params.fic_id);
+      foundUser.savedFics.splice(savedIdx, 1);
+      foundUser.save();
+      req.flash("success", "Saved Fic successfully removed.");
+      res.redirect("back");
+    }
+  })
+});
 
 
 module.exports = router;

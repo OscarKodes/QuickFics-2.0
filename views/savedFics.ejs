@@ -7,8 +7,16 @@
       <p>No fics have been saved yet.</p>
       <p>You can save fics to read later by clicking the "Save Fic" button on a fic's profile page.</p>
     <% } else { %>
-      <% savedFics.forEach(function(fic){ %>
-        <a href="/fics/<%= fic._id %>"><%= fic.title %></a>
+      <% savedFics.reverse().forEach(function(fic){ %>
+        <div class="saved-fic-card">
+          <a href="/fics/<%= fic._id %>"><%= fic.title %></a>
+          <!-- Delete Button trigger modal -->
+          <div class="">
+            <% include ./partials/deleteModalTop %>
+              <form class="" action="/savedFics/<%= fic._id %>?_method=DELETE" method="post">
+            <% include ./partials/deleteModalBottom %>
+          </div>
+        </div>
       <% }); %>
     <% } %>
 
