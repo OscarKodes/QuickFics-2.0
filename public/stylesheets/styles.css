@@ -7,7 +7,7 @@ body {
 } */
 
 input[type="text"],
-input[type="password"], 
+input[type="password"],
 textarea {
   display: block;
   width: 100vw;
@@ -73,6 +73,12 @@ label {
 .alert-success,
 .alert-danger {
   width: 100vw;
+}
+
+/* About PAGE */
+.about-features {
+  line-height: 2;
+  display: inline-block;
 }
 
 /* FIC INDEX PAGE */

@@ -18,6 +18,10 @@ router.get("/", function(req, res){
   res.redirect("/fics");
 });
 
+router.get("/about", function(req, res){
+  res.render("about");
+});
+
 // Register Render form
 router.get("/register", function(req, res){
   res.render("register");
