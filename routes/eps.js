@@ -125,20 +125,19 @@ router.put("/:ep_num", middleware.checkFicOwnership, function(req, res){
 router.put("/:ep_num/like", middleware.isLoggedIn, function(req, res){
 
   Fic.findById(req.params.id, function(err, foundFic){
+    const epLikes = foundFic.eps[req.params.ep_num - 1].likes;
     if (err) {
       console.log(err);
       req.flash("error", err.message);
       res.redirect("back");
-    } else if (foundFic.eps[req.params.ep_num - 1].likes.includes(req.user._id)) {
-      const likeIdx = foundFic.eps[req.params.ep_num - 1].likes.indexOf(req.user._id);
-      foundFic.eps[req.params.ep_num - 1].likes.splice(likeIdx, 1);
-      // foundFic.totalLikes = foundFic.eps.map(ep => ep.likes.length).reduce((sum, num) => sum += num);
+    } else if (epLikes.includes(req.user._id)) {
+      const likeIdx = epLikes.indexOf(req.user._id);
+      epLikes.splice(likeIdx, 1);
       foundFic.totalLikes--;
       foundFic.save();
       res.redirect("back");
     } else {
-      foundFic.eps[req.params.ep_num - 1].likes.push(req.user._id);
-      // foundFic.totalLikes = foundFic.eps.map(ep => ep.likes.length).reduce((sum, num) => sum += num);
+      epLikes.push(req.user._id);
       foundFic.totalLikes++;
       foundFic.save();
       res.redirect("back");
@@ -150,12 +149,13 @@ router.put("/:ep_num/like", middleware.isLoggedIn, function(req, res){
 router.delete("/:ep_num", middleware.checkFicOwnership, function(req, res){
 
   Fic.findById(req.params.id, function(err, foundFic){
+    const epLikes = foundFic.eps[req.params.ep_num - 1].likes;
     if (err) {
       console.log(err);
       req.flash("error", err.message);
       res.redirect("back");
     } else {
-      foundFic.totalLikes -= foundFic.eps[req.params.ep_num - 1].likes.length;
+      foundFic.totalLikes -= epLikes.length;
       foundFic.eps.splice(req.params.ep_num - 1, 1);
       foundFic.save();
       req.flash("success", "Episode deleted.");
