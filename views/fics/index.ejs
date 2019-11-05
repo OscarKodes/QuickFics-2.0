@@ -56,7 +56,21 @@
         id="pills-updated"
         role="tabpanel"
         aria-labelledby="pills-updated-tab">
-        Updated Content
+        <div class="fic-card-container">
+          <% fics.sort((a,b) => b.updatedAt.getTime()-a.updatedAt.getTime()).slice(0, 19).forEach(function(fic){ %>
+            <a class="text-dark text-decoration-none" href="/fics/<%= fic._id %>">
+              <div class="bg-white fic-card">
+                <h2><%=fic.title%></h2>
+                <p>By <%=fic.author.name ? fic.author.name : fic.author.username %></p>
+                <p>Last Updated:
+                  <%=fic.updatedAt.toString().slice(0, 15)%>
+                  <%=fic.updatedAt.toLocaleTimeString()%>
+                </p>
+                <p><%=fic.description%></p>
+              </div>
+            </a>
+          <% }); %>
+        </div>
       </div>
       <!-- MOST STARS TAB CONTENT -->
       <div
@@ -64,7 +78,22 @@
         id="pills-stars"
         role="tabpanel"
         aria-labelledby="pills-stars-tab">
-        Most Stars Content
+        <div class="fic-card-container">
+          <% fics.sort((a, b) => { %>
+            <% b = (b.totalLikes/b.eps.length); %>
+            <% a = (a.totalLikes/a.eps.length); %>
+            <% return b-a; %>
+          <% }).slice(0, 19).forEach(function(fic){  %>
+            <a class="text-dark text-decoration-none" href="/fics/<%= fic._id %>">
+              <div class="bg-white fic-card">
+                <h2><%=fic.title%></h2>
+                <p>By <%=fic.author.name ? fic.author.name : fic.author.username %></p>
+                <p>Average <%=(fic.totalLikes/fic.eps.length).toFixed(2)%> Stars per Episode</p>
+                <p><%=fic.description%></p>
+              </div>
+            </a>
+          <% }); %>
+        </div>
       </div>
       <!-- NEW FICS TAB CONTENT -->
       <div
@@ -78,12 +107,16 @@
               <div class="bg-white fic-card">
                 <h2><%=fic.title%></h2>
                 <p>By <%=fic.author.name ? fic.author.name : fic.author.username %></p>
+                <p>Create On:
+                  <%=fic.createdAt.toString().slice(0, 15)%>
+                  <%=fic.createdAt.toLocaleTimeString()%>
+                </p>
                 <p><%=fic.description%></p>
               </div>
             </a>
           <% }); %>
         </div>
-      </div>
+      </div> <!-- NEW FICS TAB CONTENT END TAG-->
     </div>
 
 <%- include ../partials/footer %>

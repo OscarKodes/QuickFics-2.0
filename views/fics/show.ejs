@@ -50,7 +50,13 @@
       <p>
         Created:
         <em>
-          <%=fic.dateCreated.toString().slice(4, 15) %>
+          <%=fic.createdAt.toString().slice(4, 15) %>
+        </em>
+      </p>
+      <p>
+        Last Updated:
+        <em>
+          <%=fic.updatedAt.toString().slice(4, 15) %>
         </em>
       </p>
       <p>

@@ -34,11 +34,9 @@ const ficSchema = new mongoose.Schema({
   author: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User"
-  },
-  dateCreated: {
-    type: Date,
-    default: Date.now
   }
+}, {
+  timestamps: true
 });
 
 module.exports = mongoose.model("Fic", ficSchema);
