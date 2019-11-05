@@ -2,14 +2,14 @@ const express = require("express");
 const mongoose = require("mongoose");
 
 const charSchema = {
-  name: String,
-  description: String,
+  name: {type: String, trim: true},
+  description: {type: String, trim: true},
   fontColor: String,
   highlight: String,
 };
 
 const epSchema = {
-  title: String,
+  title: {type: String, trim: true},
   bgColor: String,
   char: [String],
   text: [String],
@@ -26,8 +26,8 @@ const epSchema = {
 }
 
 const ficSchema = new mongoose.Schema({
-  title: String,
-  description: String,
+  title: {type: String, trim: true},
+  description: {type: String, trim: true},
   chars: [charSchema],
   eps: [epSchema],
   totalLikes: {type: Number, default: 0},

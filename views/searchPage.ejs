@@ -1,0 +1,20 @@
+<%- include ./partials/header %>
+
+<div class="text-center mt-5 mb-4">
+  <h1 class="mt-4"><em><%=keyword%></em></h1>
+  <h3 class="mt-3 mb-4">Search Results</h3>
+  <p><%=fics.length === 1 ? "1 result found." : fics.length + " results found."%></p>
+</div>
+
+<% fics.forEach(function(fic){ %>
+  <a class="text-dark text-decoration-none" href="/fics/<%= fic._id %>">
+    <div class="bg-white fic-card">
+      <h2><%=fic.title%></h2>
+      <p>By <%=fic.author.name ? fic.author.name : fic.author.username %></p>
+      <p><%=fic.description%></p>
+    </div>
+  </a>
+<% }); %>
+
+
+<%- include ./partials/footer %>
