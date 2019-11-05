@@ -104,14 +104,17 @@ router.get("/user/:user_id", function(req, res){
 // SEARCH RESULTS PAGE
 router.get("/search/", function(req, res){
 
-  Fic.find({
+  Fic.
+  find({
     $or: [
       {"title": new RegExp(req.query.keyword, 'i')},
       {"description": new RegExp(req.query.keyword, 'i')},
       {"eps.title": new RegExp(req.query.keyword, 'i')},
       {"chars.name": new RegExp(req.query.keyword, 'i')},
     ]
-  }, function(err, foundFics){
+  }).
+  populate("author").
+  exec(function(err, foundFics){
     if (err) {
       console.log(err);
       req.flash("error", err.message);

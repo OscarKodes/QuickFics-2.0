@@ -207,6 +207,16 @@ button.user-control-btn:focus {
 }
 
 /* EPISODE NEW, EDIT, SHOW PAGE */
+.ep-edit-btn-container {
+  width: 100%;
+  position: absolute;
+}
+
+.ep-show-edit-btn {
+  position: relative;
+  top: -.5rem;
+  left: 35%;
+}
 
 .make-char-prompt {
   background-color: white;

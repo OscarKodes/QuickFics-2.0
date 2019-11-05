@@ -1,22 +1,22 @@
 <%- include ../partials/header %>
 
 <!-- Navigation buttons -->
-<div class="bg-dark d-flex flex-row text-center shadow">
+<div class="bg-info d-flex flex-row text-center shadow">
   <div class="w-100">
     <% if (ep_num > 1) { %>
       <% let prevEp = ep_num - 1; %>
-      <a class="btn btn-dark py-1 w-100 rounded-0" href="/fics/<%= fic._id %>/eps/<%= prevEp %>">
+      <a class="btn btn-info py-3 w-100 rounded-0" href="/fics/<%= fic._id %>/eps/<%= prevEp %>">
         <i class="fas fa-arrow-left mr-2"></i>Previous Episode
       </a>
     <% } %>
   </div>
   <div class="w-100">
-    <a class="btn btn-secondary py-1 w-100 rounded-0" href="/fics/<%= fic._id %>/">Back to Fic Page</a>
+    <a class="btn btn-secondary py-3 w-100 rounded-0" href="/fics/<%= fic._id %>/">Back to Fic Page</a>
   </div>
   <div class="w-100">
     <% if (ep_num < last_ep_num) { %>
       <% let nextEp = ep_num + 1; %>
-      <a class="btn btn-dark py-1 w-100 rounded-0" href="/fics/<%= fic._id %>/eps/<%= nextEp %>">
+      <a class="btn btn-info py-3 w-100 rounded-0" href="/fics/<%= fic._id %>/eps/<%= nextEp %>">
         Next Episode<i class="fas fa-arrow-right ml-2"></i>
       </a>
     <% } %>
@@ -36,9 +36,20 @@
 </div>
 
   <!-- EPISODE TITLE -->
-  <div class="text-center bg-white shadow mt-4 mx-4 py-3 rounded">
+  <div class="text-center bg-white shadow mt-4 mx-4 py-3 rounded ep-show-header">
+    <!-- EDIT BTN -->
+    <div class="ep-edit-btn-container">
+      <a class="btn btn-outline-primary ep-show-edit-btn border-0"
+        href="/fics/<%=fic._id%>/edit">
+        <i class="fas fa-edit pl-1 fa-2x"
+          SameSite=None Secure></i>
+      </a>
+    </div>
     <h2 class="display-4"><%= ep.title %></h2>
   </div>
+
+
+
 
 <!-- EPISODE DIALOGUE -->
   <div id="dialogue-container" class="shadow mx-5">
@@ -76,22 +87,22 @@
   </div>
 
   <!-- Navigation buttons -->
-  <div class="bg-dark d-flex flex-row text-center shadow">
+  <div class="bg-info d-flex flex-row text-center shadow">
     <div class="w-100">
       <% if (ep_num > 1) { %>
         <% let prevEp = ep_num - 1; %>
-        <a class="btn btn-dark py-1 w-100 rounded-0" href="/fics/<%= fic._id %>/eps/<%= prevEp %>">
+        <a class="btn btn-info py-3 w-100 rounded-0" href="/fics/<%= fic._id %>/eps/<%= prevEp %>">
           <i class="fas fa-arrow-left mr-2"></i>Previous Episode
         </a>
       <% } %>
     </div>
     <div class="w-100">
-      <a class="btn btn-secondary py-1 w-100 rounded-0" href="/fics/<%= fic._id %>/">Back to Fic Page</a>
+      <a class="btn btn-secondary py-3 w-100 rounded-0" href="/fics/<%= fic._id %>/">Back to Fic Page</a>
     </div>
     <div class="w-100">
       <% if (ep_num < last_ep_num) { %>
         <% let nextEp = ep_num + 1; %>
-        <a class="btn btn-dark py-1 w-100 rounded-0" href="/fics/<%= fic._id %>/eps/<%= nextEp %>">
+        <a class="btn btn-info py-3 w-100 rounded-0" href="/fics/<%= fic._id %>/eps/<%= nextEp %>">
           Next Episode<i class="fas fa-arrow-right ml-2"></i>
         </a>
       <% } %>
