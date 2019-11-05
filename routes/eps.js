@@ -155,6 +155,7 @@ router.delete("/:ep_num", middleware.checkFicOwnership, function(req, res){
       req.flash("error", err.message);
       res.redirect("back");
     } else {
+      foundFic.totalLikes -= foundFic.eps[req.params.ep_num - 1].likes.length;
       foundFic.eps.splice(req.params.ep_num - 1, 1);
       foundFic.save();
       req.flash("success", "Episode deleted.");
