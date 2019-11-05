@@ -2,10 +2,6 @@ body {
   background-color: lavender;
 }
 
-/* p, h1 {
-  word-wrap: break-word;
-} */
-
 input[type="text"],
 input[type="password"],
 textarea {
