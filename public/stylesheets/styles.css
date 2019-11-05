@@ -86,6 +86,20 @@ label {
   border-bottom: 1px solid lightgrey;
 }
 
+.nav-pills .nav-link,
+.nav-pills .nav-link.active {
+  color: #aaa;
+  background-color: #343a40;
+}
+
+.nav-pills .nav-link.active {
+  filter: brightness(1.7);
+}
+
+.nav-pills .nav-link:hover {
+  filter: brightness(1.5);
+}
+
 .fic-card {
   text-align: center;
   padding: 2rem 0;
