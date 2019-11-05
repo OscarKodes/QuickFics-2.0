@@ -83,8 +83,14 @@
         <thead>
           <th>Ep. No.</th>
           <th>Title</th>
+          <% if (currentUser && currentUser._id.equals(fic.author._id)) { %>
+            <th>Edit</th>
+          <% } %>
           <th>Stars</th>
           <th>Created</th>
+          <% if (currentUser && currentUser._id.equals(fic.author._id)) { %>
+            <th>Delete</th>
+          <% } %>
         </thead>
         <tbody>
         <% fic.eps.forEach(function(ep, i){ %>
@@ -95,8 +101,22 @@
                     <em><strong><%= ep.title %></strong></em>
                   </a>
                 </td>
+                <% if (currentUser && currentUser._id.equals(fic.author._id)) { %>
+                  <td>
+                    <a class="btn btn-outline-primary btn-sm border-0" href="/fics/<%=fic._id%>/eps/<%= i + 1 %>/edit">
+                      <i class="fas fa-edit fa-lg pl-1"
+                        SameSite=None Secure></i></a>
+                  </td>
+                <% } %>
                 <td><%=ep.likes.length%></td>
                 <td><%=ep.dateCreated.toLocaleDateString()%></td>
+                <% if (currentUser && currentUser._id.equals(fic.author._id)) { %>
+                  <td>
+                    <a class="btn btn-outline-secondary btn-sm border-0" href="#">
+                      <i class="fas fa-trash fa-lg"
+                        SameSite=None Secure></i></a>
+                  </td>
+                <% } %>
               </tr>
         <% }) %>
       </tbody>
