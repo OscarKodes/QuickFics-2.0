@@ -1,3 +1,7 @@
+html {
+  font-size: 32px;
+}
+
 body {
   background-color: lavender;
   font-family: 'Open Sans', sans-serif;
@@ -60,6 +64,7 @@ label {
 .about-link {
   position: relative;
   top: .5rem;
+  left: .5rem;
 }
 
 .top-spacer {
@@ -84,27 +89,10 @@ label {
   padding: .8rem 0 .8rem;
 }
 
-#search-box {
-  margin-top: .7rem;
-}
-
-#search-box input[type="text"] {
-  display: inline;
-  width: 11rem;
-  height: 1.8rem;
-  font-size: 1rem;
-  padding: 0;
-  border: none;
-  border-radius: .2rem;
-  background-color: #BBB;
-  text-align: center;
-  vertical-align: middle;
-}
-
-#search-box input[type="text"]:focus {
-  outline: black;
-  color: black;
-  background-color: white;
+.nav-search-btn {
+  position: relative;
+  top: .7rem;
+  left: .8rem;
 }
 
 /* GENERAL CLASSES */
@@ -378,6 +366,16 @@ p.dialogue-text {
 .unsave-btn {
   margin-right: 2rem;
   margin-bottom: 1rem;
+}
+
+/* SEARCH PAGE */
+#search-box input[type="text"] {
+  display: inline-block;
+  width: 65%;
+  font-size: 2rem;
+  padding: .8rem;
+  border: none;
+  height: 3rem;
 }
 
 

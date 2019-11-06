@@ -71,22 +71,6 @@ router.get("/logout", function(req, res){
   res.redirect("/fics");
 });
 
-// Create NavBar button to page for easy creation access
-// router.get("/create", middleware.isLoggedIn, function(req, res){
-//   User.
-//     findById(req.user._id).
-//     populate("fics").
-//     exec(function(err, foundUser){
-//       if (err) {
-//         console.log(err);
-//         req.flash("error", err.message);
-//         res.redirect("back");
-//       } else {
-//         res.render("create", {user: foundUser});
-//       }
-//   })
-// });
-
 // User's Profile My Fics
 router.get("/user/:user_id", function(req, res){
   User.
@@ -104,27 +88,30 @@ router.get("/user/:user_id", function(req, res){
 });
 
 // SEARCH RESULTS PAGE
-router.get("/search/", function(req, res){
-
-  Fic.
-  find({
-    $or: [
-      {"title": new RegExp(req.query.keyword, 'i')},
-      {"description": new RegExp(req.query.keyword, 'i')},
-      {"eps.title": new RegExp(req.query.keyword, 'i')},
-      {"chars.name": new RegExp(req.query.keyword, 'i')},
-    ]
-  }).
-  populate("author").
-  exec(function(err, foundFics){
-    if (err) {
-      console.log(err);
-      req.flash("error", err.message);
-      res.redirect("back");
-    } else {
-      res.render("searchPage", {fics: foundFics, keyword: req.query.keyword});
-    }
-  });
+router.get("/search", function(req, res){
+  if (!req.query.keyword || req.query.keyword.length === 0) {
+    res.render("searchPage", {keyword: ""});
+  } else {
+    Fic.
+    find({
+      $or: [
+        {"title": new RegExp(req.query.keyword, 'i')},
+        {"description": new RegExp(req.query.keyword, 'i')},
+        {"eps.title": new RegExp(req.query.keyword, 'i')},
+        {"chars.name": new RegExp(req.query.keyword, 'i')},
+      ]
+    }).
+    populate("author").
+    exec(function(err, foundFics){
+      if (err) {
+        console.log(err);
+        req.flash("error", err.message);
+        res.redirect("back");
+      } else {
+        res.render("searchPage", {fics: foundFics, keyword: req.query.keyword});
+      }
+    });
+  }
 });
 
 
