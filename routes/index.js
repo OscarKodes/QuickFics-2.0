@@ -38,6 +38,8 @@ router.post("/register", function(req, res){
         req.flash("error", err.message);
         res.redirect("back");
       } else {
+        user.email = req.body.email;
+        user.save();
         passport.authenticate("local")(req, res, function(){
           req.flash("success", "Welcome! Now you can create and save fics!");
           res.redirect("/fics");
