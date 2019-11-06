@@ -12,7 +12,7 @@
         <a class="text-dark text-decoration-none" href="/fics/<%= fic._id %>">
           <div class="bg-white fic-card">
             <h2><%=fic.title%></h2>
-            <p>By <%=user.name ? user.name : user.username %></p>
+            <p class="author-name-grey"><%=user.name ? user.name : user.username %></p>
             <p><%=fic.description%></p>
           </div>
         </a>

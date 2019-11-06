@@ -3,13 +3,16 @@
   <head>
     <meta charset="utf-8">
 
-    <!-- font awesome -->
+    <!-- GOOGLE FONTS -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:500,700|Open+Sans&display=swap" rel="stylesheet">
+
+    <!-- FONT AWESOME -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
-    <!-- bootstrap -->
+    <!-- BOOTSTRAP -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <!-- local stylesheet -->
+    <!-- LOCAL CSS -->
     <link rel="stylesheet" href="/stylesheets/styles.css">
     <title>QuickFics</title>
   </head>
@@ -58,14 +61,12 @@
             </button>
           </form>
         </div>
-        <div class="h4">
-          <a class="nav-link text-light mt-1" href="/about">About</a>
-        </div>
+        <h4 class="about-link">
+          <a class="nav-link text-light" href="/about">About</a>
+        </h4>
       <% } %>
     </div>
   <% } %>
-
-
 
   <!-- Character Selection for Episode New and Edit Forms -->
   <% if (unique_header && unique_header === "epForm") { %>

@@ -1,5 +1,11 @@
 body {
   background-color: lavender;
+  font-family: 'Open Sans', sans-serif;
+}
+
+h1, h2, h3, h4, h5,
+.nav-pills {
+  font-family: 'Montserrat', sans-serif;
 }
 
 input[type="text"],
@@ -39,6 +45,16 @@ label {
 
 
 /* NAVBAR SELECTORS */
+.nav-brand h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+}
+
+.about-link {
+  position: relative;
+  top: .5rem;
+}
+
 .top-spacer {
   height: 4.5rem;
 }
@@ -52,9 +68,9 @@ label {
 }
 
 .bottom-nav p {
-  font-size: .85rem;
+  font-size: .8rem;
   margin-bottom: 0;
-  line-height: .9;
+  line-height: 1.3;
 }
 
 .bottom-nav .nav-link {
@@ -93,6 +109,11 @@ label {
 .alert-success,
 .alert-danger {
   width: 100vw;
+}
+
+.author-name-grey {
+  color: #777;
+  font-size: .9rem;
 }
 
 /* ABOUT PAGE */

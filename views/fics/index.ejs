@@ -61,7 +61,7 @@
             <a class="text-dark text-decoration-none" href="/fics/<%= fic._id %>">
               <div class="bg-white fic-card">
                 <h2><%=fic.title%></h2>
-                <p><%=fic.author.name ? fic.author.name : fic.author.username %></p>
+                <p class="author-name-grey"><%=fic.author.name ? fic.author.name : fic.author.username %></p>
                 <p><%=fic.description%></p>
               </div>
             </a>
@@ -83,7 +83,7 @@
             <a class="text-dark text-decoration-none" href="/fics/<%= fic._id %>">
               <div class="bg-white fic-card">
                 <h2><%=fic.title%></h2>
-                <p><%=fic.author.name ? fic.author.name : fic.author.username %></p>
+                <p class="author-name-grey"><%=fic.author.name ? fic.author.name : fic.author.username %></p>
                 <p class="average-stars-text">
                   <em>Average Stars per Episode: </em>
                   <%=(fic.totalLikes/fic.eps.length).toFixed(2)%>
@@ -105,7 +105,7 @@
             <a class="text-dark text-decoration-none" href="/fics/<%= fic._id %>">
               <div class="bg-white fic-card">
                 <h2><%=fic.title%></h2>
-                <p><%=fic.author.name ? fic.author.name : fic.author.username %></p>
+                <p class="author-name-grey"><%=fic.author.name ? fic.author.name : fic.author.username %></p>
                 <p><%=fic.description%></p>
               </div>
             </a>
