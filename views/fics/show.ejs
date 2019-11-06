@@ -106,7 +106,7 @@
                     </button>
                     <!-- DELETE MODAL -->
                     <div class="modal fade" id="deleteChar<%=i%>" tabindex="-1" role="dialog" aria-labelledby="deleteChar<%=i%>Label" aria-hidden="true">
-                      <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+                      <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                         <div class="modal-content">
                           <div class="modal-header">
                             <h5 class="modal-title" id="deleteChar<%=i%>Label">Delete character?</h5>
@@ -202,7 +202,7 @@
                       </button>
                       <!-- DELETE MODAL -->
                       <div class="modal fade" id="deleteEp<%=i + 1%>" tabindex="-1" role="dialog" aria-labelledby="deleteEp<%=i + 1%>Label" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+                        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                           <div class="modal-content">
                             <div class="modal-header">
                               <h5 class="modal-title" id="deleteEp<%=i + 1%>Label">Permanantly delete this?</h5>
@@ -217,9 +217,9 @@
                               <form class="" action="/fics/<%= fic._id %>/eps/<%= i + 1 %>?_method=DELETE" method="post">
 
                                   <button class="btn btn-danger" type="submit" name="button">
-                                    Yes, delete it</button>
+                                    Yes, delete</button>
                               </form>
-                              <button type="button" class="btn btn-secondary" data-dismiss="modal">No, cancel</button>
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                             </div>
                           </div>
                         </div>

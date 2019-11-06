@@ -85,8 +85,10 @@
                 <h2><%=fic.title%></h2>
                 <p class="author-name-grey"><%=fic.author.name ? fic.author.name : fic.author.username %></p>
                 <p class="average-stars-text">
-                  <em>Average Stars per Episode: </em>
-                  <%=(fic.totalLikes/fic.eps.length).toFixed(2)%>
+                  <% let likes = fic.totalLikes ? fic.totalLikes : 0; %>
+                  <% let length = fic.eps.length ? fic.eps.length : 0; %>
+                  <%=length === 0 ? 0 : (likes/length).toFixed(2)%>
+                  stars per episode
                 </p>
                 <p><%=fic.description%></p>
               </div>

@@ -1,26 +1,22 @@
 <%- include ../partials/header %>
 
   <!-- EPISODE TITLE -->
-  <div class="text-center bg-white shadow mt-4 mx-4 py-3 rounded ep-show-header">
+  <div class="text-center bg-white shadow my-4 mx-4 py-3 rounded ep-show-header">
     <h2 class="display-4"><%= ep.title %></h2>
   </div>
 
 <!-- EPISODE DIALOGUE -->
   <div id="dialogue-container" class="shadow mx-0 rounded-0">
 
-      <table class="table-bordered bg-white">
+      <table class="ep-show-table table-border-custom bg-white rounded">
         <tbody>
           <% ep.char.forEach(function(char, i){ %>
-            <tr>
-              <td class="p-1"></td>
-              <td class="p-1"></td>
-            </tr>
-            <tr>
+            <tr class="table-border-custom">
               <td class="dialogue-char-badge" style="color:<%=ep.fontColor[i]%>;
                 background-color:<%=ep.highlight[i]%>;">
                 <%= char %>
               </td>
-              <td>
+              <td class="d-inline-block">
                 <!-- Dialogue -->
                 <p class="dialogue-text"><%= ep.text[i] %></p>
               </td>

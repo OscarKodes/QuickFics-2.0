@@ -1,6 +1,6 @@
 <%- include ../partials/header %>
 
-    <h1 class="display-3 text-center">New Character</h1>
+    <h1 class="text-center my-4">New Character</h1>
 
     <div class="preview-container">
       <p class="char-name-preview">
@@ -11,7 +11,7 @@
 
     <form class="" action="/fics/<%= fic_id %>/chars" method="post">
       <input id="name-input" type="text" name="char[name]" placeholder="Name" maxlength="16" required>
-      <input type="text" name="char[description]" placeholder="Description" maxlength="100">
+      <input type="text" name="char[description]" placeholder="Describe character in one short phrase." maxlength="100">
 
       <div class="bg-white border-top border-bottom py-3 text-center">
         <label for="font-color-input">Font Color</label>

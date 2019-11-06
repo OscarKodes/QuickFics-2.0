@@ -18,8 +18,8 @@ input[type="email"],
 textarea {
   display: block;
   width: 100vw;
-  font-size: 2rem;
-  padding: 2rem;
+  font-size: 1.5rem;
+  padding: 1.5rem;
   border: none;
   border-top: 1px solid lightgrey;
 }
@@ -101,6 +101,10 @@ label {
   font-size: 2rem;
 }
 
+#deleteBtn .modal-dialog {
+  width: 100vw!important;
+}
+
 .alert-success,
 .alert-danger {
   width: 100vw;
@@ -147,7 +151,7 @@ label {
 }
 
 .average-stars-text {
-  font-size: .8rem;
+  font-size: .9rem;
 }
 
 /* FIC SHOW PAGE */
@@ -231,6 +235,7 @@ button.user-control-btn:focus {
   background-color: white;
   width: 30vw;
   margin: 1rem auto;
+  padding: 1rem 0;
   text-align: center;
   color: #aaa;
   overflow: hidden;
@@ -245,6 +250,12 @@ button.user-control-btn:focus {
   height: 100vh;
   text-align: center;
   padding-top: 10rem;
+}
+
+.table-border-custom {
+  border: .2rem lightgrey solid;
+  border-left: 0;
+  border-right: 0;
 }
 
 .char-select {
@@ -265,8 +276,7 @@ button.user-control-btn:focus {
 }
 
 #dialogue-container {
-  margin: 1rem;
-  border-radius: 1rem;
+  margin: 0rem;
   overflow: hidden;
 }
 
@@ -292,19 +302,15 @@ button.user-control-btn:focus {
   font-size: 2rem;
   position: relative;
   bottom: 1rem;
-  right: 1rem;
 }
 
 #bottom-marker-btn {
-  bottom: 1rem;
-  left: 50%;
-  right: 0;
-  transform: translateX(-2rem);
+  left: 6.7rem;
 }
 
 .move-text-marker-btn:hover,
 #bottom-marker-btn:hover {
-  filter: brightness(1.5);
+  filter: brightness(.5);
 }
 
 input[type="color"].font-color-input,
@@ -317,18 +323,24 @@ input[type="color"].highlight-input {
 
 .dialogue-name.char-name {
   width: 80%;
-  margin: auto 10%;
+  margin: auto;
   text-align: center;
+  overflow: hidden;
 }
 
 .dialogue-char-badge {
   text-align: center;
+  border-right: .2rem lightgrey solid;
   width: 8rem;
 }
 
 .cancel-btn:hover {
   transform: scale(1.2);
   filter: brightness(.5);
+}
+
+.ep-show-table {
+  width: 100vw;
 }
 
 textarea.dialogue-text {
@@ -344,7 +356,21 @@ textarea.dialogue-text {
 
 p.dialogue-text {
   font-size: 1.25rem;
-  padding: 1.2rem 1rem;
+  padding: 1rem;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+
+  -ms-word-break: break-all;
+  /* This is the dangerous one in WebKit, as it breaks things wherever */
+  word-break: break-all;
+  /* Instead use this non-standard one: */
+  word-break: break-word;
+
+  /* Adds a hyphen where the word breaks, if supported (No Blink) */
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
 }
 
 /* SAVED FICS INDEX PAGE */
