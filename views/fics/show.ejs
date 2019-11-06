@@ -12,9 +12,8 @@
       <%= fic.title %>
     </h1>
 
-    <!-- Show Fic USER CONTROL PANEL -->
-    <div class="user-control-panel shadow-sm mb-3">
-
+    <!-- User Control Panel -->
+    <div class="user-control-panel mb-3">
         <% if (currentUser && currentUser.savedFics.includes(fic._id)) { %>
           <form class="d-inline" action="/savedfics/<%= fic._id %>?_method=DELETE" method="post">
             <button class="user-control-btn saved-fic-btn" type="submit">
@@ -31,43 +30,111 @@
             </button>
           </form>
         <% } %>
-      <a class="user-control-btn"
-        href="/fics/<%= fic._id %>/chars">
-        <i class="fas fa-users mr-2"
-          SameSite=None Secure></i>Character List
-      </a>
       <!-- Copy to Clipboard button -->
       <%- include ../partials/copyToClipBoard %>
     </div> <!-- Closing tag for user control panel -->
 
+    <!-- Fic Data -->
     <div class="fic-data">
-      <p>
-        Author:
+      <p>Author:
         <a class="text-decoration-none h6" href="/user/<%= fic.author._id %>">
-          <%=fic.author.name ? fic.author.name : fic.author.username %>
-        </a>
+          <%=fic.author.name ? fic.author.name : fic.author.username %></a>
       </p>
-      <p>
-        Created:
-        <em>
-          <%=fic.createdAt.toString().slice(4, 15) %>
-        </em>
+      <p>Created:
+        <em><%=fic.createdAt.toString().slice(4, 15) %></em>
       </p>
-      <p>
-        Last Updated:
-        <em>
-          <%=fic.updatedAt.toString().slice(4, 15) %>
-        </em>
+      <p>Last Updated:
+        <em><%=fic.updatedAt.toString().slice(4, 15) %></em>
       </p>
       <p>
         Total Stars: <%=fic.totalLikes%>
       </p>
     </div>
 
-    <p class="my-4">
-      <%= fic.description %>
-    </p>
+    <!-- Fic Description -->
+    <p class="my-4"><%= fic.description %></p>
 
+    <!-- Characters Table -->
+    <button
+      class="btn btn-outline-secondary py-0"
+      type="button" data-toggle="collapse"
+      data-target="#characterList"
+      aria-expanded="false" aria-controls="characterList">
+      Character List
+    </button>
+
+    <div class="collapse" id="characterList">
+      <% if (fic.chars.length > 0) { %>
+        <table class="table mt-4">
+          <thead>
+            <th>Name</th>
+            <% if (currentUser && currentUser._id.equals(fic.author._id)) { %>
+              <th>Edit</th>
+            <% } %>
+            <th>Description</th>
+            <% if (currentUser && currentUser._id.equals(fic.author._id)) { %>
+              <th>Delete</th>
+            <% } %>
+          </thead>
+          <tbody>
+            <% fic.chars.forEach(function(char, i){ %>
+              <tr>
+                <td><%=char.name%></td>
+                <% if (currentUser && currentUser._id.equals(fic.author._id)) { %>
+                  <td>
+                    <a class="btn btn-outline-warning btn-sm border-0"
+                      href="/fics/<%=fic._id%>/chars/<%=i%>/edit">
+                      <i class="fas fa-edit fa-lg pl-1"
+                        SameSite=None Secure></i></a>
+                  </td>
+                <% } %>
+                <td><%=char.description%></td>
+                <% if (currentUser && currentUser._id.equals(fic.author._id)) { %>
+                  <td>
+                    <!-- Button trigger modal -->
+                    <button
+                      type="button"
+                      class="btn btn-outline-secondary btn-sm border-0"
+                      data-toggle="modal"
+                      data-target="#deleteChar<%=i%>">
+                      <i class="fas fa-trash fa-lg"
+                        SameSite=None Secure></i>
+                    </button>
+                    <!-- DELETE MODAL -->
+                    <div class="modal fade" id="deleteChar<%=i%>" tabindex="-1" role="dialog" aria-labelledby="deleteChar<%=i%>Label" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="deleteChar<%=i%>Label">Delete character?</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            The episodes created with this character will stay as is.
+                          </div>
+                          <div class="modal-body d-flex flex-row justify-content-around">
+                            <form class="" action="/fics/<%= fic._id %>/chars/<%=i%>?_method=DELETE" method="post">
+                                <button class="btn btn-danger" type="submit" name="button">
+                                  Yes, delete</button>
+                            </form>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">No, cancel</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div> <!-- END TAG DELETE MODAL -->
+                  </td>
+                <% } %>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      <% } else { %>
+        <p class="mt-4">No characters have been created yet.</p>
+      <% } %>
+    </div>
+    <!-- Char name, description, edit options -->
+    <!-- Get rid of char index page and author's control panel button -->
   </div> <!-- Closing tag for fic heading -->
 
   <!-- Start Reading Button -->

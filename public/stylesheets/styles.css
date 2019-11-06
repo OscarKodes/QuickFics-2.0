@@ -137,7 +137,6 @@ label {
 
 .user-control-panel {
   display: inline-block;
-  border: 1px #666 solid;
   padding: .4rem;
   border-radius: .1rem;
 }
