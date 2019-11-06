@@ -8,53 +8,52 @@
 
     <!-- User Control Panel -->
     <div class="user-control-panel mb-3 shadow-sm">
-        <% if (currentUser && currentUser.savedFics.includes(fic._id)) { %>
-          <form class="d-inline" action="/savedfics/<%= fic._id %>?_method=DELETE" method="post">
-            <button class="user-control-btn saved-fic-btn" type="submit">
-              <i class="fas fa-bookmark mr-2"
-                SameSite=None Secure></i>Fic Saved!
-            </button>
-          </form>
-        <% } else { %>
-          <form class="d-inline" action="/savedFics" method="post">
-            <input class="d-none" type="text" name="fic_id" value="<%= fic._id %>">
-            <button class="user-control-btn" type="submit">
-              <i class="fas fa-bookmark mr-2"
-                SameSite=None Secure></i>Save Fic
-            </button>
-          </form>
-        <% } %>
+      <% if (currentUser && currentUser.savedFics.includes(fic._id)) { %>
+        <form class="d-inline" action="/savedfics/<%= fic._id %>?_method=DELETE" method="post">
+          <button class="user-control-btn saved-fic-btn" type="submit">
+            <i class="fas fa-bookmark mr-2"
+              SameSite=None Secure></i>Fic Saved!
+          </button>
+        </form>
+      <% } else { %>
+        <form class="d-inline" action="/savedFics" method="post">
+          <input class="d-none" type="text" name="fic_id" value="<%= fic._id %>">
+          <button class="user-control-btn" type="submit">
+            <i class="fas fa-bookmark mr-2"
+              SameSite=None Secure></i>Save Fic
+          </button>
+        </form>
+      <% } %>
+      <!-- Author Link -->
+      <a class="text-decoration-none" href="/user/<%= fic.author._id %>">
+        <i class="fas fa-user-tie mr-2 text-secondary"
+          SameSite=None Secure></i><%=fic.author.name ? fic.author.name : fic.author.username %>
+      </a>
       <!-- Copy to Clipboard button -->
       <%- include ../partials/copyToClipBoard %>
     </div> <!-- Closing tag for user control panel -->
 
     <!-- Fic Data -->
     <div class="fic-data">
-      <p>Author:
-        <a class="text-decoration-none h6" href="/user/<%= fic.author._id %>">
-          <%=fic.author.name ? fic.author.name : fic.author.username %></a>
-      </p>
-      <p>Created:
-        <em><%=fic.createdAt.toString().slice(4, 15) %></em>
-      </p>
-      <p>Last Updated:
-        <em><%=fic.updatedAt.toString().slice(4, 15) %></em>
-      </p>
       <p>
-        Total Stars: <%=fic.totalLikes%>
+        <%=fic.totalLikes%> Total Stars •
+        <em>Fic Updated <%=fic.updatedAt.toString().slice(4, 15) %></em>
       </p>
+
     </div>
 
     <!-- Fic Description -->
     <p class="my-4"><%= fic.description %></p>
 
-    <!-- Characters Table -->
+    <!-- Characters Table Button-->
     <button
-      class="btn btn-outline-secondary py-0 shadow"
+      class="btn btn-outline-secondary py-0 w-100 shadow rounded-0 border-right-0 border-left-0"
       type="button" data-toggle="collapse"
       data-target="#characterList"
       aria-expanded="false" aria-controls="characterList">
-      <i class="fas fa-users mr-1" SameSite=None Secure></i>Character List
+      <i class="fas fa-caret-down mr-3" SameSite=None Secure></i>
+      <i class="fas fa-users mr-2" SameSite=None Secure></i> Show Character List
+      <i class="fas fa-caret-down ml-3" SameSite=None Secure></i>
     </button>
     <div class="collapse" id="characterList">
       <!-- ADD CHAR BUTTON FOR AUTHOR -->

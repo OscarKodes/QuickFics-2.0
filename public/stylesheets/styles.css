@@ -126,6 +126,10 @@ label {
   border-top: 1px solid lightgrey;
 }
 
+.average-stars-text {
+  font-size: .8rem;
+}
+
 /* FIC SHOW PAGE */
 .fic-data {
   font-size: .8rem;
