@@ -7,14 +7,18 @@
       Joined on: <%= user.createdAt.toString().slice(0, 15) %>
     </p>
 
-    <% user.fics.reverse().forEach(function(fic){ %>
-      <div class="text-center">
-        <a class="btn btn-light btn-lg py-3 px-5 mx-2 mb-4 shadow"
-          href="/fics/<%= fic._id %>">
-            <%= fic.title %>
+
+    <div class="fic-card-container">
+      <% user.fics.reverse().forEach(function(fic){ %>
+        <a class="text-dark text-decoration-none" href="/fics/<%= fic._id %>">
+          <div class="bg-white fic-card">
+            <h2><%=fic.title%></h2>
+            <p>By <%=user.name ? user.name : user.username %></p>
+            <p><%=fic.description%></p>
+          </div>
         </a>
-      </div>
-    <% }); %>
+      <% }); %>
+    </div>
 
     <% if (currentUser && currentUser._id.equals(user._id)) { %>
       <div class="text-center">
