@@ -65,6 +65,8 @@ router.post("/", function(req, res){
 // SHOW ROUTE
 router.get("/:id", function(req, res){
 
+  let headerType = false;
+
   Fic.
     findById(req.params.id).
     populate("author").
@@ -74,7 +76,13 @@ router.get("/:id", function(req, res){
       req.flash("error", err.message);
       res.redirect("back");
     } else {
-      res.render("fics/show", {fic: foundFic});
+      if (req.user && req.user._id.equals(foundFic.author._id)) {
+        headerType = "author_controls";
+      }
+      res.render("fics/show", {
+        fic: foundFic,
+        unique_header: headerType
+      });
     }
   });
 });

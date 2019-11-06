@@ -64,7 +64,7 @@ router.get("/google",
 router.get("/google/secrets", passport.authenticate("google",
   {
     successRedirect: "/fics",
-    successFlash: "Welcome! Now you can create and save fics!",
+    successFlash: "Welcome!",
     failureRedirect: "/login",
     failureFlash: true
   }), function(req, res) {
@@ -78,7 +78,7 @@ router.get("/facebook",
 router.get("/facebook/secrets", passport.authenticate("facebook",
   {
     successRedirect: "/fics",
-    successFlash: "Welcome! Now you can create and save fics!",
+    successFlash: "Welcome!",
     failureRedirect: "/login",
     failureFlash: true
   }), function(req, res) {

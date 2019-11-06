@@ -7,7 +7,7 @@ const router = express.Router({mergeParams: true});
 // CHAR Routes ===================================
 // INDEX ROUTE
 router.get("/", function (req, res){
-  res.redirect("/fics/" + foundFic._id);
+  res.redirect("/fics/" + req.params.id);
 });
 
 // NEW ROUTE

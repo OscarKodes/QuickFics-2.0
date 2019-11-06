@@ -72,20 +72,20 @@ router.get("/logout", function(req, res){
 });
 
 // Create NavBar button to page for easy creation access
-router.get("/create", middleware.isLoggedIn, function(req, res){
-  User.
-    findById(req.user._id).
-    populate("fics").
-    exec(function(err, foundUser){
-      if (err) {
-        console.log(err);
-        req.flash("error", err.message);
-        res.redirect("back");
-      } else {
-        res.render("create", {user: foundUser});
-      }
-  })
-});
+// router.get("/create", middleware.isLoggedIn, function(req, res){
+//   User.
+//     findById(req.user._id).
+//     populate("fics").
+//     exec(function(err, foundUser){
+//       if (err) {
+//         console.log(err);
+//         req.flash("error", err.message);
+//         res.redirect("back");
+//       } else {
+//         res.render("create", {user: foundUser});
+//       }
+//   })
+// });
 
 // User's Profile My Fics
 router.get("/user/:user_id", function(req, res){

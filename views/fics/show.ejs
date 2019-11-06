@@ -1,11 +1,5 @@
 <%- include ../partials/header %>
 
-<!-- Author control panel -->
-<% if (currentUser && currentUser._id.equals(fic.author._id)) { %>
-  <% let currPage = "ficPage" %>
-  <% include ../partials/authorControlPanel %>
-<% } %>
-
   <!-- Fic Heading -->
   <div class="fic-header text-center bg-white shadow-sm pt-2 pb-4">
     <h1 class="display-3 mt-4 mb-3">
@@ -56,18 +50,25 @@
 
     <!-- Characters Table -->
     <button
-      class="btn btn-outline-secondary py-0 shadow-sm"
+      class="btn btn-outline-secondary py-0 shadow"
       type="button" data-toggle="collapse"
       data-target="#characterList"
       aria-expanded="false" aria-controls="characterList">
       <i class="fas fa-users mr-1" SameSite=None Secure></i>Character List
     </button>
-
     <div class="collapse" id="characterList">
+      <!-- ADD CHAR BUTTON FOR AUTHOR -->
+      <% if (currentUser && currentUser._id.equals(fic.author._id)) { %>
+        <div>
+          <a class="btn btn-info py-0 mt-3" href="/fics/<%= fic._id %>/chars/new">
+            <i class="fas fa-user-plus" SameSite=None Secure></i> Add Character
+          </a>
+        </div>
+      <% } %>
       <% if (fic.chars.length > 0) { %>
-        <table class="table mt-4">
+        <table class="table mt-3 character-table">
           <thead>
-            <th>Name</th>
+            <th>Character</th>
             <% if (currentUser && currentUser._id.equals(fic.author._id)) { %>
               <th>Edit</th>
             <% } %>
@@ -79,7 +80,11 @@
           <tbody>
             <% fic.chars.forEach(function(char, i){ %>
               <tr>
-                <td><%=char.name%></td>
+                <td>
+                  <p class="fic-show-char-name"
+                    style="color:<%=char.fontColor%>;background-color:<%=char.highlight%>;">
+                    <%=char.name%></p>
+                </td>
                 <% if (currentUser && currentUser._id.equals(fic.author._id)) { %>
                   <td>
                     <a class="btn btn-outline-warning btn-sm border-0"
@@ -143,18 +148,17 @@
       <a class="btn btn-primary btn-xl shadow-lg" href="/fics/<%= fic._id %>/eps/1">
         Start Reading
       </a>
-    <% } else { %>
-      <p>There are currently no episodes for this Fic.</p>
     <% } %>
   </div>
 
-
-  <!-- IF AT LEAST ONE EPISODE SHOW EPISODE LIST -->
-  <% if (fic.eps.length > 0) { %>
     <!-- EPISODE LIST TABLE -->
     <div class="text-center bg-light border rounded m-3 shadow-sm overflow-hidden">
-      <h2 class="my-4">Episode List</h2>
-
+      <h2 class="mt-4 mb-3">Episode List</h2>
+      <a class="btn btn btn-info py-1 mb-3" href="/fics/<%= fic._id %>/eps/new">
+        <i class="fas fa-plus mr-1" SameSite=None Secure></i>Add Episode
+      </a>
+      <!-- IF AT LEAST ONE EPISODE SHOW EPISODE LIST -->
+      <% if (fic.eps.length > 0) { %>
         <table class="table"> <!-- ACTUAL TABLE STARTS HERE -->
           <thead>
             <th>Ep. No.</th>
@@ -227,8 +231,11 @@
             <% }) %>
           </tbody>
         </table>
+        <% } else { %>
+          <p>There are currently no episodes for this Fic.</p>
+        <% } %>
       </div> <!-- EPISODE LIST TABLE ENDS HERE -->
-    <% } %>
+
 
 
 

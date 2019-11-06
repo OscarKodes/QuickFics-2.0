@@ -141,6 +141,18 @@ label {
   border-radius: .1rem;
 }
 
+.character-table {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.fic-show-char-name {
+  margin: 0 auto;
+  border: 1px lightgrey solid;
+  border-radius: 2rem;
+  max-width: 12rem;
+}
+
 a.user-control-btn,
 button.user-control-btn {
   color: #666;

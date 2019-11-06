@@ -1,30 +1,24 @@
 
 <!-- Author's Control Panel -->
-<div class="author-control-panel shadow-lg">
+<div class="author-control-panel d-flex w-100">
+  <a class="col btn btn-lg btn-dark pt-2 pb-0 w-100 rounded-0 active"
+    href="/fics/<%= fic._id %>">
+    <i class="fas fa-book-open " SameSite=None Secure></i>
+    <p>Fic Profile</p>
+  </a>
 
-  <div class="row">
+  <a class="col btn btn-lg btn-dark pt-2 pb-0 w-100 rounded-0" href="/fics/<%= fic._id %>/eps/new">
+    <i class="fas fa-plus " SameSite=None Secure></i>
+    <p>Add Episode</p>
+  </a>
 
-    <a class="col btn btn-lg btn-secondary pt-3 pb-1 w-100 rounded-0 <%= currPage === 'ficPage' ? 'active' : null %>"
-      href="/fics/<%= fic._id %>">
-      <i class="fas fa-book-open fa-lg" SameSite=None Secure></i>
-      <p>Fic Profile</p>
-    </a>
+  <a class="col btn btn-lg btn-dark pt-2 pb-0 w-100 rounded-0" href="/fics/<%= fic._id %>/chars/new">
+    <i class="fas fa-user-plus " SameSite=None Secure></i>
+    <p>Add Character</p>
+   </a>
 
-    <a class="col btn btn-lg btn-secondary pt-3 pb-1 w-100 rounded-0" href="/fics/<%= fic._id %>/eps/new">
-      <i class="fas fa-plus fa-lg" SameSite=None Secure></i>
-      <p>Add Episode</p>
-    </a>
-
-    <a class="col btn btn-lg btn-secondary pt-3 pb-1 w-100 rounded-0" href="/fics/<%= fic._id %>/chars/new">
-      <i class="fas fa-user-plus fa-lg" SameSite=None Secure></i>
-      <p>Add Character</p>
-     </a>
-
-    <a class="col btn btn-lg btn-secondary pt-3 pb-1 w-100 rounded-0" href="/fics/<%= fic._id %>/edit">
-      <i class="fas fa-edit fa-lg" SameSite=None Secure></i>
-      <p>Edit Fic Details</p>
-     </a>
-
-  </div>
-
+  <a class="col btn btn-lg btn-dark pt-2 pb-0 w-100 rounded-0" href="/fics/<%= fic._id %>/edit">
+    <i class="fas fa-edit " SameSite=None Secure></i>
+    <p>Edit Fic Details</p>
+   </a>
 </div>
