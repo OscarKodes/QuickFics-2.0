@@ -48,6 +48,13 @@ label {
 .nav-brand h1 {
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
+  position: relative;
+  top: .3rem;
+}
+
+.back-button {
+  position: relative;
+  top: .3rem;
 }
 
 .about-link {
