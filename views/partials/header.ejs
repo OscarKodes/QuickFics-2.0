@@ -27,7 +27,10 @@
   <% if (unique_header && unique_header === "author_controls") { %>
     <!-- Author Controls Top Bar for Fic Show Page -->
     <% include ./authorControlPanel %>
-  <% } else { %>
+  <% } else if (unique_header && unique_header === "ep_show") { %>
+      <!-- Episode Show Navigation Bar Header -->
+      <% include ./epShowPageNavBar %>
+    <% } else { %>
     <!-- Main NavBar -->
     <div class="top-nav bg-dark d-flex flex-row text-light p-2">
       <% if (unique_header && ["epForm", "backToFic"].includes(unique_header)) { %>

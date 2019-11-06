@@ -1,0 +1,42 @@
+<!-- Navigation buttons -->
+<div class="bg-info d-flex flex-row text-center shadow">
+  <div class="w-100">
+    <% if (ep_num > 1) { %>
+      <% let prevEp = ep_num - 1; %>
+      <a class="btn btn-info py-3 w-100 rounded-0" href="/fics/<%= fic._id %>/eps/<%= prevEp %>">
+        <i class="fas fa-arrow-left mr-2"></i>Prev Ep
+      </a>
+    <% } %>
+  </div>
+  <div class="w-100">
+    <a class="btn btn-dark py-3 w-100 rounded-0" href="/fics/<%= fic._id %>/">Fic Page</a>
+  </div>
+  <div class="w-100">
+    <% if (currentUser && fic.author._id.equals(currentUser._id)) { %>
+      <!-- EDIT BTN -->
+      <a class="btn btn-secondary py-3 w-100 rounded-0"
+        href="/fics/<%=fic._id%>/eps/<%=ep_num%>/edit">
+        <i class="fas fa-edit fa-lg mr-2"
+          SameSite=None Secure></i>Edit
+      </a>
+    <% } else { %>
+      <!-- STAR BTN -->
+      <form class="" action="/fics/<%=fic._id%>/eps/<%=ep_num%>/like?_method=PUT" method="post">
+        <button class="btn btn-secondary py-3 w-100 rounded-0" type="submit" name="button">
+          <% if (currentUser && ep.likes.includes(currentUser._id)) { %>
+            <i class="fas fa-star mr-2 text-warning"></i>Starred</button>
+          <% } else { %>
+            <i class="fas fa-star mr-2"></i>Give Star</button>
+          <% } %>
+      </form>
+    <% } %>
+  </div>
+  <div class="w-100">
+    <% if (ep_num < last_ep_num) { %>
+      <% let nextEp = ep_num + 1; %>
+      <a class="btn btn-info py-3 w-100 rounded-0" href="/fics/<%= fic._id %>/eps/<%= nextEp %>">
+        Next Ep<i class="fas fa-arrow-right ml-2"></i>
+      </a>
+    <% } %>
+  </div>
+</div>

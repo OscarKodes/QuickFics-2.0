@@ -58,7 +58,10 @@ router.post("/", middleware.checkFicOwnership, function(req, res){
 // SHOW ROUTE
 router.get("/:ep_num", function(req, res){
 
-  Fic.findById(req.params.id, function(err, foundFic){
+  Fic.
+  findById(req.params.id).
+  populate("author").
+  exec(function(err, foundFic){
     if (err){
       console.log(err);
       req.flash("error", err.message);
@@ -68,7 +71,8 @@ router.get("/:ep_num", function(req, res){
         fic: foundFic,
         ep: foundFic.eps[req.params.ep_num - 1],
         ep_num: Number(req.params.ep_num),
-        last_ep_num: foundFic.eps.length
+        last_ep_num: foundFic.eps.length,
+        unique_header: "ep_show"
       });
     }
   })
