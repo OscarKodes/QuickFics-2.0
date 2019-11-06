@@ -4,24 +4,10 @@ const middleware = require("../middleware");
 
 const router = express.Router({mergeParams: true});
 
-// Fic Routes ===================================
+// CHAR Routes ===================================
 // INDEX ROUTE
 router.get("/", function (req, res){
-
-  Fic.
-  findById(req.params.id).
-  populate("author").
-  exec(function(err, foundFic){
-    if (err) {
-      console.log(err);
-      req.flash("error", err.message);
-      res.redirect("back");
-    } else {
-      res.render("chars/index", {
-        fic: foundFic
-      });
-    }
-  });
+  res.redirect("/fics/" + foundFic._id);
 });
 
 // NEW ROUTE
@@ -44,7 +30,7 @@ router.post("/", middleware.checkFicOwnership, function(req, res){
       foundFic.chars.push(req.body.char);
       foundFic.save();
       req.flash("success", "Character successfully added!");
-      res.redirect("/fics/" + foundFic._id + "/chars");
+      res.redirect("/fics/" + foundFic._id);
     }
   })
 });
@@ -86,7 +72,7 @@ router.put("/:char_idx", middleware.checkFicOwnership, function(req, res){
       foundFic.chars[req.params.char_idx] = req.body.char;
       foundFic.save();
       req.flash("success", "Character successfully updated!");
-      res.redirect("/fics/" + req.params.id + "/chars");
+      res.redirect("/fics/" + req.params.id);
     }
   })
 });
