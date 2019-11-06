@@ -338,10 +338,14 @@ p.dialogue-text {
 }
 
 /* SAVED FICS INDEX PAGE */
+.unsave-btn-container {
+  background-color: white;
+  text-align: right;
+}
+
 .unsave-btn {
-  position: relative;
-  bottom: 6rem;
-  left: 21rem;
+  margin-right: 2rem;
+  margin-bottom: 1rem;
 }
 
 

@@ -10,20 +10,22 @@
     <p>You can save fics by clicking the "Save Fic" button on a fic's profile page.</p>
   </div>
 <% } else { %>
-  <% savedFics.reverse().forEach(function(fic){ %>
-
-    <div class="text-center">
-
-      <a class="btn btn-light btn-lg py-3 px-5 mx-2 mb-4 shadow" href="/fics/<%= fic._id %>">
-        <h2><%=fic.title%></h2>
-        <p>By <%=fic.author.name ? fic.author.name : fic.author.username%></p>
+  <div class="fic-card-container">
+    <% savedFics.reverse().forEach(function(fic){ %>
+      <a class="text-dark text-decoration-none" href="/fics/<%= fic._id %>">
+        <!-- Fic Card -->
+        <div class="bg-white fic-card pb-1">
+          <h2><%=fic.title%></h2>
+          <p>By <%=fic.author.name ? fic.author.name : fic.author.username%></p>
+          <p class="mb-0"><%=fic.description%></p>
+        </div> <!-- Closing tag for fic card -->
       </a>
-
       <!-- Delete Button trigger modal -->
-      <div class="unsave-btn">
+      <div class="unsave-btn-container">
         <!-- Delete Button-->
-        <button class="btn btn-outline-secondary btn-sm py-0" type="button" data-toggle="modal" data-target="#remove<%=fic._id%>">
-          Remove
+        <button class="unsave-btn btn btn-outline-secondary border-0 p-1" type="button" data-toggle="modal" data-target="#remove<%=fic._id%>">
+          <i class="fas fa-trash fa-lg"
+            SameSite=None Secure></i>
         </button>
 
         <!-- Delete Modal -->
@@ -49,8 +51,8 @@
           </div>
         </div> <!-- Closing tag for delete modal -->
       </div> <!-- Closing tag for Delete Btn Trigger-->
-    </div>  <!-- Closing tag for centering div -->
-  <% }); %> <!-- End of forEach loop thru the savedFics -->
+    <% }); %>
+  </div>
 <% } %>
 
 
