@@ -7,7 +7,7 @@
     </h1>
 
     <!-- User Control Panel -->
-    <div class="user-control-panel mb-3">
+    <div class="user-control-panel mb-3 shadow-sm">
         <% if (currentUser && currentUser.savedFics.includes(fic._id)) { %>
           <form class="d-inline" action="/savedfics/<%= fic._id %>?_method=DELETE" method="post">
             <button class="user-control-btn saved-fic-btn" type="submit">
