@@ -138,8 +138,12 @@ label {
 
 .fic-card {
   text-align: center;
-  padding: 2rem 0;
+  padding: 1rem 1rem .2rem;
   border-top: 1px solid lightgrey;
+}
+
+.fic-card p {
+  line-height: 1.8;
 }
 
 .average-stars-text {
@@ -170,7 +174,6 @@ label {
 .fic-show-char-name {
   margin: 0 auto;
   border: 1px lightgrey solid;
-  border-radius: 2rem;
   max-width: 12rem;
 }
 
@@ -219,7 +222,6 @@ button.user-control-btn:focus {
 .char-name {
   display: inline-block;
   padding: .2rem .8rem;
-  border-radius: 2rem;
   border: 1px solid lightgrey;
 }
 
@@ -227,12 +229,12 @@ button.user-control-btn:focus {
 .char-name-preview {
   border: 1px solid lightgrey;
   background-color: white;
-  padding: 1rem 2rem;
-  border-radius: .5rem;
   width: 30vw;
   margin: 1rem auto;
   text-align: center;
   color: #aaa;
+  overflow: hidden;
+  text-overflow: clip;
 }
 
 /* EPISODE NEW, EDIT, SHOW PAGE */
@@ -269,11 +271,11 @@ button.user-control-btn:focus {
 }
 
 .dialogue-form {
-  -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
-   -moz-animation: fadein 2s; /* Firefox < 16 */
-    -ms-animation: fadein 2s; /* Internet Explorer */
-     -o-animation: fadein 2s; /* Opera < 12.1 */
-        animation: fadein 2s;
+  -webkit-animation: fadein .6s; /* Safari, Chrome and Opera > 12.1 */
+   -moz-animation: fadein .6s; /* Firefox < 16 */
+    -ms-animation: fadein .6s; /* Internet Explorer */
+     -o-animation: fadein .6s; /* Opera < 12.1 */
+        animation: fadein .6s;
 }
 
 .marker-btn-container {
@@ -319,10 +321,9 @@ input[type="color"].highlight-input {
   text-align: center;
 }
 
-.show-page.dialogue-name.char-name {
-  width: 8.5rem;
-  margin-left: 1.7rem;
-  margin-top: 1.2rem;
+.dialogue-char-badge {
+  text-align: center;
+  width: 8rem;
 }
 
 .cancel-btn:hover {

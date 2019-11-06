@@ -6,26 +6,31 @@
   </div>
 
 <!-- EPISODE DIALOGUE -->
-  <div id="dialogue-container" class="shadow mx-5">
-    <% ep.char.forEach(function(char, i){ %>
+  <div id="dialogue-container" class="shadow mx-0 rounded-0">
 
-      <div class="border-bottom bg-white pt-1 pb-2">
-        <!-- Row for Name and Text -->
-        <div class="row bg-white">
-          <!-- Column for Name -->
-          <div class="col-3 text-center">
-            <p class="dialogue-name char-name show-page"
-              style="color:<%=ep.fontColor[i]%>;
-              background-color:<%=ep.highlight[i]%>;">
-              <%= char %></p>
-          </div>
-          <!-- Column for Dialogue Text -->
-          <div class="col-9">
-            <p class="m-0 border-0 dialogue-text"><%= ep.text[i] %></p>
-          </div>
-        </div>
+      <table class="table-bordered bg-white">
+        <tbody>
+          <% ep.char.forEach(function(char, i){ %>
+            <tr>
+              <td class="p-1"></td>
+              <td class="p-1"></td>
+            </tr>
+            <tr>
+              <td class="dialogue-char-badge" style="color:<%=ep.fontColor[i]%>;
+                background-color:<%=ep.highlight[i]%>;">
+                <%= char %>
+              </td>
+              <td>
+                <!-- Dialogue -->
+                <p class="dialogue-text"><%= ep.text[i] %></p>
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+
       </div>
-    <% }) %>
+
   </div>
 
     <!-- invisible bgColor div to pass data form back to front -->
