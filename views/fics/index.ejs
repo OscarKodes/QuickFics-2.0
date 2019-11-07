@@ -57,6 +57,10 @@
         role="tabpanel"
         aria-labelledby="pills-updated-tab">
         <div class="fic-card-container">
+
+          <!-- Saving an unmanipulated copy of fics for newFics -->
+          <% let ficsNew = fics; %>
+          
           <% fics.sort((a,b) => b.updatedAt.getTime()-a.updatedAt.getTime()).slice(0, 19).forEach(function(fic){ %>
             <a class="text-dark text-decoration-none" href="/fics/<%= fic._id %>">
               <div class="bg-white fic-card">
@@ -103,7 +107,7 @@
         role="tabpanel"
         aria-labelledby="pills-new-tab">
         <div class="fic-card-container">
-          <% fics.reverse().slice(0, 29).forEach(function(fic){ %>
+          <% ficsNew.reverse().slice(0, 29).forEach(function(fic){ %>
             <a class="text-dark text-decoration-none" href="/fics/<%= fic._id %>">
               <div class="bg-white fic-card">
                 <h2><%=fic.title%></h2>
