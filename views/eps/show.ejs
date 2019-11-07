@@ -6,12 +6,12 @@
   </div>
 
 <!-- EPISODE DIALOGUE -->
-  <div id="dialogue-container" class="shadow mx-0 rounded-0">
+  <div id="dialogue-container" class="shadow-lg">
 
-      <table class="ep-show-table table-border-custom bg-white rounded">
+      <table class="ep-show-table table-ep-show bg-white">
         <tbody>
           <% ep.char.forEach(function(char, i){ %>
-            <tr class="table-border-custom">
+            <tr class="table-ep-show-border">
               <td>
                 <p class="dialogue-char-badge" style="color:<%=ep.fontColor[i]%>;
                   background-color:<%=ep.highlight[i]%>;">
@@ -27,9 +27,9 @@
         </tbody>
       </table>
 
-      </div>
+    </div>
 
-  </div>
+
 
     <!-- invisible bgColor div to pass data form back to front -->
     <div class="d-none">
@@ -48,4 +48,7 @@
   const bgColor = $("#ep-bg-color").val();
   $(".master-container").css("background-color", bgColor);
   $(".bottom-spacer").css("background-color", bgColor);
+  if($(window).width() < 1080) {
+    $("body").css("background-color", bgColor);
+  };
 </script>

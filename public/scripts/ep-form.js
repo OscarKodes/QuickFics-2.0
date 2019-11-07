@@ -107,7 +107,10 @@ bgColorInput.change(changeColor);
 function changeColor() {
   let chosenColor = bgColorInput.val();
   $(".master-container").css("background-color", chosenColor);
-  $(".bottom-spacer").css("background-color", chosenColor);
+  // $(".bottom-spacer").css("background-color", chosenColor);
+  if($(window).width() < 1080) {
+    $("body").css("background-color", chosenColor);
+  };
 };
 
 changeColor(); // sets up page based on pre-settings

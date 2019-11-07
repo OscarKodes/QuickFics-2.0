@@ -261,8 +261,12 @@ button.user-control-btn:focus {
   padding-top: 10rem;
 }
 
-.table-border-custom {
-  border: .2rem lightgrey solid;
+.table-ep-show {
+  margin-right: 1rem;
+}
+
+.table-ep-show-border {
+  border: .06rem lightgrey dashed;
   border-left: 0;
   border-right: 0;
 }
@@ -285,8 +289,11 @@ button.user-control-btn:focus {
 }
 
 #dialogue-container {
-  margin: 0rem;
   overflow: hidden;
+  border-radius: 1rem;
+  margin: 0 .8rem;
+  background-color: white;
+  padding: 1rem 0;
 }
 
 .dialogue-form {
@@ -336,7 +343,8 @@ input[type="color"].highlight-input {
 .dialogue-char-badge {
   text-align: center;
   width: 7rem;
-  border: 1px lightgrey solid;
+  border: .05rem solid;
+  border-color: rgba(100, 100, 100, 0.7);
   border-radius: .2rem;
   margin-left: 1rem;
   text-overflow: clip;
@@ -374,8 +382,9 @@ textarea.dialogue-text {
 }
 
 p.dialogue-text {
-  font-size: 1.25rem;
-  padding: 1rem;
+  font-size: 1.15rem;
+  line-height: 1.8;
+  padding: .8rem .5rem 1rem 1rem;
   overflow-wrap: break-word;
   word-wrap: break-word;
 
@@ -426,6 +435,7 @@ p.dialogue-text {
 
   .master-container {
     width: 1080px;
+    height: 100%;
     margin: 0 auto;
   }
   .fixed-top {
@@ -436,6 +446,10 @@ p.dialogue-text {
   .fixed-bottom {
     width: 1080px;
     margin: 0 auto;
+  }
+
+  #dialogue-container {
+    margin: 0 6rem;
   }
 }
 
