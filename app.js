@@ -52,7 +52,9 @@ app.use(function(req, res, next) {
   next();
 });
 
-mongoose.connect("mongodb://localhost:27017/ficsDB",
+const url = process.env.DATABASEURL || "mongodb://localhost:27017/ficsDB";
+
+mongoose.connect(url,
 {
   useNewUrlParser: true,
   useFindAndModify: false,
@@ -68,10 +70,8 @@ app.use("/fics/:id/chars", charRoutes);
 app.use("/fics/:id/eps", epRoutes);
 app.use("/auth", authRoutes);
 
+const PORT = process.env.PORT || 3000;
 
-
-
-
-app.listen(3000, function(){
+app.listen(PORT, function(){
   console.log("Server is running on port 3000.");
 });
