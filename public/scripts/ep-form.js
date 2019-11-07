@@ -33,6 +33,7 @@ charBtn.click(function(e){
   newForm
     .children(".dialogue-form-row")
     .children(".dialogue-textarea")
+    .children(".cancel-btn-container")
     .children(".cancel-btn")
     .click(function(){
       newForm.remove();
@@ -67,7 +68,7 @@ charBtn.click(function(e){
 // Add Listener to Cancel Button for Edit Page's Premade Dialogues=====
 premadeDialogue
   .click(function(){
-    let entireDialogue = $("#" + this.id).parent().parent().parent();
+    let entireDialogue = $("#" + this.id).parent().parent().parent().parent();
     entireDialogue.remove();
   });
 
