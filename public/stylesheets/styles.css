@@ -1,3 +1,4 @@
+/* MOBILE FIRST RESPONSIVE DESIGN */
 html {
   font-size: 32px;
 }
@@ -11,25 +12,6 @@ body {
   background-color: lavender;
   height: 100vh;
   width: 100vw;
-}
-
-@media screen and (min-width: 1080px){
-  html {
-    font-size: 20px;
-  }
-  .master-container {
-    width: 1080px;
-    margin: 0 auto;
-  }
-  .fixed-top {
-    width: 1080px;
-    margin: 0 auto;
-  }
-
-  .fixed-bottom {
-    width: 1080px;
-    margin: 0 auto;
-  }
 }
 
 h1, h2, h3, h4, h5,
@@ -128,7 +110,7 @@ label {
 
 .alert-success,
 .alert-danger {
-  width: 100%;
+  width: 100vw;
 }
 
 .author-name-grey {
@@ -419,6 +401,32 @@ p.dialogue-text {
   padding: .8rem;
   border: none;
   height: 3rem;
+}
+
+/* DESKTOP LAPTOP SCREEN SIZES */
+@media screen and (min-width: 1080px){
+  html {
+    font-size: 20px;
+  }
+
+  .alert-success,
+  .alert-danger {
+    width: 100%;
+  }
+
+  .master-container {
+    width: 1080px;
+    margin: 0 auto;
+  }
+  .fixed-top {
+    width: 1080px;
+    margin: 0 auto;
+  }
+
+  .fixed-bottom {
+    width: 1080px;
+    margin: 0 auto;
+  }
 }
 
 
