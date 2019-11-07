@@ -105,7 +105,7 @@ bgColorInput.change(changeColor);
 // Set up background color based on input
 function changeColor() {
   let chosenColor = bgColorInput.val();
-  $("body").css("background-color", chosenColor);
+  $(".master-container").css("background-color", chosenColor);
 };
 
 changeColor(); // sets up page based on pre-settings
