@@ -12,9 +12,11 @@
         <tbody>
           <% ep.char.forEach(function(char, i){ %>
             <tr class="table-border-custom">
-              <td class="dialogue-char-badge" style="color:<%=ep.fontColor[i]%>;
-                background-color:<%=ep.highlight[i]%>;">
-                <%= char %>
+              <td>
+                <p class="dialogue-char-badge" style="color:<%=ep.fontColor[i]%>;
+                  background-color:<%=ep.highlight[i]%>;">
+                  <%= char %>
+                </p>
               </td>
               <td class="d-inline-block">
                 <!-- Dialogue -->
@@ -38,10 +40,12 @@
 <!-- jQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
+<!-- Footer -->
+<%- include ../partials/footer %>
+
 <!-- Script for dynamic bg color -->
 <script type="text/javascript">
   const bgColor = $("#ep-bg-color").val();
   $(".master-container").css("background-color", bgColor);
+  $(".bottom-spacer").css("background-color", bgColor);
 </script>
-
-<%- include ../partials/footer %>
