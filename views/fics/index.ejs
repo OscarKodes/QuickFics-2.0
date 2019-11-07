@@ -59,8 +59,8 @@
         <div class="fic-card-container">
 
           <!-- Saving an unmanipulated copy of fics for newFics -->
-          <% let ficsNew = fics; %>
-          
+          <% let ficsNew = [...fics]; %>
+
           <% fics.sort((a,b) => b.updatedAt.getTime()-a.updatedAt.getTime()).slice(0, 19).forEach(function(fic){ %>
             <a class="text-dark text-decoration-none" href="/fics/<%= fic._id %>">
               <div class="bg-white fic-card">
